@@ -9,7 +9,7 @@ public class BtnController {
 	@GetMapping("/index")
 	public String index() {
 		return "index";
-	}
+	} 
 	
 	@GetMapping("/page1")
 	public String show1() {
