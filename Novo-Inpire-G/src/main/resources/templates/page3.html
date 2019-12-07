@@ -28,6 +28,7 @@
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
 
   <link rel="stylesheet" href="/css/restaurants.css">
+  <link rel="stylesheet" href="/css/homeUser/cards.css">
   
   <script src="/js/page3.js"></script>
 </head>
@@ -100,513 +101,159 @@
     <div class="container">
         <div class="row">
             <!--Card-1-->
-            <div class="col-12 col-md-6 p-3 col-lg-4">
-                <div class="column">
-                    <!-- Post-->
-                    <div class="post-module">
-                    <!-- Thumbnail-->
-                    <div class="thumbnail">
-                        <!-- <div class="date">
-                            
-                        </div> -->
-                        <img src="/images/depositphotos-11921524-stock-photo-chicken-salad-2-696x464.jpeg"/>
-                    </div>
-                    <!-- Post Content-->
-                    <div class="post-content">
-                        <div class="category">Cozinha</div>
-                        <h1 class="title">Nome do Restaurante</h1>
-                        <h2 class="sub_title">
-                            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
-                            <!-- RATING - Form -->
-                            <form class="rating-form" action="#" method="post" name="rating-movie">
-                                <fieldset class="form-group">
-                                
-                                <div class="form-item">
-                                    
-                                    <input id="rating-5" name="rating" type="radio" value="5" />
-                                    <label for="rating-5" data-value="5">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">5</span>
-                                    </label>
-                                    <input id="rating-4" name="rating" type="radio" value="4" />
-                                    <label for="rating-4" data-value="4">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">4</span>
-                                    </label>
-                                    <input id="rating-3" name="rating" type="radio" value="3" />
-                                    <label for="rating-3" data-value="3">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">3</span>
-                                    </label>
-                                    <input id="rating-2" name="rating" type="radio" value="2" />
-                                    <label for="rating-2" data-value="2">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">2</span>
-                                    </label>
-                                    <input id="rating-1" name="rating" type="radio" value="1" />
-                                    <label for="rating-1" data-value="1">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">1</span>
-                                    </label>
-                                    <div class="form-output">
-                                        ? / 5
-                                    </div>
-                                    <div class="form-action">
-                                    <input class="btn-reset" type="reset" value="Reset" />   
-                                    </div>
-                            
-                                    
-                                    
-                                </div>
-                                
-                                </fieldset>
-                            </form>
-                        </h2>
-                        <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
-                        <div class="col-md-12 input-group-btn align-center "><a href="/page4" type="submit" class="btn btn-primary btn-form display-4 but">Detalhes</a></div>
-                    </div>
-                    </div>
+           	<div class="col-sm-4">
+                <div class="news shadow">
+                  <div class="img-figure">
+                      <div class="cat">Cozinha</div>
+                    <img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
+                  </div>	
+        
+                  <div class="title">
+                    <span> DAL 20/10/2017 AL 24/10/2017</span>
+                    <h1>LF A HOST</h1>
+                  </div>
+                  <p class="description">
+                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
+                  </p>
+        
+                  <p class="more">
+                    <a href="/page4">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+                  </p>
                 </div>
-            </div>
-            <!--Card-2-->
-            <div class="col-12 col-md-6 p-3 col-lg-4">
-                <div class="column">
-                    <!-- Post-->
-                    <div class="post-module">
-                    <!-- Thumbnail-->
-                    <div class="thumbnail">
-                        <!-- <div class="date">
-                        
-                        </div> -->
-                        <img src="/images/depositphotos-186390104-stock-photo-top-view-delicious-roasted-chicken-1-696x508.jpeg"/>
-                    </div>
-                    <!-- Post Content-->
-                    <div class="post-content">
-                        <div class="category">Cozinha</div>
-                        <h1 class="title">Nome do Restaurante</h1>
-                        <h2 class="sub_title">
-                            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+              </div>
 
-                            <!-- RATING - Form -->
-                            <form class="rating-form" action="#" method="post" name="rating-movie">
-                                <fieldset class="form-group">
-                                
-                                <div class="form-item">
-                                    
-                                    <input id="rating-5" name="rating" type="radio" value="5" />
-                                    <label for="rating-5" data-value="5">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">5</span>
-                                    </label>
-                                    <input id="rating-4" name="rating" type="radio" value="4" />
-                                    <label for="rating-4" data-value="4">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">4</span>
-                                    </label>
-                                    <input id="rating-3" name="rating" type="radio" value="3" />
-                                    <label for="rating-3" data-value="3">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">3</span>
-                                    </label>
-                                    <input id="rating-2" name="rating" type="radio" value="2" />
-                                    <label for="rating-2" data-value="2">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">2</span>
-                                    </label>
-                                    <input id="rating-1" name="rating" type="radio" value="1" />
-                                    <label for="rating-1" data-value="1">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">1</span>
-                                    </label>
-                                    <div class="form-output">
-                                        ? / 5
-                                    </div>
-                                    <div class="form-action">
-                                    <input class="btn-reset" type="reset" value="Reset" />   
-                                    </div>
-                            
-                                    
-                                    
-                                </div>
-                                
-                                </fieldset>
-                            </form>
-                        </h2>
-                        <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
-                        <div class="col-md-12 input-group-btn align-center"><a href="/page4" type="submit" class="btn btn-primary btn-form display-4 but">Detalhes</a></div>
-                    </div>
-                    </div>
+              <div class="col-sm-4">
+                <div class="news shadow">
+                  <div class="img-figure">
+                    <div class="cat">Cozinha</div>
+                    <img  th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
+                  </div>	
+        
+                  <div class="title">
+                    <span> DAL 20/10/2017 AL 24/10/2017</span>
+                    <h1>LF A HOST</h1>
+                  </div>
+                  <p class="description">
+                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
+                  </p>
+        
+                  <p class="more">
+                    <a href="/page4">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+                  </p>
                 </div>
-            </div>
-            <!--Card-3-->
-            <div class="col-12 col-md-6 p-3 col-lg-4 ">
-                <div class="column">
-                    <!-- Post-->
-                    <div class="post-module">
-                    <!-- Thumbnail-->
-                    <div class="thumbnail">
-                        <!-- <div class="date">
-                        
-                        </div> -->
-                        <img src="/images/depositphotos-18843809-stock-photo-italian-pasta-with-tomato-sauce-696x479.jpeg"/>
-                    </div>
-                    <!-- Post Content-->
-                    <div class="post-content">
-                        <div class="category">Cozinha</div>
-                        <h1 class="title">Nome do Restaurante</h1>
-                        <h2 class="sub_title">
-                            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+              </div>
 
-                            <!-- RATING - Form -->
-                            <form class="rating-form" action="#" method="post" name="rating-movie">
-                                <fieldset class="form-group">
-                                
-                                <div class="form-item">
-                                    
-                                    <input id="rating-5" name="rating" type="radio" value="5" />
-                                    <label for="rating-5" data-value="5">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">5</span>
-                                    </label>
-                                    <input id="rating-4" name="rating" type="radio" value="4" />
-                                    <label for="rating-4" data-value="4">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">4</span>
-                                    </label>
-                                    <input id="rating-3" name="rating" type="radio" value="3" />
-                                    <label for="rating-3" data-value="3">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">3</span>
-                                    </label>
-                                    <input id="rating-2" name="rating" type="radio" value="2" />
-                                    <label for="rating-2" data-value="2">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">2</span>
-                                    </label>
-                                    <input id="rating-1" name="rating" type="radio" value="1" />
-                                    <label for="rating-1" data-value="1">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">1</span>
-                                    </label>
-                                    <div class="form-output">
-                                        ? / 5
-                                    </div>
-                                    <div class="form-action">
-                                    <input class="btn-reset" type="reset" value="Reset" />   
-                                    </div>
-                            
-                                    
-                                    
-                                </div>
-                                
-                                </fieldset>
-                            </form>
-                        </h2>
-                        <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
-                        <div class="col-md-12 input-group-btn align-center"><a href="/page4" type="submit" class="btn btn-primary btn-form display-4 but">Detalhes</a></div>
-                    </div>
-                    </div>
+              <div class="col-sm-4">
+                <div class="news shadow">
+                  <div class="img-figure">
+                    <div class="cat">Cozinha</div>
+                    <img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
+                  </div>	
+        
+                  <div class="title">
+                    <span> DAL 20/10/2017 AL 24/10/2017</span>
+                    <h1>LF A HOST</h1>
+                  </div>
+                  <p class="description">
+                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
+                  </p>
+        
+                  <p class="more">
+                    <a href="/page4">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+                  </p>
                 </div>
-            </div>
-            <!--Card-4-->
-            <div class="col-12 col-md-6 p-3 col-lg-4 ">
-                <div class="column">
-                    <!-- Post-->
-                    <div class="post-module">
-                    <!-- Thumbnail-->
-                    <div class="thumbnail">
-                        <!-- <div class="date">
-                        
-                        </div> -->
-                        <img src="/images/depositphotos-23899891-stock-photo-salmon-steak-696x464.jpeg"/>
-                    </div>
-                    <!-- Post Content-->
-                    <div class="post-content">
-                        <div class="category">Cozinha</div>
-                        <h1 class="title">Nome do Restaurante</h1>
-                        <h2 class="sub_title">
-                            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+              </div>
 
-                            <!-- RATING - Form -->
-                            <form class="rating-form" action="#" method="post" name="rating-movie">
-                                <fieldset class="form-group">
-                                
-                                <div class="form-item">
-                                    
-                                    <input id="rating-5" name="rating" type="radio" value="5" />
-                                    <label for="rating-5" data-value="5">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">5</span>
-                                    </label>
-                                    <input id="rating-4" name="rating" type="radio" value="4" />
-                                    <label for="rating-4" data-value="4">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">4</span>
-                                    </label>
-                                    <input id="rating-3" name="rating" type="radio" value="3" />
-                                    <label for="rating-3" data-value="3">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">3</span>
-                                    </label>
-                                    <input id="rating-2" name="rating" type="radio" value="2" />
-                                    <label for="rating-2" data-value="2">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">2</span>
-                                    </label>
-                                    <input id="rating-1" name="rating" type="radio" value="1" />
-                                    <label for="rating-1" data-value="1">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">1</span>
-                                    </label>
-                                    <div class="form-output">
-                                        ? / 5
-                                    </div>
-                                    <div class="form-action">
-                                    <input class="btn-reset" type="reset" value="Reset" />   
-                                    </div>
-  
-                                </div>
-                                
-                                </fieldset>
-                            </form>
-                        </h2>
-                        <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
-                        <div class="col-md-12 input-group-btn align-center"><a href="/page4" type="submit" class="btn btn-primary btn-form display-4 but">Detalhes</a></div>
+              <div class="col-sm-4">
+                  <div class="news shadow">
+                    <div class="img-figure">
+                      <div class="cat">Cozinha</div>
+                      <img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
+                    </div>	
+          
+                    <div class="title">
+                      <span> DAL 20/10/2017 AL 24/10/2017</span>
+                      <h1>LF A HOST</h1>
                     </div>
-                    </div>
+                    <p class="description">
+                      LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
+                    </p>
+          
+                    <p class="more">
+                      <a href="/page4">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </p>
+                  </div>
                 </div>
-            </div>
-            <!--Card-4-->
-            <div class="col-12 col-md-6 p-3 col-lg-4 ">
-                <div class="column">
-                    <!-- Post-->
-                    <div class="post-module">
-                    <!-- Thumbnail-->
-                    <div class="thumbnail">
-                        <!-- <div class="date">
-                        
-                        </div> -->
-                        <img src="/images/depositphotos-29983711-stock-photo-grilled-beef-steak-meat-with-696x467.jpeg"/>
-                    </div>
-                    <!-- Post Content-->
-                    <div class="post-content">
-                        <div class="category">Cozinha</div>
-                        <h1 class="title">Nome do Restaurante</h1>
-                        <h2 class="sub_title">
-                            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-                            <!-- RATING - Form -->
-                            <form class="rating-form" action="#" method="post" name="rating-movie">
-                                <fieldset class="form-group">
-                                
-                                <div class="form-item">
-                                    
-                                    <input id="rating-5" name="rating" type="radio" value="5" />
-                                    <label for="rating-5" data-value="5">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">5</span>
-                                    </label>
-                                    <input id="rating-4" name="rating" type="radio" value="4" />
-                                    <label for="rating-4" data-value="4">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">4</span>
-                                    </label>
-                                    <input id="rating-3" name="rating" type="radio" value="3" />
-                                    <label for="rating-3" data-value="3">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">3</span>
-                                    </label>
-                                    <input id="rating-2" name="rating" type="radio" value="2" />
-                                    <label for="rating-2" data-value="2">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">2</span>
-                                    </label>
-                                    <input id="rating-1" name="rating" type="radio" value="1" />
-                                    <label for="rating-1" data-value="1">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">1</span>
-                                    </label>
-                                    <div class="form-output">
-                                        ? / 5
-                                    </div>
-                                    <div class="form-action">
-                                    <input class="btn-reset" type="reset" value="Reset" />   
-                                    </div>
-                            
-                                    
-                                    
-                                </div>
-                                
-                                </fieldset>
-                            </form>
-                        </h2>
-                        <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
-                        <div class="col-md-12 input-group-btn align-center"><a href="/page4" type="submit" class="btn btn-primary btn-form display-4 but">Detalhes</a></div>
+                <div class="col-sm-4">
+                  <div class="news shadow">
+                    <div class="img-figure">
+                      <div class="cat">Cozinha</div>
+                      <img  th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
+                    </div>	
+          
+                    <div class="title">
+                      <span> DAL 20/10/2017 AL 24/10/2017</span>
+                      <h1>LF A HOST</h1>
                     </div>
-                    </div>
+                    <p class="description">
+                      LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
+                    </p>
+          
+                    <p class="more">
+                      <a href="/page4">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </p>
+                  </div>
                 </div>
-            </div>
-            <!--Card-4-->
-            <div class="col-12 col-md-6 p-3 col-lg-4 ">
-                <div class="column">
-                    <!-- Post-->
-                    <div class="post-module">
-                    <!-- Thumbnail-->
-                    <div class="thumbnail">
-                                <!-- <div class="date">
-                                
-                                </div> -->
-                        <img src="/images/depositphotos-46267763-stock-photo-fried-chicken-fillets-696x464.jpeg"/>
-                    </div>
-                    <!-- Post Content-->
-                    <div class="post-content">
-                        <div class="category">Cozinha</div>
-                        <h1 class="title">Nome do Restaurante</h1>
-                        <h2 class="sub_title">
-                            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-                            <!-- RATING - Form -->
-                            <form class="rating-form" action="#" method="post" name="rating-movie">
-                                <fieldset class="form-group">
-                                
-                                <div class="form-item">
-                                    
-                                    <input id="rating-5" name="rating" type="radio" value="5" />
-                                    <label for="rating-5" data-value="5">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">5</span>
-                                    </label>
-                                    <input id="rating-4" name="rating" type="radio" value="4" />
-                                    <label for="rating-4" data-value="4">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">4</span>
-                                    </label>
-                                    <input id="rating-3" name="rating" type="radio" value="3" />
-                                    <label for="rating-3" data-value="3">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">3</span>
-                                    </label>
-                                    <input id="rating-2" name="rating" type="radio" value="2" />
-                                    <label for="rating-2" data-value="2">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">2</span>
-                                    </label>
-                                    <input id="rating-1" name="rating" type="radio" value="1" />
-                                    <label for="rating-1" data-value="1">
-                                    <span class="rating-star">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="ir">1</span>
-                                    </label>
-                                    <div class="form-output">
-                                        ? / 5
-                                    </div>
-                                    <div class="form-action">
-                                    <input class="btn-reset" type="reset" value="Reset" />   
-                                    </div>
-                            
-                                    
-                                    
-                                </div>
-                                
-                                </fieldset>
-                            </form>
-                        </h2>
-                        <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
-                        <div class="col-md-12 input-group-btn align-center"><a href="/page4" type="submit" class="btn btn-primary btn-form display-4 but">Detalhes</a></div>
+                <div class="col-sm-4">
+                  <div class="news shadow">
+                    <div class="img-figure">
+                      <div class="cat">Cozinha</div>
+                      <img th:src="@{/images/table-1469719_960_720.jpg}"	 class="img-fluid">
+                    </div>	
+          
+                    <div class="title">
+                      <span> DAL 20/10/2017 AL 24/10/2017</span>
+                      <h1>LF A HOST</h1>
                     </div>
-                    </div>
+                    <p class="description">
+                      LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
+                    </p>
+          
+                    <p class="more">
+                      <a href="/page4">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </p>
+                  </div>
                 </div>
+
+          </div>
+
+
+          <div class="container">
+            <div class="center" >
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
             </div>
+          </div> 
+           
 
         </div>
     </div>
