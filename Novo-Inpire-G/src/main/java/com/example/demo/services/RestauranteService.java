@@ -32,4 +32,9 @@ public class RestauranteService {
 	public void delete(Integer idRestaurante) {
 		repository.deleteById(idRestaurante);
 	}
+	
+	
+	public Restaurante buscarConta(String email, String senha) {
+		return repository.buscalogin(email, senha);
+	}
 }

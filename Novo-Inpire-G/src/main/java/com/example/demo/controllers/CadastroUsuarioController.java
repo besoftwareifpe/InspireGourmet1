@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.daos.UsuarioDAO;
 import com.example.demo.models.Usuario;
+import com.example.demo.util.Functions;
 
 @Controller
 public class CadastroUsuarioController {
@@ -27,13 +28,15 @@ public class CadastroUsuarioController {
 	
 	@PostMapping("/salvarUsuario" )
 	public String cadUsu(Usuario usuario) {
-	 
+		//criptografando a senha
+		usuario.setSenha(Functions.getSHA256(usuario.getSenha()));
+		
 		usuario.setAtivo(0);
 		
 		Date dataCriacao = new Date();
 		usuario.setDataDeCriacao(dataCriacao);
 		
 		u1.save(usuario);
-		return "redirect:/page2";
+		return "redirect:/login";
 	}
 }

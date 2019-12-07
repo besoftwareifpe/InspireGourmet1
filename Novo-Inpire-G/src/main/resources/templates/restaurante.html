@@ -139,12 +139,12 @@
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
-                        <form action="#">
+                        <form th:action="@{/realizarLoginRest}" th:object="${loginRestaurante}" method="post">
                             <h1>Login</h1>
                             
                             <span>Utilize sua conta</span>
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
+                            <input type="email" placeholder="Email" th:field="*{email}"/>
+                            <input type="password" placeholder="Password" th:field="*{senha}"/>
                             <div id="espaco2"></div>
                             <a href="/page7">Esqueci minha senha?</a>
 							<div id="espaco2"></div>

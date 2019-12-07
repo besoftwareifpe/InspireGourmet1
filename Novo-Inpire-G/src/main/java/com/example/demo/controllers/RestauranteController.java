@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,6 +13,7 @@ import com.example.demo.models.Endereco;
 import com.example.demo.models.Restaurante;
 import com.example.demo.services.CategoriaService;
 import com.example.demo.services.RestauranteService;
+import com.example.demo.util.Functions;
 
 @Controller
 public class RestauranteController {
@@ -24,10 +24,6 @@ public class RestauranteController {
 	@Autowired
 	private CategoriaService serviceCategoria;
 	
-	@GetMapping("/restaurante")
-	public String showRes() {
-		return "restaurante";
-	}
 	
 	@PostMapping("/restauranteCad")
 	public String showLRestaurante(Restaurante restaurante ,Model model,@RequestParam(name = "cnpj")String cnpj,@RequestParam(name = "noCNPJ") String noCNPJ) {
@@ -49,7 +45,8 @@ public class RestauranteController {
 	public String saveRestaurante(Restaurante restaurante,@RequestParam(name = "cep") String cep,@RequestParam(name = "bairro") String bairro,
 			@RequestParam(name = "cidade") String cidade,@RequestParam(name = "numero") String numero,@RequestParam(name = "uf") String uf) {
 		
-		System.out.println(cep+bairro+cidade+uf);
+		//criptografando a senha
+		restaurante.setSenha(Functions.getSHA256(restaurante.getSenha()));
 		
 		Endereco endereco = new Endereco();
 		endereco.setCep(cep);

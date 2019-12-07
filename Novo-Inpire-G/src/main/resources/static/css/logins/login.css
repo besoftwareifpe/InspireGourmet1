@@ -28,9 +28,19 @@ h1 {
     color: #000000;
 }
 
+h4 {
+	font-weight: bold;
+    margin: 0;
+    color: #000000;
+}
+
 h2 {
     text-align: center;
     color: #000000;
+}
+
+label{
+	color: #000000;
 }
 
 p {
