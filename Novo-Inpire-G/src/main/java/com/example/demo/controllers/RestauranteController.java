@@ -47,7 +47,7 @@ public class RestauranteController {
 	
 	@PostMapping("/savarRestaurante")
 	public String saveRestaurante(Restaurante restaurante,@RequestParam(name = "cep") String cep,@RequestParam(name = "bairro") String bairro,
-			@RequestParam(name = "cidade") String cidade,@RequestParam(name = "uf") String uf) {
+			@RequestParam(name = "cidade") String cidade,@RequestParam(name = "numero") String numero,@RequestParam(name = "uf") String uf) {
 		
 		System.out.println(cep+bairro+cidade+uf);
 		
@@ -55,6 +55,7 @@ public class RestauranteController {
 		endereco.setCep(cep);
 		endereco.setBairro(bairro);
 		endereco.setCidade(cidade);
+		endereco.setNumero(numero);
 		endereco.setUf(uf);
 		
 		restaurante.setEndereco(endereco);

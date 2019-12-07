@@ -56,6 +56,7 @@
        		$('#bairro').val(json.bairro);
       		$('#cidade').val(json.municipio);
       		$('#rua').val(json.logradouro);
+      		$('#numero').val(json.numero);
 			$('#uf').val(json.uf);
 			
 		}, (erro) => {

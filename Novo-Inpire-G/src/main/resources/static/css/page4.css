@@ -1,7 +1,17 @@
+	
+#espaco{
+  height: 4vh;
+}
+#espaco1{
+  height: 8vh;
+}
+
+
 .mbr-overlay{
-	background-image: url("download-1200x800.jpeg	");
+	background-image: url("download-1200x800.jpeg");
 	background-size:cover;
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .mbr-overlay #rgb{

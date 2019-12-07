@@ -9,6 +9,8 @@ public class Endereco {
 	
 	private String bairro;
 	
+	private String numero;
+	
 	private String cidade;
 	
 	private String uf;
@@ -29,6 +31,14 @@ public class Endereco {
 		this.bairro = bairro;
 	}
 
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
 	public String getCidade() {
 		return cidade;
 	}
@@ -44,8 +54,5 @@ public class Endereco {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	
-	
-	
 
 }

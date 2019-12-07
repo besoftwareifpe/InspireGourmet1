@@ -9,7 +9,7 @@ public class BtnController {
 	@GetMapping("/index")
 	public String index() {
 		return "index";
-	} 
+	}
 	
 	@GetMapping("/page1")
 	public String show1() {
@@ -21,6 +21,7 @@ public class BtnController {
 		return "page2";
 	}
 	
+
 	@GetMapping("/page3")
 	public String show3() {
 		return "page3";
@@ -29,6 +30,16 @@ public class BtnController {
 	@GetMapping("/page4")
 	public String show4() {
 		return "page4";
+	}
+	
+	@GetMapping("/home")
+	public String showHome() {
+		return "usuario/home";
+	}
+	
+	@GetMapping("/detalhes")
+	public String showDetalhes() {
+		return "usuario/detalhesRestaurante";
 	}
 	
 	@GetMapping("/page5")
