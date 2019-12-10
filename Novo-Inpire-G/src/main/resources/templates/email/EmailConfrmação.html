@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body style="font-family: Arial; font-size: 14px;">
+
+
+	<h1 style="font-size: 22px" th:text="|Olá ${ag.nomeUsuario}|">Olá Maria!</h1>
+	
+	<p>
+		Estamos enviando para você o link para realizar seu cadastro.
+	</p>
+	  
+	<hr>
+	
+	Clique <a th:href="@{http://localhost:9000/usuario/novo/} + ${ag.hashId}"> aqui</a> para ativar seu cadastro.
+	
+	<p>Obrigado.</p>
+	<p>Equipe IndicaTour!</p>
+</body>
+</html>

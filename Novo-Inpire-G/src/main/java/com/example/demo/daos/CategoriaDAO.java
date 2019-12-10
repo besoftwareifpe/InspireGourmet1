@@ -6,4 +6,5 @@ import com.example.demo.models.Categoria;
 
 public interface CategoriaDAO extends JpaRepository<Categoria, Integer>{
 
+	public Categoria findByNomeCategoria(String nomeCategoria);
 }

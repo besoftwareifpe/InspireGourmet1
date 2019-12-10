@@ -59,5 +59,7 @@ public class RestauranteController {
 		
 		serviceRestaurante.save(restaurante);
 		return "redirect:/restaurante";
+		
+		
 	}
 }

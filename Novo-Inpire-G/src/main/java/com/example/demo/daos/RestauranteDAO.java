@@ -10,4 +10,6 @@ public interface RestauranteDAO extends JpaRepository<Restaurante, Integer> {
 	//ISSO FUNCIONA
 	@Query(value =  "select * from restaurante where email = ?1 AND senha = ?2", nativeQuery = true)
 	Restaurante buscalogin(String email, String senha);
+	
+	
 }

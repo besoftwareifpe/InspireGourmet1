@@ -110,14 +110,15 @@
 	                                        <div class="mbr-white col-md-12">
 	                                        	<label style="color: black; float: left;">Email</label>
 	                                           <input type="text" placeholder="Email" th:field="*{email}"/>
+	                                           <span th:text="${mensagemErro}"></span>
 	                                        </div>
 	                                        <div class="mbr-white col-md-6">
 	                                        	<label style="color: black; float: left;">Senha</label>	
-	                                            <input type="text" placeholder="Senha" th:field="*{senha}"/>
+	                                            <input type="password" placeholder="Senha" th:field="*{senha}"/>
 	                                        </div>
 	                                        <div class="mbr-white col-md-6">
 	                                        	<label style="color: black; float: left;">CPF</label>
-	                                            <input type="text" placeholder="CPF" th:value="${cpf}" name="cpf" disabled/>
+	                                            <input type="text" placeholder="CPF" th:value="${cpf}" name="cpf"/>
 	                                        </div>
 	                                        <div id="espaco1" class="col-md-12"></div> 
 	                                        <div class="barra container"></div>

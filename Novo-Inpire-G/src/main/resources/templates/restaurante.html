@@ -142,13 +142,18 @@
                         <form th:action="@{/realizarLoginRest}" th:object="${loginRestaurante}" method="post">
                             <h1>Login</h1>
                             
-                            <span>Utilize sua conta</span>
+                          	<label>Email</label>
                             <input type="email" placeholder="Email" th:field="*{email}"/>
+                            
+                            <label>Senha</label>
                             <input type="password" placeholder="Password" th:field="*{senha}"/>
                             <div id="espaco2"></div>
                             <a href="/page7">Esqueci minha senha?</a>
 							<div id="espaco2"></div>
                             <button>Entrar</button>
+                            <div id="espaco2"></div>
+                            <span th:text="${mensagemErro}"></span>
+                            
                         </form>
                     </div>
                     <div class="overlay-container">

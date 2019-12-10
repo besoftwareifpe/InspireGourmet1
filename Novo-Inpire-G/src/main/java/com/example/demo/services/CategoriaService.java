@@ -23,7 +23,11 @@ public class CategoriaService {
 	}
 	
 	
-	public void delete(Integer idCategpria) {
-		repository.deleteById(idCategpria);
+	public void save(Categoria categoria) {
+		repository.save(categoria);
+	}
+	
+	public void delete(Integer idCat) {
+		repository.deleteById(idCat);
 	}
 }

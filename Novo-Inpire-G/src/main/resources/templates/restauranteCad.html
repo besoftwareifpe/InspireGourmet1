@@ -113,7 +113,7 @@
                                      <div class="col-md-6"><div id="espaco4"></div>
                                        <select class="browser-default custom-select" th:field="*{categoria}">
                                        	<option value="0" selected>Categoria do restaurante</option>
-                                       	<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+                                       	<option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}" th:text="${categoria.nomeCategoria}"></option>
                                        </select>
                                      </div>
                                      
@@ -135,6 +135,7 @@
                                      <div class=" col-md-4">
                                      	<label class="float-left">Nº	</label>
                                         <input type="text" placeholder="Ex:Nº" id="numero" name="numero"/>
+                               			<span th:text="${numeroErro}"></span>
                                      </div>
                                      
                                      <div class="col-md-2">
@@ -145,6 +146,7 @@
                                      <div class=" col-md-12">
                                      	<label class="float-left">Email</label>
                                         <input type="text" placeholder="Ex:exemplo@hotmail.com" id="email" th:field="*{email}" />
+                                     	<span th:text="${emailErro}"></span>
                                      </div>
                                      
                                      <div class="col-md-12">

@@ -10,26 +10,32 @@ public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer idCategoria;
 	
 	
-	private String nome;
+	private String nomeCategoria;
 
 
-	public Integer getId() {
-		return id;
+	public Integer getIdCategoria() {
+		return idCategoria;
 	}
+
+
+	public void setIdCategoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
+
+	public String getNomeCategoria() {
+		return nomeCategoria;
+	}
+
+
+	public void setNomeCategoria(String nomeCategoria) {
+		this.nomeCategoria = nomeCategoria;
+	}
+
+
 	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	public String getNome() {
-		return nome;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 }

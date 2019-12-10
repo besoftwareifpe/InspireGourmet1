@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import java.util.UUID;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +22,14 @@ public class UsuarioService {
 		
 		return repositoryDao.buscalogin(email, senha);
 		
+	}
+	
+	public void save(Usuario usuario) {
+		
+		//set a hash of user
+		String hashId = UUID.randomUUID().toString();
+		usuario.setHashId(hashId);
+		
+		repositoryDao.save(usuario);
 	}
 }

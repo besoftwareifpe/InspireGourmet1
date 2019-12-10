@@ -22,6 +22,7 @@ public class Usuario {
 	@Column(nullable = false , length = 150)
 	private String nomeUsuario;
 	
+	@Column(nullable = false)
 	private String cpf;
 	
 	@Column(nullable = false)
@@ -39,7 +40,11 @@ public class Usuario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ultimoUpdate;
 	
+	@Column(nullable = false)
 	private Integer ativo;
+	
+	private String hashId;
+	
 
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -112,9 +117,21 @@ public class Usuario {
 	public void setAtivo(Integer ativo) {
 		this.ativo = ativo;
 	}
-	
-	
 
+	public String getHashId() {
+		return hashId;
+	}
+
+	public void setHashId(String hashId) {
+		this.hashId = hashId;
+	}
+
+	public boolean isPresent() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
 
 	
 }
