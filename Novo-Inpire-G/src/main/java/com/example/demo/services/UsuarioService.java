@@ -32,4 +32,11 @@ public class UsuarioService {
 		
 		repositoryDao.save(usuario);
 	}
+	
+	
+	public Usuario get(Integer idUser) {
+		
+		return repositoryDao.findById(idUser).get();
+	}
+	
 }

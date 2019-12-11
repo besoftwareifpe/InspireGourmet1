@@ -1,7 +1,5 @@
 package com.example.demo.email;
 
-
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -15,10 +13,9 @@ import org.thymeleaf.context.Context;
 
 import com.example.demo.models.Usuario;
 
-
 @Component
-public class Mailer {
-
+public class MailerPassword {
+	
 	@Autowired
 	private JavaMailSender mailSender;
 	
@@ -34,7 +31,7 @@ public class Mailer {
 	   MimeMessage minMessage = mailSender.createMimeMessage();
 	   
 	   try {
-		   String email = thymeleaf.process("email/EmailConfrmação", context);
+		   String email = thymeleaf.process("email/EmailRecuperacao", context);
 		MimeMessageHelper helper = new MimeMessageHelper(minMessage, true, "UTF-8");
 		helper.setFrom("besoftware9@gmail.com");
 		helper.setTo(usuario.getEmail());

@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,9 +22,9 @@ public class CadastroUsuarioController {
 	
 	@Autowired
 	private UsuarioService serviceUser;
-//	
-//	@Autowired
-//	private UsuarioDAO userDao;
+	
+	@Autowired
+	private UsuarioDAO userDao;
 	
 	@Autowired
 	private Mailer mail;
@@ -54,6 +55,22 @@ public class CadastroUsuarioController {
 		
 		return "redirect:/login";
 
+		
+	}
+	
+	@GetMapping("/verificationCPF")
+	public String valideCpf(Model model, @RequestParam(name = "cpf") String cpf) {
+		
+		System.out.println(cpf);
+		
+		Usuario cpfChecado = userDao.findByCpf(cpf);
+		
+		if(cpfChecado.isPresent()) {
+			model.addAttribute("mensagemErro", "CPF Já esta cadastrado em nosso banco");
+			return "redirect:/index";
+		}else {
+			return "redrect:/";
+		}
 		
 	}
 }

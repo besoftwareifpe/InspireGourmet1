@@ -1,46 +1,94 @@
 package com.example.demo.controllers;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.daos.UsuarioDAO;
+import com.example.demo.email.MailerPassword;
 import com.example.demo.models.Usuario;
+import com.example.demo.services.UsuarioService;
+import com.example.demo.util.Functions;
+import com.example.demo.util.PasswordGenerate;
 
 @Controller
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioDAO u1;
+	private UsuarioService serviceUser;
 	
+	@Autowired
+	private MailerPassword mail;
 	
+	@Autowired
+	private UsuarioDAO userDao;
 	
-	@GetMapping ("/ExibirUsuario")
-	public String LisUsu(Model model) {
-		model.addAttribute("lista", u1.findAll(Sort.by("nome")));
-		return "form-list";
-	}
-	
-	@GetMapping ("/EditarUsuario")
-	public String EdiPe(Integer id_usuario , Model model) {
-		model.addAttribute("usuario", u1.findById(id_usuario));
+	@GetMapping("/edite/{idUser}")
+	public String edite(@PathVariable("idUser") Integer idUser, Model model) {
 		
-		return "form-usuario";
-	}
-	
-	@GetMapping("/ExcluirUsuario")
-	public String DelUsu(Integer id_usuario) {
-		u1.deleteById(id_usuario);
+		Usuario usuario = serviceUser.get(idUser);
 		
-		return "redirect:/ExibirUsuario";
+		model.addAttribute("usuario",usuario);
+		
+		return "/usuario/configuracoes";
 	}
 	
-	@GetMapping("/imagem/{id}")
-	public byte[] LisImg(@PathVariable("id") Integer id) {
-		Usuario usuario = u1.getOne(id);
-		return usuario.getImg();
+	@PostMapping("/updateUsuario" )
+	public String cadUsu(Usuario usuario , Model model,RedirectAttributes ra) {
+	
+
+		Usuario usuario1 = userDao.findByHashId(usuario.getHashId());
+		
+		usuario.setSenha(usuario1.getSenha());
+		usuario.setAtivo(usuario1.getAtivo());
+		usuario.setDataDeCriacao(usuario1.getDataDeCriacao());
+		
+		Date dataUpdate = new Date();
+		usuario.setUltimoUpdate(dataUpdate);
+		
+		serviceUser.save(usuario);
+		
+		return "redirect:/home";
+
+		
 	}
+	
+	
+	@PostMapping("/recuperarSenha")
+	public String recupera(@RequestParam(name = "email") String email,RedirectAttributes ra) {
+		
+		Usuario usuarioChecado = userDao.findByEmail(email);
+		
+		if(usuarioChecado != null) {
+			//variaveis para geração de senha
+			String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		    String ALPHA = "abcdefghijklmnopqrstuvwxyz";
+			Integer len = 10;
+
+			String newSenha = PasswordGenerate.generatePassword(len, ALPHA_CAPS + ALPHA);
+			
+			usuarioChecado.setSenha(newSenha);
+			
+			mail.enviar(usuarioChecado);
+			
+			newSenha = Functions.getSHA256(newSenha);
+			usuarioChecado.setSenha(newSenha);
+			
+			serviceUser.save(usuarioChecado);
+			return "redirect:/login";
+		}else {
+			ra.addFlashAttribute("mensagemErro", "O Email informado não existe em nenhuma conta do nosso banco de dados");
+			return "redirect:/page7";
+		}
+	
+	}
+	
+	
 }

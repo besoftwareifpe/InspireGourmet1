@@ -1,7 +1,5 @@
 package com.example.demo.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +11,20 @@ public class AuteticationService {
 
 	@Autowired
 	private  UsuarioDAO repository;
+	
+	@Autowired
+	private  UsuarioService serviceUser;
 		
 	
 	
 	public void autenciaUsuario(Usuario usuario) {
-		Optional<Usuario> usuarioGetHash = repository.findByHashId(usuario.getHashId());
-		     
-		if(usuarioGetHash.isPresent()) {
+		Usuario usuarioGetHash = repository.findByHashId(usuario.getHashId());
+		
+		if(!usuarioGetHash.isPresent()) {	
 			
-			usuario.setAtivo(1);
+			usuarioGetHash.setAtivo(1);
+						
+			serviceUser.save(usuarioGetHash);
 			
 		}			
 		

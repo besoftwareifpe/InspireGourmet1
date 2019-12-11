@@ -33,6 +33,8 @@
             $('#signIn').click(function(){
                 $('#container1').removeClass("right-panel-active");
             });
+            
+            
         });
 
         //GOOGLE
@@ -58,6 +60,7 @@
     </script>
     <link rel="stylesheet" href="/css/logins/login.css">
            
+          
     <!-- google -->
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
@@ -121,8 +124,9 @@
                         <form th:action="@{/continuar}" method="post">
                             <h1>Criar conta!</h1>   
                             <span>Insira um CPF valido.</span>
-                            <input type="text" data-mask="999.999.999-99" placeholder="CPF" name="cpf"/>
+                            <input type="text" data-mask="999.999.999-99" placeholder="CPF" id="cpf" name="cpf"/>
                             <button type="submit">Continuar</button>
+                            <span th:text="${mensagemErro}"></span>
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
@@ -232,7 +236,7 @@
 </section>
 
 <script src="/js/jquery.mask.min.js"></script>
-
+ <script type="text/javascript" src="/js/usuario/validation.js"></script>
 
   <script src="/web/assets/jquery/jquery.min.js"></script>
   <script src="/popper/popper.min.js"></script>

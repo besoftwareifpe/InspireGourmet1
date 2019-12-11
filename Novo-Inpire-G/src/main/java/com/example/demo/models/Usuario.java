@@ -28,7 +28,6 @@ public class Usuario {
 	@Column(nullable = false)
 	private String email;
 	
-	@Column(nullable = false)
 	private String senha;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -40,7 +39,6 @@ public class Usuario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ultimoUpdate;
 	
-	@Column(nullable = false)
 	private Integer ativo;
 	
 	private String hashId;

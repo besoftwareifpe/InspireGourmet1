@@ -24,7 +24,9 @@
 	background: rgba(0,0,0,0.5);
 }
 
-
+label{
+	color: black;
+}
 h1 {
 	font-weight: bold;
     margin: 0;

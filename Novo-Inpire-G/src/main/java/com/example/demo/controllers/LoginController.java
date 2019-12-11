@@ -45,8 +45,14 @@ public class LoginController {
 			ra.addFlashAttribute("mensagemErro", "Usuario não encontrado");
 			return "redirect:/login";
 		}else {
-			session.setAttribute("usuarioLogado", usuarioConsultado);
-			return "redirect:/home";
+			
+			if(usuarioConsultado.getAtivo() != 1) {
+				ra.addFlashAttribute("mensagemErro", "Verifique seu email e confirme sua conta");
+				return "redirect:/login";
+			}else {
+				session.setAttribute("usuarioLogado", usuarioConsultado);
+				return "redirect:/home";
+			}			
 		}
 		
 	}

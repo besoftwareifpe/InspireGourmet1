@@ -37,7 +37,7 @@
             });
         });
     </script>
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/logins/login.css">
     <link rel="stylesheet" href="/css/page6.css">
            
   
@@ -97,18 +97,23 @@
                                 <div class="barra container"></div>
                                 <div id="espaco1"></div>
                                 <div class="container">
-                                    <div class="row align-center">
-                                        <div class="mbr-white col-md-12">
-                                            <input type="text" placeholder="Email" />
-                                        </div>
-                                        <div id="espaco1" class="col-md-12"></div> 
-                                        <div class="barra container"></div>
-                                        <div class="mbr-white col-md-12" >
-                                            <div id="espaco3"></div>
-                                            <a id="btn" class="align-center col-md-4" href="/page2">Voltar</a>
-                                            <a id="btn" class="align-center col-md-4" href="#">Recuperar</a>
-                                        </div>
-                                    </div>
+                                
+                                	<form th:action="@{/recuperarSenha}" method="post">
+	                                    <div class="row align-center">
+	                                        <div class="mbr-white col-md-12">
+	                                            <input type="email" placeholder="Email" name="email"/>
+	                                        </div>
+	                                        <div id="espaco1" class="col-md-12"></div> 
+	                                        <div class="barra container"></div>
+	                                        <div class="mbr-white col-md-12" >
+	                                            <div id="espaco3"></div>
+	                                            <a id="btn" class="align-center col-md-4" href="/page2">Voltar</a>
+	                                            <button id="btn">Recuperar</button>
+	                                        </div>
+	                                        
+	                                        <span th:text="${mensagemErro}"></span>
+	                                    </div>
+                                    </form>
                                 </div>
                                 
                             </div>
