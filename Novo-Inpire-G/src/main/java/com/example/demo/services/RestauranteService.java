@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -22,6 +23,11 @@ public class RestauranteService {
 	}
 	
 	public void save(Restaurante restaurante) {
+		
+		//set a hash of user
+		String hashId = UUID.randomUUID().toString();
+		restaurante.setHashId(hashId);
+		
 		repository.save(restaurante);
 	}
 	

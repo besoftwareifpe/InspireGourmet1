@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.email.MailerRestaurante;
 import com.example.demo.models.Categoria;
 import com.example.demo.models.Endereco;
 import com.example.demo.models.Restaurante;
@@ -23,6 +25,9 @@ public class RestauranteController {
 	
 	@Autowired
 	private CategoriaService serviceCategoria;
+	
+	@Autowired
+	private MailerRestaurante mail;
 	
 	
 	@PostMapping("/restauranteCad")
@@ -43,7 +48,7 @@ public class RestauranteController {
 	
 	@PostMapping("/savarRestaurante")
 	public String saveRestaurante(Restaurante restaurante,@RequestParam(name = "cep") String cep,@RequestParam(name = "bairro") String bairro,
-			@RequestParam(name = "cidade") String cidade,@RequestParam(name = "numero") String numero,@RequestParam(name = "uf") String uf) {
+			@RequestParam(name = "cidade") String cidade,@RequestParam(name = "numero") String numero,@RequestParam(name = "uf") String uf,RedirectAttributes ra) {
 		
 		//criptografando a senha
 		restaurante.setSenha(Functions.getSHA256(restaurante.getSenha()));
@@ -56,8 +61,12 @@ public class RestauranteController {
 		endereco.setUf(uf);
 		
 		restaurante.setEndereco(endereco);
+		restaurante.setAtivo(0);
 		
 		serviceRestaurante.save(restaurante);
+		mail.enviar(restaurante);
+		
+		ra.addFlashAttribute("mensagemErro", "1");
 		return "redirect:/restaurante";
 		
 		

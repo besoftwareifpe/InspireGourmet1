@@ -67,24 +67,34 @@ public class UsuarioController {
 		Usuario usuarioChecado = userDao.findByEmail(email);
 		
 		if(usuarioChecado != null) {
-			//variaveis para geração de senha
-			String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		    String ALPHA = "abcdefghijklmnopqrstuvwxyz";
-			Integer len = 10;
-
-			String newSenha = PasswordGenerate.generatePassword(len, ALPHA_CAPS + ALPHA);
 			
-			usuarioChecado.setSenha(newSenha);
+			if(usuarioChecado.getAtivo() != 1) {
+				ra.addFlashAttribute("mensagemErro", "2");
+				return "redirect:/page7";
+			}else {
+				//variaveis para geração de senha
+				String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			    String ALPHA = "abcdefghijklmnopqrstuvwxyz";
+			    String NUMERIC = "0123456789";
+				Integer len = 10;
+	
+				String newSenha = PasswordGenerate.generatePassword(len, ALPHA_CAPS + ALPHA + NUMERIC);
+				
+				usuarioChecado.setSenha(newSenha);
+				
+				mail.enviar(usuarioChecado);
+				
+				System.out.println(newSenha);
+				newSenha = Functions.getSHA256(newSenha);
+				usuarioChecado.setSenha(newSenha);
+				
+				serviceUser.save(usuarioChecado);
+				ra.addFlashAttribute("mensagemErro", "4");
+				return "redirect:/login";
+			}
 			
-			mail.enviar(usuarioChecado);
-			
-			newSenha = Functions.getSHA256(newSenha);
-			usuarioChecado.setSenha(newSenha);
-			
-			serviceUser.save(usuarioChecado);
-			return "redirect:/login";
 		}else {
-			ra.addFlashAttribute("mensagemErro", "O Email informado não existe em nenhuma conta do nosso banco de dados");
+			ra.addFlashAttribute("mensagemErro", "1");
 			return "redirect:/page7";
 		}
 	

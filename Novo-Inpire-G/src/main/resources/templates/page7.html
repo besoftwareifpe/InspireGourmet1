@@ -23,6 +23,10 @@
   <link rel="preload" as="style" href="/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/mobirise/css/mbr-additional.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
+  
+  <!-- CDN das Mensagens -->
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
         $(document).ready(function(){
             //tooltip of button gmail
@@ -35,6 +39,37 @@
             $('#signIn').click(function(){
                 $('#container1').removeClass("right-panel-active");
             });
+            
+            
+            toastr.options = {
+         		  "closeButton": true,
+         		  "debug": false,
+         		  "newestOnTop": false,
+         		  "progressBar": true,
+         		  "positionClass": "toast-bottom-left",
+         		  "preventDuplicates": true,
+         		  "onclick": null,
+         		  "showDuration": "300",
+         		  "hideDuration": "1000",
+         		  "timeOut": "7000",
+         		  "extendedTimeOut": "10000",
+         		  "showEasing": "swing",
+         		  "hideEasing": "linear",
+         		  "showMethod": "fadeIn",
+         		  "hideMethod": "fadeOut"
+            }
+                
+                	
+                var t = $("#mensagemErro").text();
+                
+                switch(t){
+                case "1":
+                	toastr.warning("O Email informado não existe em nenhuma conta do nosso banco de dados!");
+                	break;
+                case "2":
+                	toastr.warning("Verifique seu email e confime sua conta!");
+                	break;
+                }
         });
     </script>
     <link rel="stylesheet" href="/css/logins/login.css">
@@ -107,11 +142,11 @@
 	                                        <div class="barra container"></div>
 	                                        <div class="mbr-white col-md-12" >
 	                                            <div id="espaco3"></div>
-	                                            <a id="btn" class="align-center col-md-4" href="/page2">Voltar</a>
+	                                            <a id="btn" class="align-center col-md-4" href="/login">Voltar</a>
 	                                            <button id="btn">Recuperar</button>
 	                                        </div>
 	                                        
-	                                        <span th:text="${mensagemErro}"></span>
+	                                        <span id="mensagemErro" th:text="${mensagemErro}" hidden></span>
 	                                    </div>
                                     </form>
                                 </div>

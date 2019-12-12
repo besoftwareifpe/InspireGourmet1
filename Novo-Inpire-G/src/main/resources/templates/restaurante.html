@@ -25,6 +25,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
   
+   <!-- CDN das Mensagens -->
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  
     <script>
         $(document).ready(function(){
             $('#signUp').click(function(){
@@ -35,6 +39,45 @@
                 $('#container1').removeClass("right-panel-active");
             });
             
+            
+            toastr.options = {
+                	"closeButton": true,
+               		"debug": false,
+               		"newestOnTop": false,
+               		"progressBar": true,
+               		"positionClass": "toast-bottom-left",
+               		"preventDuplicates": true,
+               		"onclick": null,
+               		"showDuration": "200",
+               		"hideDuration": "1000",
+               		"timeOut": "7000",
+               		"extendedTimeOut": "10000",
+               		"showEasing": "swing",
+               		"hideEasing": "linear",
+               		"showMethod": "fadeIn",
+               		"hideMethod": "fadeOut"
+            	}
+                
+                	
+                var t = $("#mensagemErro").text();
+                
+                switch(t){
+                case "1":
+                	toastr.success("Conta criada com sucesso , verifique seu email e confirme sua conta!");
+                	break;
+                case "2":
+                	toastr.info("Verifique seu email e confirme sua conta!");
+                	break;
+                case "3":
+                	toastr.warning("Restaurante não encontrado");
+                	break;
+                case "4":
+                	toastr.success("Uma nova senha foi enviada para o email informado!");
+                	break;
+                case "5":
+                	toastr.success("Conta ativada com sucesso faça login e desfrute de nosso serviço!");
+                	break;
+                }
         });
 
         //GOOGLE
@@ -104,7 +147,7 @@
                 <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="/restaurante"><span class="icon mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn"></span>
                         Restaurante &nbsp;</a>
-                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="/page2"><span class="icon mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>Login &nbsp; &nbsp;&nbsp;</a></li></ul>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="/login"><span class="icon mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>Login &nbsp; &nbsp;&nbsp;</a></li></ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/page1">Assinar agora</a></div>
         </div>
     </nav>
@@ -152,7 +195,8 @@
 							<div id="espaco2"></div>
                             <button>Entrar</button>
                             <div id="espaco2"></div>
-                            <span th:text="${mensagemErro}"></span>
+                            
+                            <span id="mensagemErro" th:text="${mensagemErro}"  hidden></span>
                             
                         </form>
                     </div>

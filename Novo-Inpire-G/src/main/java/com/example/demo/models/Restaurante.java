@@ -36,6 +36,9 @@ public class Restaurante {
 	@JoinColumn(name = "idCategoria")
 	private Categoria categoria;
 	
+	private Integer ativo;
+	
+	private String hashId;
 	
 	
 	public String getNomeRestaurante() {
@@ -100,7 +103,29 @@ public class Restaurante {
 	
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Integer getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Integer ativo) {
+		this.ativo = ativo;
+	}
+
+	public String getHashId() {
+		return hashId;
+	}
+
+	public void setHashId(String hashId) {
+		this.hashId = hashId;
+	}
+
+	public boolean isPresent() {
+		// TODO Auto-generated method stub
+		return false;
 	}	
+	
 	
 }
 	

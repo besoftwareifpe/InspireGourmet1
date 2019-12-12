@@ -42,12 +42,12 @@ public class LoginController {
 		Usuario usuarioConsultado = serviceUser.buscarConta(usuario.getEmail(), usuario.getSenha());
 		
 		if(usuarioConsultado == null) {
-			ra.addFlashAttribute("mensagemErro", "Usuario não encontrado");
+			ra.addFlashAttribute("mensagemErro", "3");
 			return "redirect:/login";
 		}else {
 			
 			if(usuarioConsultado.getAtivo() != 1) {
-				ra.addFlashAttribute("mensagemErro", "Verifique seu email e confirme sua conta");
+				ra.addFlashAttribute("mensagemErro", "2");
 				return "redirect:/login";
 			}else {
 				session.setAttribute("usuarioLogado", usuarioConsultado);
@@ -74,11 +74,17 @@ public class LoginController {
 		Restaurante restauranteConsultado = serviceRest.buscarConta(restaurante.getEmail(), restaurante.getSenha());
 		
 		if(restauranteConsultado == null){
-			ra.addFlashAttribute("mensagemErro", "Restaurante não encontrado");
+			ra.addFlashAttribute("mensagemErro", "3");
 			return "redirect:/restaurante";
 		}else {
-			session.setAttribute("restauranteLogado", restauranteConsultado);
-			return "redirect:/homeRest";
+			
+			if(restauranteConsultado.getAtivo() != 1) {
+				ra.addFlashAttribute("mensagemErro", "2");
+				return "redirect:/restaurante";
+			}else {
+			    session.setAttribute("restauranteLogado", restauranteConsultado);
+				return "redirect:/homeRest";
+			}
 		}
 		
 	}

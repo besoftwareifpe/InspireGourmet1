@@ -24,6 +24,11 @@
   <link rel="preload" as="style" href="/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/mobirise/css/mbr-additional.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
+  
+  <!-- CDN das Mensagens -->
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+   
     <script>
         $(document).ready(function(){
             $('#signUp').click(function(){
@@ -35,6 +40,45 @@
             });
             
             
+            
+            toastr.options = {
+            	"closeButton": true,
+           		"debug": false,
+           		"newestOnTop": false,
+           		"progressBar": true,
+           		"positionClass": "toast-bottom-left",
+           		"preventDuplicates": true,
+           		"onclick": null,
+           		"showDuration": "200",
+           		"hideDuration": "1000",
+           		"timeOut": "7000",
+           		"extendedTimeOut": "10000",
+           		"showEasing": "swing",
+           		"hideEasing": "linear",
+           		"showMethod": "fadeIn",
+           		"hideMethod": "fadeOut"
+        	}
+            
+            	
+            var t = $("#mensagemErro").text();
+            
+            switch(t){
+            case "1":
+            	toastr.success("Conta criada com sucesso , verifique seu email e confirme sua conta!");
+            	break;
+            case "2":
+            	toastr.info("Verifique seu email e confirme sua conta!");
+            	break;
+            case "3":
+            	toastr.warning("Usuario não encontrado");
+            	break;
+            case "4":
+            	toastr.success("Uma nova senha foi enviada para o email informado!");
+            	break;
+            case "5":
+            	toastr.success("Conta ativada com sucesso faça login e desfrute de nosso serviço!");
+            	break;
+            }
         });
 
         //GOOGLE
@@ -57,6 +101,8 @@
                 'onfailure': onFailure
             });
         }
+        
+       
     </script>
     <link rel="stylesheet" href="/css/logins/login.css">
            
@@ -112,13 +158,14 @@
     
 
     <div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div></div>
-
+	
     <div class="container align-center">
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-10">
                 
+ 
                 <div id="espaco"></div>
-
+              
                 <div class="container1" id="container1">
                     <div class="form-container sign-up-container">
                         <form th:action="@{/continuar}" method="post">
@@ -126,7 +173,7 @@
                             <span>Insira um CPF valido.</span>
                             <input type="text" data-mask="999.999.999-99" placeholder="CPF" id="cpf" name="cpf"/>
                             <button type="submit">Continuar</button>
-                            <span th:text="${mensagemErro}"></span>
+                            <span id="mensagemErro" th:text="${mensagemErro}" hidden></span>
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
@@ -143,7 +190,7 @@
                             <a href="/page7">Esqueci minha senha?</a>
                             <button>Entrar</button>
                             
-                            <span th:text="${mensagemErro}"></span>
+                            <span th:text="${mensagemErro}" hidden></span>
                         </form>
                     </div>
                     <div class="overlay-container">

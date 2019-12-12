@@ -53,6 +53,8 @@ public class CadastroUsuarioController {
 		serviceUser.save(usuario);
 		mail.enviar(usuario);
 		
+		ra.addFlashAttribute("mensagemErro", "1");
+		
 		return "redirect:/login";
 
 		
