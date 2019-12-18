@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.email.MailerRestaurante;
@@ -68,6 +69,27 @@ public class RestauranteController {
 		
 		ra.addFlashAttribute("mensagemErro", "1");
 		return "redirect:/restaurante";
+		
+		
+	}
+	
+	@PostMapping("/verificationCNPJ")
+	@ResponseBody
+	public String valideCnpj(@RequestParam(name = "cnpj") String cnpj) {
+
+		Boolean cpfChecado = serviceRestaurante.verificaCPF(cnpj) == null;
+		
+		return cpfChecado.toString();
+		
+	}
+	
+	@PostMapping("/verificationEmailRest")
+	@ResponseBody
+	public String valideEmailRest(@RequestParam(name = "email") String email) {
+
+		Boolean emailChecado = serviceRestaurante.verificaEmailRest(email) == null; 
+		
+		return emailChecado.toString();
 		
 		
 	}

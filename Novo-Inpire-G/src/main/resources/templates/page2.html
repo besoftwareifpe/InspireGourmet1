@@ -24,7 +24,7 @@
   <link rel="preload" as="style" href="/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/mobirise/css/mbr-additional.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
-  
+
   <!-- CDN das Mensagens -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -39,7 +39,7 @@
                 $('#container1').removeClass("right-panel-active");
             });
             
-            
+                  
             
             toastr.options = {
             	"closeButton": true,
@@ -168,12 +168,11 @@
               
                 <div class="container1" id="container1">
                     <div class="form-container sign-up-container">
-                        <form th:action="@{/continuar}" method="post">
+                        <form id="formPreUsuario" th:action="@{/continuar}" method="post">
                             <h1>Criar conta!</h1>   
                             <span>Insira um CPF valido.</span>
                             <input type="text" data-mask="999.999.999-99" placeholder="CPF" id="cpf" name="cpf"/>
-                            <button type="submit">Continuar</button>
-                            <span id="mensagemErro" th:text="${mensagemErro}" hidden></span>
+                            <button name="enviar" type="submit">Continuar</button>
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
@@ -282,8 +281,7 @@
     </div>
 </section>
 
-<script src="/js/jquery.mask.min.js"></script>
- <script type="text/javascript" src="/js/usuario/validation.js"></script>
+  <script src="/js/jquery.mask.min.js"></script>
 
   <script src="/web/assets/jquery/jquery.min.js"></script>
   <script src="/popper/popper.min.js"></script>
@@ -297,4 +295,9 @@
   
   
 </body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/js/usuario/validation.js"></script>	
 </html>

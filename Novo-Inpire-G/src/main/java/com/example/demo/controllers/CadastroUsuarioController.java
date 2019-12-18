@@ -5,13 +5,12 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.daos.UsuarioDAO;
 import com.example.demo.email.Mailer;
 import com.example.demo.models.Usuario;
 import com.example.demo.services.UsuarioService;
@@ -24,13 +23,10 @@ public class CadastroUsuarioController {
 	private UsuarioService serviceUser;
 	
 	@Autowired
-	private UsuarioDAO userDao;
-	
-	@Autowired
 	private Mailer mail;
 	
 	@RequestMapping("/continuar")
-	public String showCadUser(Model model, Usuario usuario,@RequestParam(name = "cpf") String cpf) {
+	public String showCadUser(@RequestParam(name = "cpf")String cpf,Model model, Usuario usuario) {
 		model.addAttribute("usuario", usuario);		
 		model.addAttribute("cpf", cpf);
 		
@@ -39,8 +35,7 @@ public class CadastroUsuarioController {
 	
 	@PostMapping("/salvarUsuario" )
 	public String cadUsu(Usuario usuario , Model model,RedirectAttributes ra) {
-	
-		
+
 		//criptografando a senha
 		usuario.setSenha(Functions.getSHA256(usuario.getSenha()));
 		
@@ -55,24 +50,28 @@ public class CadastroUsuarioController {
 		
 		ra.addFlashAttribute("mensagemErro", "1");
 		
-		return "redirect:/login";
-
+		return "redirect:/login";		
 		
 	}
 	
-	@GetMapping("/verificationCPF")
-	public String valideCpf(Model model, @RequestParam(name = "cpf") String cpf) {
+	@PostMapping("/verificationCPF")
+	@ResponseBody
+	public String valideCpf(@RequestParam(name = "cpf") String cpf) {
+
+		Boolean cpfChecado = serviceUser.verificaCPF(cpf) == null;
 		
-		System.out.println(cpf);
+		return cpfChecado.toString();
 		
-		Usuario cpfChecado = userDao.findByCpf(cpf);
+	}
+	
+	@PostMapping("/verificationEmail")
+	@ResponseBody
+	public String valideEmail(@RequestParam(name = "email") String email) {
 		
-		if(cpfChecado.isPresent()) {
-			model.addAttribute("mensagemErro", "CPF Já esta cadastrado em nosso banco");
-			return "redirect:/index";
-		}else {
-			return "redrect:/";
-		}
+		Boolean emailChecado = serviceUser.verificaEmail(email) == null; 
+		
+		return emailChecado.toString();
+		
 		
 	}
 }

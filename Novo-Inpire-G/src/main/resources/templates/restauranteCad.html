@@ -87,7 +87,7 @@
                              <div class="barra container"></div>
                              <div id="espaco1"></div>
                              <div class="container">
-                             	<form th:action="@{/savarRestaurante}" th:object="${restaurante}" method="post"> 
+                             	<form id="formRestaurante" name="formRestaurante" th:action="@{/savarRestaurante}" th:object="${restaurante}" method="post"> 
                                   <div class="row">
                                                                     	
                                      <div class=" col-md-12 mb-3">
@@ -159,7 +159,7 @@
                                      
                                      <div class=" col-md-12" >
                                          <div id="espaco3"></div>
-                                         <button class="align-center" type="submit">Finalizar Cadastro</button>
+                                         <button class="align-center" name="enviar" type="submit">Finalizar Cadastro</button>
                                      </div>
                                      <div id="espaco1" class="col-md-12"></div>
                                   </div>
@@ -261,4 +261,9 @@
       
       
     </body>
+     	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    	<script src="/js/usuario/validation.js"></script>
     </html>

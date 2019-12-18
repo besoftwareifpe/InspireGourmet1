@@ -43,4 +43,13 @@ public class RestauranteService {
 	public Restaurante buscarConta(String email, String senha) {
 		return repository.buscalogin(email, senha);
 	}
+	
+	public Restaurante verificaCPF(String cnpj) {
+		return repository.findByCnpj(cnpj);
+	}
+	
+	public Restaurante verificaEmailRest(String email) {
+		return repository.findByEmail(email);
+	}
 }
+

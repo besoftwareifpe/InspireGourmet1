@@ -39,4 +39,12 @@ public class UsuarioService {
 		return repositoryDao.findById(idUser).get();
 	}
 	
+	public Usuario verificaCPF(String cpf) {
+		return repositoryDao.findByCpf(cpf);
+	}
+	
+	public Usuario verificaEmail(String email) {
+		return repositoryDao.findByEmail(email);
+	}
+	
 }

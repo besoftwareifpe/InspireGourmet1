@@ -1,0 +1,28 @@
+#espaco1{
+    height: 2vh;
+}
+#espaco2{
+    height: 3vh;
+}
+#espaco3{
+    height: 4vh;
+}
+#espaco4{
+    height: 20vh;
+}
+
+.barra{
+    border:1px solid #FF4B2B;
+    width: 70%; 
+}
+
+h5{
+    color: black;
+}
+
+#Lgoogle{
+    width: 300px;
+    border-radius: 10px;
+    background : #FF4B2B;
+    color: white;
+}

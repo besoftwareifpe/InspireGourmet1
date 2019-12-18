@@ -22,20 +22,70 @@
   <link rel="stylesheet" href="/socicon/css/styles.css">
   <link rel="stylesheet" href="/theme/css/style.css">
   <link rel="preload" as="style" href="/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/mobirise/css/mbr-additional.css" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
+  
+
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>		
+
+	
+	
     <script>
         $(document).ready(function(){
             //tooltip of button gmail
-            $('[data-toggle="tooltip"]').tooltip()
+            //	$('[data-toggle="tooltip"]').tooltip()     
+            
+            $("#formConfig").validate({
+				rules:{
+					nome: {
+						required: true,
+						maxlength: 50,
+						minlength: 10,
+						minWords: 2,
+					},
+					email:{
+						required: true,
+						email:true,
+						remote:{
+							url: '/verificationEmail',
+							type: "post",
+							data:{
+								//return $('#formConfig : input[name="email"]').val();
+							}
 
-            $('#signUp').click(function(){
-                $('#container1').addClass("right-panel-active");
-            });
+					},
+					cpf:{
+						required: true,
+						cpf: true
+					},
+					senha:{
+						required: true,
+						minlength: 6
 
-            $('#signIn').click(function(){
-                $('#container1').removeClass("right-panel-active");
-            });
+				},
+			},
+			messages:{
+				nome:{
+					required: "Este campo é ovbrigatório.",
+					maxlength: "No máximo 100 caracteres.",
+					minlength: "Numero  minimo de 10 letras.",
+					minWords: "Numero minimo de duas palavras."
+				},
+				email:{
+					required: "O campo e-mail é obrigatório.",
+					email: "E-mail inválido."
+				},
+				cpf:{
+					required:"O campo cpf é obrigatório.",
+					cpf: "Cpf inválido."
+				},
+				senha:{
+					required:"O campo senha é obrigatório.",
+					minlength: "No mínimo 6 caracteres."
+
+				},
+			}
+
+		}
+      });
         });
     </script>
     <link rel="stylesheet" href="/css/logins/login.css">
@@ -101,30 +151,29 @@
                                 <div class="barra container"></div>
                                 <div id="espaco1"></div>
                                 <div class="container">
-                                	<form th:action="@{/salvarUsuario}" th:object="${usuario}" method="post" enctype="multipart/form-data">
+                                	<form name="formUsuario" id="formUsuario" th:action="@{/salvarUsuario}" th:object="${usuario}" method="post" enctype="multipart/form-data">
 	                                    <div class="row align-center">
 	                                        <div class="mbr-white col-md-12">
-	                                        	<label for="ip1" style="color: black; float: left;">Nome Completo</label>
-	                                            <input id="ip1" type="text" placeholder="Nome" th:field="*{nomeUsuario}"/>
+	                                        	<label style="color: black; float: left;">Nome Completo</label>
+	                                            <input type="text" 	id="nome"  placeholder="Nome" th:field="*{nomeUsuario}"/>
 	                                        </div>
 	                                        <div class="mbr-white col-md-12">
 	                                        	<label style="color: black; float: left;">Email</label>
-	                                           <input type="text" placeholder="Email" th:field="*{email}"/>
-	                                           <span th:text="${mensagemErro}"></span>
+	                                           <input type="text" id="email"  placeholder="Email" th:field="*{email}"/>
 	                                        </div>
 	                                        <div class="mbr-white col-md-6">
 	                                        	<label style="color: black; float: left;">Senha</label>	
-	                                            <input type="password" placeholder="Senha" th:field="*{senha}"/>
+	                                            <input type="password" id="senha" placeholder="Senha" th:field="*{senha}"/>
 	                                        </div>
 	                                        <div class="mbr-white col-md-6">
 	                                        	<label style="color: black; float: left;">CPF</label>
-	                                            <input type="text" placeholder="CPF" th:value="${cpf}" name="cpf"/>
+	                                            <input type="text" placeholder="CPF" th:value="${cpf}" name="cpf" data-mask="000.000.000-00"/>
 	                                        </div>
 	                                        <div id="espaco1" class="col-md-12"></div> 
 	                                        <div class="barra container"></div>
 	                                        <div class="mbr-white col-md-12" >
 	                                            <div id="espaco3"></div>
-	                                            <button id="btn" class="align-center" type="submit">Finalizar assinatura</button>
+	                                            <button class="align-center" name="enviar" id="enviar" type="submit">Finalizar assinatura</button>
 	                                        </div>
 	                                        <div id="espaco1" class="col-md-12"></div> 
 	                                    </div>
@@ -209,14 +258,10 @@
             </div>
         </div>
     </section>
-    
-    
-      <script src="/web/assets/jquery/jquery.min.js"></script>
-      <script src="/popper/popper.min.js"></script>
-      <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.mask.min.js"></script>
+
       <script src="/dropdown/js/nav-dropdown.js"></script>
       <script src="/dropdown/js/navbar-dropdown.js"></script>
-      <script src="/touchswipe/jquery.touch-swipe.min.js"></script>
       <script src="/parallax/jarallax.min.js"></script>
       <script src="/tether/tether.min.js"></script>
       <script src="/smoothscroll/smooth-scroll.js"></script>
@@ -225,4 +270,10 @@
       
       
     </body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/js/usuario/validation.js"></script>
     </html>

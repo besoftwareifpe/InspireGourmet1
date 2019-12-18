@@ -30,4 +30,7 @@ public class CategoriaService {
 	public void delete(Integer idCat) {
 		repository.deleteById(idCat);
 	}
+	public Categoria get(Integer idCat) {
+		return repository.findById(idCat).get();
+	}
 }

@@ -94,6 +94,6 @@ public class LoginController {
 	public String logUot(HttpSession session) {
 		session.invalidate();
 		
-		return "redirect:/";
+		return "redirect:/index";
 	}
 }

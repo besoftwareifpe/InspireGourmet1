@@ -41,21 +41,30 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/updateUsuario" )
-	public String cadUsu(Usuario usuario , Model model,RedirectAttributes ra) {
+	public String cadUsu(Usuario usuario , @RequestParam(name = "senha")String senha,Model model,RedirectAttributes ra) {
 	
-
 		Usuario usuario1 = userDao.findByHashId(usuario.getHashId());
-		
-		usuario.setSenha(usuario1.getSenha());
-		usuario.setAtivo(usuario1.getAtivo());
-		usuario.setDataDeCriacao(usuario1.getDataDeCriacao());
-		
-		Date dataUpdate = new Date();
-		usuario.setUltimoUpdate(dataUpdate);
-		
-		serviceUser.save(usuario);
-		
-		return "redirect:/home";
+
+		if(senha == "") {			
+			usuario.setSenha(usuario1.getSenha());
+			usuario.setAtivo(usuario1.getAtivo());
+			usuario.setDataDeCriacao(usuario1.getDataDeCriacao());
+			usuario.setUltimoUpdate(new Date());
+			
+			serviceUser.save(usuario);
+
+			return "redirect:/home";
+		}else {
+			
+			usuario.setSenha(Functions.getSHA256(senha));
+			usuario.setAtivo(usuario1.getAtivo());
+			usuario.setDataDeCriacao(usuario1.getDataDeCriacao());
+			usuario.setUltimoUpdate(new Date());
+			
+			serviceUser.save(usuario);
+			
+			return "redirect:/home";
+		}
 
 		
 	}

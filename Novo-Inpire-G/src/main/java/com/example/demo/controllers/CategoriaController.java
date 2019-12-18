@@ -45,24 +45,39 @@ public class CategoriaController {
 		Categoria nomeChecado =  categoriaDao.findByNomeCategoria(categoria.getNomeCategoria());
 		
 		if(nomeChecado != null) {
-			ra.addFlashAttribute("mensagemErro", "Categoria já cadastrada");
+			ra.addFlashAttribute("mensagem", "4");
 			
 			return "redirect:/exibirFormCategoria";
 			
 		}else {
 			serviceCategoria.save(categoria);
 			
+			ra.addFlashAttribute("mensagem","1");
+			
 			return "redirect:/exibirFormCategoria";
 		}
 		
 	}
+	
+	@GetMapping("/editeCat/{idCat}")
+	public String edite(@PathVariable("idCat")Integer idCat,Model model) {
+		
+		Categoria categoria = serviceCategoria.get(idCat);
+		
+		model.addAttribute("categoria", categoria);
+		List<Categoria> categorias = serviceCategoria.listAll();
+		model.addAttribute("categorias", categorias);
+		
+		
+		return "/admin/categoriaConf";
+	}
 
 
 	@GetMapping("/deleteCat/{idCat}")
-	public String removerCat(@PathVariable("idCat") Integer idCat) {
+	public String removerCat(@PathVariable("idCat") Integer idCat,RedirectAttributes ra) {
 		
 		serviceCategoria.delete(idCat);
-		
+		ra.addFlashAttribute("mensagem", "3");
 		return "redirect:/exibirFormCategoria";
 
 	}
