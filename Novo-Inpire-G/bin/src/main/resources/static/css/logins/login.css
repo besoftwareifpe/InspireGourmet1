@@ -7,7 +7,9 @@
 #espaco{
     height: 8vh;
 }
-
+.icon {
+    color: #eeeeec;
+}
 
 .info-msg,
 .success-msg,

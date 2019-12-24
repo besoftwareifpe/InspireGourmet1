@@ -2,6 +2,8 @@ package com.example.demo.controllers;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,31 +43,20 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/updateUsuario" )
-	public String cadUsu(Usuario usuario , @RequestParam(name = "senha")String senha,Model model,RedirectAttributes ra) {
+	public String cadUsu(Usuario usuario,HttpSession session) {
 	
 		Usuario usuario1 = userDao.findByHashId(usuario.getHashId());
-
-		if(senha == "") {			
-			usuario.setSenha(usuario1.getSenha());
-			usuario.setAtivo(usuario1.getAtivo());
-			usuario.setDataDeCriacao(usuario1.getDataDeCriacao());
-			usuario.setUltimoUpdate(new Date());
 			
-			serviceUser.save(usuario);
-
-			return "redirect:/home";
-		}else {
-			
-			usuario.setSenha(Functions.getSHA256(senha));
-			usuario.setAtivo(usuario1.getAtivo());
-			usuario.setDataDeCriacao(usuario1.getDataDeCriacao());
-			usuario.setUltimoUpdate(new Date());
-			
-			serviceUser.save(usuario);
-			
-			return "redirect:/home";
-		}
-
+		usuario.setSenha(usuario1.getSenha());
+		usuario.setAtivo(usuario1.getAtivo());
+		usuario.setDataDeCriacao(usuario1.getDataDeCriacao());
+		usuario.setUltimoUpdate(new Date());
+		
+		serviceUser.save(usuario);
+		
+		
+		session.setAttribute("usuarioLogado", usuario);
+		return "redirect:/home";
 		
 	}
 	

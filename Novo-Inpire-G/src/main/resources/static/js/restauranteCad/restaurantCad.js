@@ -1,16 +1,5 @@
  $(document).ready(function(){
-    //tooltip of button gmail
-    $('[data-toggle="tooltip"]').tooltip()
 
-    $('#signUp').click(function(){
-        $('#container1').addClass("right-panel-active");
-    });
-
-    $('#signIn').click(function(){
-        $('#container1').removeClass("right-panel-active");
-    });
-    
-    
     //Buscar endereço por cep
 	$('#cep').blur(function(){
 		
@@ -59,6 +48,7 @@
       		$('#numero').val(json.numero);
 			$('#uf').val(json.uf);
 			
+			console.log(dados);
 		}, (erro) => {
 		    console.log('ERRO:', erro);
 		});

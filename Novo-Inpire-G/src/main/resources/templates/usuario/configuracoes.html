@@ -112,7 +112,7 @@
 <section class="services1 cid-rIekDMgeHc" id="services1-17">
 
 
-	<form th:action="@{/updateUsuario}" th:object="${usuario}" method="post">   
+	<form name="formuserConf" id="formuserConf" th:action="@{/updateUsuario}" th:object="${usuario}" method="post">   
 		<div class="container">
 			<div class="barra container"></div>
 	
@@ -134,11 +134,6 @@
 					<input id="email" type="text" th:field="*{email}" disabled>
 				</div>
 				
-				<div class="mbr-white col-md-6">
-		        	<label style="color: black; float: left;">Nova Senha</label>
-					<input type="text" name="senha">
-				</div>
-				
 				<input type="text" th:field="*{hashId}" hidden>
 				
 				<div id="espaco1" class="col-md-12"></div> 
@@ -146,7 +141,7 @@
 				
 				<div class="mbr-white col-md-12" >
 		            <div id="espaco3"></div>
-					<button id="btnAtualiza" type="submit">Atualizar</button>
+					<button id="btnAtualiza" name="enviar" type="submit"s>Atualizar</button>
 				</div>
 			</div>
 			
@@ -237,4 +232,9 @@
   
   
 </body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/js/usuario/validation.js"></script>
 </html>

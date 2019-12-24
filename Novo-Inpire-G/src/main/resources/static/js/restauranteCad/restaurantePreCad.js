@@ -8,9 +8,10 @@ $(document).ready(function(){
 			
 			consultaCNPJ(cnpj).then((json) => {
 			    console.log(json);
-			    
+			    $("#btn").prop("disabled", true);
 			    $('#erro').html("");
 			}, (erro) => {
+				$("#btn").prop("disabled", false);
 				$('#erro').html(erro);
 			    console.log('ERRO:', erro);
 			});

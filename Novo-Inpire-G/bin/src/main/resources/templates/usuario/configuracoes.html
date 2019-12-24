@@ -28,9 +28,23 @@
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
 
   <link rel="stylesheet" href="/css/homeUser/restaurants.css">
+  <link rel="stylesheet" href="/css/logins/login.css">
   <link rel="stylesheet" href="/css/homeUser/cards.css">
   
   <script src="/js/page3.js"></script>
+  
+  <script>
+  	
+  $(document).ready(function(){
+	 $("#btnAtualiza").click(function(){
+		 
+		 $("#cpf").removeAttr('disabled');
+		 $("#email").removeAttr('disabled');
+	 })
+  });
+  
+  </script>
+  
 </head>
 <body>
   <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
@@ -59,17 +73,17 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="/home"><span class="mbrib-home mbr-iconfont mbr-iconfont-btn"></span>
+                    <a class="nav-link link text-white display-4" href="/home"><span class="icon mbrib-home mbr-iconfont mbr-iconfont-btn"></span>
                         Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
-                </li><li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4"  data-toggle="dropdown-submenu" aria-expanded="false"><span class="mbrib-map-pin mbr-iconfont mbr-iconfont-btn"></span>
+                </li><li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4"  data-toggle="dropdown-submenu" aria-expanded="false"><span class="icon mbrib-map-pin mbr-iconfont mbr-iconfont-btn"></span>
                         Cidades &nbsp; &nbsp;</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" >Recife</a></div></li>
   				
   				<li class="nav-item dropdown">
         			 <a class="nav-link link text-white dropdown-toggle display-4" data-toggle="dropdown-submenu" aria-expanded="false"><img id="img" src="/images/table-1469719_960_720.jpg"/>&nbsp; 
-                      <span th:text="${session.usuarioLogado.nomeUsuario}"></span>&nbsp; &nbsp;</a>
+                      <span th:text="${session.usuarioLogado.nomeUsuario}" class="icon" style="font-size: 16px"></span>&nbsp; &nbsp;</a>
                      <div class="dropdown-menu">
                      	<a class="text-white dropdown-item display-4" href="/configuracoes">Configuraçoes</a>
-                     	<a class="text-white dropdown-item display-4" href="/logUot">Sair</a>
+                     	<a class="text-white dropdown-item display-4" href="/logout">Sair</a>
                      </div>
                 </li>
                 
@@ -87,11 +101,9 @@
 
     <div class="container">
         <div class="media-container-row">
-            <div class="title col-12 col-md-8">
-                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Restaurantes</em></h2>
+            <div class="title col-12 col-md-12">
+                <h5 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Configurações de Usuário</em></h5>
                 <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5"></h3>
-                
-                
             </div>
         </div>
     </div>
@@ -100,23 +112,46 @@
 <section class="services1 cid-rIekDMgeHc" id="services1-17">
 
 
-	<form th:action="@{/updateUsuario	}" th:object="${usuario}" method="post">
-		
-		<input type="text" th:field="*{idUsuario}">
-				
-		<input type="text" th:field="*{nomeUsuario}">
-		
-		<input type="text" th:field="*{cpf}">
-		
-		<input type="text" th:field="*{email}">
-		
-		<input type="text" >
-		
-		<input type="text" th:field="*{hashId}" hidden>
-		
-		<button type="submit">Atualizar</button>
+	<form th:action="@{/updateUsuario}" th:object="${usuario}" method="post">   
+		<div class="container">
+			<div class="barra container"></div>
 	
-		
+			<div class="row">
+				<input type="text" th:field="*{idUsuario}" style="visibility: hidden">
+				
+				<div class="mbr-white col-md-6">
+		        	<label for="ip1" style="color: black; float: left;">Nome Completo</label>	
+					<input type="text" th:field="*{nomeUsuario}">
+				</div>
+				
+				<div class="mbr-white col-md-3">
+		        	<label style="color: black; float: left;">CPF</label>
+					<input id="cpf" type="text" th:field="*{cpf}" disabled>
+				</div>
+				
+				<div class="mbr-white col-md-6">
+		        	<label style="color: black; float: left;">Email</label>
+					<input id="email" type="text" th:field="*{email}" disabled>
+				</div>
+				
+				<div class="mbr-white col-md-6">
+		        	<label style="color: black; float: left;">Nova Senha</label>
+					<input type="text" name="senha">
+				</div>
+				
+				<input type="text" th:field="*{hashId}" hidden>
+				
+				<div id="espaco1" class="col-md-12"></div> 
+		        <div class="barra container"></div>
+				
+				<div class="mbr-white col-md-12" >
+		            <div id="espaco3"></div>
+					<button id="btnAtualiza" type="submit">Atualizar</button>
+				</div>
+			</div>
+			
+			<div id="espaco1" class="col-md-12"></div> 
+		</div>
 	</form>
 	
 </section>

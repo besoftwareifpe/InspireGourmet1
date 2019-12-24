@@ -61,6 +61,15 @@ public class BtnController {
 		return "page7";
 	}
 	
+	@GetMapping("/listUsuarios")
+	public String showlistAllUsers() {
+		return "/admin/listUsuarios";
+	}
+	
+	@GetMapping("/listRestaurantes")
+	public String showlistAllRest() {
+		return "/admin/listRestaurantes";
+	}
 
 	
 }
