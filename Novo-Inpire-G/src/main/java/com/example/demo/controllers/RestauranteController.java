@@ -5,16 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.email.MailerRestaurante;
 import com.example.demo.models.Categoria;
 import com.example.demo.models.Endereco;
+import com.example.demo.models.Oferta;
 import com.example.demo.models.Restaurante;
 import com.example.demo.services.CategoriaService;
+import com.example.demo.services.OfertaService;
 import com.example.demo.services.RestauranteService;
 import com.example.demo.util.Functions;
 
@@ -28,7 +33,32 @@ public class RestauranteController {
 	private CategoriaService serviceCategoria;
 	
 	@Autowired
+	private OfertaService serviceOferta;
+	
+	@Autowired
 	private MailerRestaurante mail;
+	
+	@GetMapping("/home")
+	public String showHome(Model model) {
+		Restaurante restaurante = new Restaurante();
+		model.addAttribute("restaurante", restaurante);
+		
+		List<Restaurante> lista = serviceRestaurante.listAll();
+		model.addAttribute("restaurantes", lista);
+		
+		List<Categoria> listaCat = serviceCategoria.listAll();
+		model.addAttribute("comidas", listaCat);
+		
+		return "usuario/home";
+	}
+	
+	@GetMapping("/listRestaurantes")
+	public String showlistAllRest(Model model) {
+		
+		List<Restaurante> lista = serviceRestaurante.listAll();
+		model.addAttribute("restaurantes", lista);
+		return "/admin/listRestaurantes";
+	}
 	
 	
 	@PostMapping("/restauranteCad")
@@ -63,9 +93,15 @@ public class RestauranteController {
 		
 		restaurante.setEndereco(endereco);
 		restaurante.setAtivo(0);
+		restaurante.setPrioridade(2);
 		
 		serviceRestaurante.save(restaurante);
 		mail.enviar(restaurante);
+		
+		//save a new Oferta
+		Oferta oferta = new Oferta();
+		oferta.setRestaurante(restaurante);
+		serviceOferta.save(oferta);
 		
 		ra.addFlashAttribute("mensagemErro", "1");
 		return "redirect:/restaurante";
@@ -92,5 +128,75 @@ public class RestauranteController {
 		return emailChecado.toString();
 		
 		
+	}
+	
+	
+	@GetMapping("/homeRest/{idRes}")
+	public String showHomeRest(@PathVariable("idRes")Integer idRest,Model model) {
+				
+		Oferta oferta = serviceOferta.get(idRest);
+		model.addAttribute("oferta", oferta);
+
+		return "/restaurante/homeRest";
+	}
+	
+	@GetMapping("/configuracoes/{idRest}")
+	public String showConf(@PathVariable("idRest")Integer idRest,Model model) {
+		
+		Restaurante restaurante = serviceRestaurante.get(idRest);	
+		model.addAttribute("restaurante", restaurante);
+		
+		return "/restaurante/configuracoes";
+	}
+	
+	@PostMapping("/editeRestaurante")
+	public String showConf(Restaurante restaurante,Model model) {
+		
+		Restaurante restaurante1 = serviceRestaurante.findByHashId(restaurante.getHashId());
+		
+		if(restaurante.getSenha() == null) {
+			restaurante.setSenha(restaurante1.getSenha());
+		}
+		
+		serviceRestaurante.save(restaurante);
+		
+		return "/restaurante/configuracoes";
+	}
+	
+	@GetMapping("/deleteRest/{idRest}")
+	public String delete(@PathVariable("idRest")Integer idRest,Model model) {
+		
+		serviceRestaurante.delete(idRest);
+		
+		return "redirect:/homeAdm";
+	}
+	
+	
+	@PostMapping("/pesquisar")
+	public ModelAndView pesquisar(@RequestParam(name = "pesquisa")String pesquisa ,@RequestParam(name = "categoria")Integer categoria,Model model) {
+		ModelAndView modelAndView= new ModelAndView("usuario/home");
+		
+		if(pesquisa == null) {
+			if(categoria == 0) {
+				modelAndView.addObject("restaurantes",serviceRestaurante.listAll());
+				modelAndView.addObject("comidas",serviceCategoria.listAll());
+				Restaurante restaurante = new Restaurante();
+				model.addAttribute("restaurante", restaurante);
+				return modelAndView;
+			}else {
+				modelAndView.addObject("restaurantes",serviceRestaurante.listRestauranteCate(categoria));
+				modelAndView.addObject("comidas",serviceCategoria.listAll());
+				Restaurante restaurante = new Restaurante();
+				model.addAttribute("restaurante", restaurante);
+				return modelAndView;
+			}
+			
+		}else {
+			modelAndView.addObject("restaurantes",serviceRestaurante.listRestaurante(pesquisa));
+			modelAndView.addObject("comidas",serviceCategoria.listAll());
+			Restaurante restaurante = new Restaurante();
+			model.addAttribute("restaurante", restaurante);
+			return modelAndView;
+		}
 	}
 }

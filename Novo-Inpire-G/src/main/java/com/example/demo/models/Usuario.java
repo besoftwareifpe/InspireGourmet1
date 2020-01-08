@@ -43,6 +43,7 @@ public class Usuario {
 	
 	private String hashId;
 	
+	private Integer prioridade;
 
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -122,6 +123,14 @@ public class Usuario {
 
 	public void setHashId(String hashId) {
 		this.hashId = hashId;
+	}
+	
+	public Integer getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(Integer prioridade) {
+		this.prioridade = prioridade;
 	}
 
 	public boolean isPresent() {

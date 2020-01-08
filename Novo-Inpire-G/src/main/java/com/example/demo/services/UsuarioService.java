@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
@@ -17,6 +18,10 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioDAO repositoryDao;
 	
+	
+	public List<Usuario> listAll(){
+		return repositoryDao.findAll();
+	}
 	
 	public Usuario buscarConta(String email, String senha) {
 		
@@ -37,6 +42,10 @@ public class UsuarioService {
 	public Usuario get(Integer idUser) {
 		
 		return repositoryDao.findById(idUser).get();
+	}
+	
+	public void delete(Integer idUser) {
+		repositoryDao.deleteById(idUser);
 	}
 	
 	public Usuario verificaCPF(String cpf) {

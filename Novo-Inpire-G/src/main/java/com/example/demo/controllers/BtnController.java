@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -29,21 +28,11 @@ public class BtnController {
 		return "page4";
 	}
 	
-	@GetMapping("/home")
-	public String showHome(Model model) {
-				
-		return "usuario/home";
-	}
+	
 	
 	@GetMapping("/detalhes")
 	public String showDetalhes() {
 		return "usuario/detalhesRestaurante";
-	}
-	
-	@GetMapping("/homeRest")
-	public String showHomeRest(Model model) {
-				
-		return "restaurante/homeRest";
 	}
 	
 	@GetMapping("/page5")
@@ -61,15 +50,7 @@ public class BtnController {
 		return "page7";
 	}
 	
-	@GetMapping("/listUsuarios")
-	public String showlistAllUsers() {
-		return "/admin/listUsuarios";
-	}
-	
-	@GetMapping("/listRestaurantes")
-	public String showlistAllRest() {
-		return "/admin/listRestaurantes";
-	}
+
 
 	
 }

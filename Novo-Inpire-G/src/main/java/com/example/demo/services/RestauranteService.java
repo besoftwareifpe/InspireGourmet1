@@ -51,5 +51,17 @@ public class RestauranteService {
 	public Restaurante verificaEmailRest(String email) {
 		return repository.findByEmail(email);
 	}
+
+	public Restaurante findByHashId(String hashId) {
+		return repository.findByHashId(hashId);
+	}
+
+	public List<Restaurante> listRestaurante(String pesquisa) {
+		return repository.buscarRestaurantes(pesquisa);
+	}
+
+	public List<Restaurante> listRestauranteCate(Integer idCat) {
+		return repository.buscarRestauranteCate(idCat);
+	}
 }
 

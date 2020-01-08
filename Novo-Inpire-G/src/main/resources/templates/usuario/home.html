@@ -29,6 +29,7 @@
 
   <link rel="stylesheet" href="/css/homeUser/restaurants.css">
   <link rel="stylesheet" href="/css/homeUser/cards.css">
+  <link rel="stylesheet" href="/css/homeUser/style.css">
   
   <script src="/js/page3.js"></script>
 </head>
@@ -105,163 +106,73 @@
     <div id="espaco1"></div>
     <!--Container-->
     <div class="container">
-        <div class="row">
-            <!--Card-1-->
-            <div class="col-sm-4">
-                <div class="news shadow">
-                  <div class="img-figure">
-                      <div class="cat">Cozinha</div>
-                    <img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
-                  </div>	
+    	<form th:action="@{/pesquisar}" th:object="${restaurante}" method="post">
+    		<div class="col-12">
+    			<div class="row">
+    				<div class="col-12">
+    					<label>Pesquisa por nome</label>
+    				</div>
+	    			<div class="col-10">
+						<input name= pesquisa type= "text" placeholder="Digite o nome do restaurante...">
+					</div>
+					<div class="col-2">
+						<button type="submit">Pesquisar</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<select name="cidade" class="col-2">
+					<option selected disabled>Cidades</option>
+					<option></option>
+					<option></option>
+				</select>
+				
+				
+				<select name="categoria" class="col-2">
+					<option value="0" selected >Categoria</option>
+					<option th:each="listComida : ${comidas}" th:value="${listComida.idCategoria}" th:text="${listComida.nomeCategoria}"></option>
+				</select>
+				<div id="espaco"></div>
+			</div>
+				
+			
+		</form>
+		
+		
+    
+    
+    	<div th:if="${session.usuarioLogado} == null">
+    	erro 404
+    	</div>
+    	<div th:if="${session.usuarioLogado} != null">
+			<div class="row">
+		            <!--Card-1-->
+	            	<div class="col-sm-4" th:each="list : ${restaurantes}">
+	                	<div class="news shadow">
+	                 	 	<div class="img-figure">
+	                     	<div class="cat" >Cozinha</div>
+	                    	<img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
+	                  	</div>	
+	        		
+	                  <div class="title">
+	                    <span th:text="${list.nomeRestaurante}"> DAL 20/10/2017 AL 24/10/2017</span>
+	                    <h1 th:text="${list.nomeRestaurante}">LF A HOST</h1>
+	                  </div>
+	                  <p class="description">
+	                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
+	                  </p>
+	        
+	                  <p class="more">
+	                    <a href="/detalhes">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+	                  </p>
+	                </div>
+	              </div>
+
+		        </div>
+		    </div>
+	    </div>
+    
         
-                  <div class="title">
-                    <span> DAL 20/10/2017 AL 24/10/2017</span>
-                    <h1>LF A HOST</h1>
-                  </div>
-                  <p class="description">
-                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
-                  </p>
-        
-                  <p class="more">
-                    <a href="/detalhes">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="news shadow">
-                  <div class="img-figure">
-                    <div class="cat">Cozinha</div>
-                    <img  th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
-                  </div>	
-        
-                  <div class="title">
-                    <span> DAL 20/10/2017 AL 24/10/2017</span>
-                    <h1>LF A HOST</h1>
-                  </div>
-                  <p class="description">
-                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
-                  </p>
-        
-                  <p class="more">
-                    <a href="/detalhes">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="news shadow">
-                  <div class="img-figure">
-                    <div class="cat">Cozinha</div>
-                    <img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
-                  </div>	
-        
-                  <div class="title">
-                    <span> DAL 20/10/2017 AL 24/10/2017</span>
-                    <h1>LF A HOST</h1>
-                  </div>
-                  <p class="description">
-                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
-                  </p>
-        
-                  <p class="more">
-                    <a href="/detalhes">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                  <div class="news shadow">
-                    <div class="img-figure">
-                      <div class="cat">Cozinha</div>
-                      <img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
-                    </div>	
-          
-                    <div class="title">
-                      <span> DAL 20/10/2017 AL 24/10/2017</span>
-                      <h1>LF A HOST</h1>
-                    </div>
-                    <p class="description">
-                      LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
-                    </p>
-          
-                    <p class="more">
-                      <a href="/detalhes">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="news shadow">
-                    <div class="img-figure">
-                      <div class="cat">Cozinha</div>
-                      <img  th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
-                    </div>	
-          
-                    <div class="title">
-                      <span> DAL 20/10/2017 AL 24/10/2017</span>
-                      <h1>LF A HOST</h1>
-                    </div>
-                    <p class="description">
-                      LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
-                    </p>
-          
-                    <p class="more">
-                      <a href="/detalhes">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="news shadow">
-                    <div class="img-figure">
-                      <div class="cat">Cozinha</div>
-                      <img th:src="@{/images/table-1469719_960_720.jpg}"	 class="img-fluid">
-                    </div>	
-          
-                    <div class="title">
-                      <span> DAL 20/10/2017 AL 24/10/2017</span>
-                      <h1>LF A HOST</h1>
-                    </div>
-                    <p class="description">
-                      LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
-                    </p>
-          
-                    <p class="more">
-                      <a href="/detalhes">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </p>
-                  </div>
-                </div>
-
-          </div>
-
-
-          <div class="container">
-            <div class="center" >
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-            </div>
-          </div>
-
-        </div>
-    </div>
 	</section>
 
 <section class="cid-rIetTk9Awm" id="footer5-1a">

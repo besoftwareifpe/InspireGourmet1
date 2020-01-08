@@ -27,6 +27,8 @@
   <!-- font awesome -->
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
 
+  <link rel="stylesheet" href="/css/restaurants.css">
+  
   <script src="/js/page3.js"></script>
   
   <link rel="stylesheet" href="/css/restaurante/style.css">	
@@ -99,35 +101,30 @@
 		    <!--Container-->
 		    <div class="container">
 		      
-		      	<form id="restOferta" th:action="@{/restaurantee}" th:object="${oferta}" method="post">
+		      	<form id="confRest" th:action="@{/editeRestaurante}" th:object="${restaurante}" method="post">
 				  <div>
-				    <input type="text" th:field="*{idOferta}" hidden>
+				    <input type="text" th:field="*{idRestaurante}" hidden>
+				  </div>
+				  <div class="col-12">
+				    <label >Nome do Restaurante</label>
+				    <input type="text" th:field="*{nomeRestaurante}">
 				  </div>
 				  <div class="col-12">
 				  	<div class="row">
 					  <div class="col-6">
-					    <label >Descrição</label>
-					    <input type="text" maxlength="100" th:field="*{descricao}">
+					    <label >Telefone</label>
+					    <input type="text" th:field="*{telefone}">
 					  </div>
 					  <div class="col-6">
-					    <label class="col-12">valor</label>
-					    <input type="text" maxlength="8" th:field="*{valor}">
+					    <label>CNPJ</label>
+					    <input type="text" th:field="*{cnpj}" disabled>
 					  </div>
 					 </div>
 				  </div>
-				  <div class="col-6">
-				    <label>Restrições</label>
-				    <input type="text" maxlength="255" th:field="*{restricao}">
-				  </div>
-				  <div class="col-12">
-				    <label>Sobre</label><br>
-				    <textarea rows="10" cols="100" maxlength="5000"  th:field="*{sobre}" ></textarea>
-				  </div>
-				  
-				  <div>
-				    <input type="text" th:field="*{restaurante}" hidden>
-				  </div>
-				  
+				  <div class="col-7">
+				    <label>Email</label>
+				    <input type="text" th:field="*{email}" disabled>
+				  </div>				  
 				  
 				  <button type="submit">Submit</button>
 				</form>
@@ -148,7 +145,7 @@
 		                </div>
 		            </div>
 		            <div class="col-md-9">
-		                <p class="mbr-text align-right links mbr-fonts-style display-7"><a th:href="|/homeRest/${session.restauranteLogado.idRestaurante}|" class="text-black">HOME</a>
+		                <p class="mbr-text align-right links mbr-fonts-style display-7"><a th:href="|/homeRest/${session.restauranteLogado.idRestaurante}|" class="text-black">HOME</a>;
 		            </div>
 		        </div>
 		        <div class="footer-lower">

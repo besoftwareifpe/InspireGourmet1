@@ -40,6 +40,7 @@ public class Restaurante {
 	
 	private String hashId;
 	
+	private Integer prioridade;
 	
 	public String getNomeRestaurante() {
 		return nomeRestaurante;
@@ -119,6 +120,14 @@ public class Restaurante {
 
 	public void setHashId(String hashId) {
 		this.hashId = hashId;
+	}
+	
+	public Integer getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(Integer prioridade) {
+		this.prioridade = prioridade;
 	}
 
 	public boolean isPresent() {

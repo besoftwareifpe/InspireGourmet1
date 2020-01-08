@@ -44,6 +44,7 @@ public class CadastroUsuarioController {
 		Date dataCriacao = new Date();
 		usuario.setDataDeCriacao(dataCriacao);
 		
+		usuario.setPrioridade(1);
 		
 		serviceUser.save(usuario);
 		mail.enviar(usuario);

@@ -255,5 +255,82 @@ $(document).ready(function(){
 		
 	});
 	
+	//FORM OFERTA RESTAURANTE
+	$("#restOferta").validate({
+		rules:{
+			descricao: {
+				required: true
+			},
+			valor: {
+				required: true
+			},
+			restricao: {
+				required: true
+			},
+			sobre: {
+				required: true
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+	
+		},
+		messages:{
+			descricao: {
+				required: "Este campo é obrigatório.",
+			},
+			valor: {
+				required: "Este campo é obrigatório.",
+			},
+			restricao: {
+				required: "Este campo é obrigatório.",
+			},
+			sobre: {
+				required: "Este campo é obrigatório.",
+			}
+		}
+	
+		
+	});
+	
+	
+	//FORM OFERTA RESTAURANTE
+	$("#confRest").validate({
+		rules:{
+			nomeRestaurante: {
+				required: true
+			},
+			telefone: {
+				required: true
+			},
+			cnpj: {
+				required: true
+			},
+			email: {
+				required: true
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+	
+		},
+		messages:{
+			nomeRestaurante: {
+				required: "Este campo é obrigatório.",
+			},
+			telefone: {
+				required: "Este campo é obrigatório.",
+			},
+			cnpj {
+				required: "Este campo é obrigatório.",
+			},
+			email: {
+				required: "Este campo é obrigatório.",
+			}
+		}
+	
+		
+	});
+	
 	
 })

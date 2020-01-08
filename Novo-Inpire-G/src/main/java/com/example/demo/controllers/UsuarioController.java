@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,6 +32,14 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioDAO userDao;
+	
+	@GetMapping("/listUsuarios")
+	public String showlistAllUsers(Model model) {
+		
+		List<Usuario> usuario = serviceUser.listAll();
+		model.addAttribute("usuarios", usuario);
+		return "/admin/listUsuarios";
+	}
 	
 	@GetMapping("/edite/{idUser}")
 	public String edite(@PathVariable("idUser") Integer idUser, Model model) {
@@ -98,6 +107,14 @@ public class UsuarioController {
 			return "redirect:/page7";
 		}
 	
+	}
+	
+	@GetMapping("/deleteUser/{idRest}")
+	public String delete(@PathVariable("idRest")Integer idRest,Model model) {
+		
+		serviceUser.delete(idRest);
+		
+		return "redirect:/homeAdm";
 	}
 	
 	

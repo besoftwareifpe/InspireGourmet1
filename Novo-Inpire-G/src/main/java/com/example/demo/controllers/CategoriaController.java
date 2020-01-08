@@ -27,7 +27,7 @@ public class CategoriaController {
 	private CategoriaDAO categoriaDao;
 
 
-	@GetMapping("/exibirFormCategoria")
+	@GetMapping("/homeAdm")
 	public String exibirPageOptCat(Categoria categoria ,Model model) {
 		model.addAttribute("categoria", categoria);
 		
@@ -35,7 +35,7 @@ public class CategoriaController {
 		List<Categoria> categorias = serviceCategoria.listAll();
 		model.addAttribute("categorias", categorias);
 		
-		return "/admin/categoriaConf";
+		return "/admin/homeAdm";
 	}
 	
 	
@@ -47,14 +47,14 @@ public class CategoriaController {
 		if(nomeChecado != null) {
 			ra.addFlashAttribute("mensagem", "4");
 			
-			return "redirect:/exibirFormCategoria";
+			return "redirect:/homeAdm";
 			
 		}else {
 			serviceCategoria.save(categoria);
 			
 			ra.addFlashAttribute("mensagem","1");
 			
-			return "redirect:/exibirFormCategoria";
+			return "redirect:/homeAdm";
 		}
 		
 	}
@@ -69,7 +69,7 @@ public class CategoriaController {
 		model.addAttribute("categorias", categorias);
 		
 		
-		return "/admin/categoriaConf";
+		return "/admin/homeAdm";
 	}
 
 
@@ -78,7 +78,7 @@ public class CategoriaController {
 		
 		serviceCategoria.delete(idCat);
 		ra.addFlashAttribute("mensagem", "3");
-		return "redirect:/exibirFormCategoria";
+		return "redirect:/homeAdm";
 
 	}
 }

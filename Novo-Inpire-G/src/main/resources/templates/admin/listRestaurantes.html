@@ -63,7 +63,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="/home"><span class="mbrib-home mbr-iconfont mbr-iconfont-btn"></span>
+                    <a class="nav-link link text-white display-4" href="/homeAdm"><span class="mbrib-home mbr-iconfont mbr-iconfont-btn"></span>
                         Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
                 </li><li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4"  data-toggle="dropdown-submenu" aria-expanded="false"><span class="mbrib-map-pin mbr-iconfont mbr-iconfont-btn"></span>
                         Cidades &nbsp; &nbsp;</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" >Recife</a></div></li>
@@ -119,15 +119,15 @@
 	        </tr>
 	      </thead>
 	      <tbody>
-	        <tr>
-	          <th scope="row"  style="padding: 20;">1</th>
-	          <td style="padding: 20;">nome restaurante</td>
-	          <td style="padding: 20;">telefone</td>
-	          <td style="padding: 20;">cnpj</td>
-	          <td style="padding: 20;">email</td>
-	          <td style="padding: 20;">Ativo</td>
+	        <tr th:each="list : ${restaurantes}">
+	          <th scope="row"  style="padding: 20;" th:text="${list.idRestaurante}">1</th>
+	          <td style="padding: 20;" th:text="${list.nomeRestaurante}">nome restaurante</td>
+	          <td style="padding: 20;" th:text="${list.telefone}">telefone</td>
+	          <td style="padding: 20;" th:text="${list.cnpj}">cnpj</td>
+	          <td style="padding: 20;" th:text="${list.email}">email</td>
+	          <td style="padding: 20;" th:text="${list.ativo}">Ativo</td>
 	          <td>
-	          	<a th:href="|/deleteCat/|" class="btn btn-outline-danger btn-sm" style="margin: 0;padding: 10;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+	          	<a th:href="|/deleteRest/${list.nomeRestaurante}|" class="btn btn-outline-danger btn-sm" style="margin: 0;padding: 10;"><i class="fa fa-trash" aria-hidden="true"></i></a>
 	          </td>
 	        </tr>
 	      </tbody>
