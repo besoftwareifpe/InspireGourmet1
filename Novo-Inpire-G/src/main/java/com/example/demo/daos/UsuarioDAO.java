@@ -16,4 +16,5 @@ public interface UsuarioDAO extends JpaRepository<Usuario, Integer> {
 	Usuario findByEmail(String email);
 	Usuario findByCpf(String cpf);
 
+
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.daos.UsuarioDAO;
 import com.example.demo.models.Usuario;
+import com.example.demo.util.Functions;
 
 @Service
 @Transactional
@@ -54,6 +55,21 @@ public class UsuarioService {
 	
 	public Usuario verificaEmail(String email) {
 		return repositoryDao.findByEmail(email);
+	}
+
+	public Usuario buscarPeloHash(String hash) {
+		return repositoryDao.findByHashId(hash);
+	}
+
+	public void redefinirSenha(String hash, String senha) {
+		
+		Usuario usuario = repositoryDao.findByHashId(hash);
+		
+		String novaSenha = Functions.getSHA256(senha);
+		usuario.setSenha(novaSenha);
+		usuario.setSaltera(0);
+		
+		repositoryDao.save(usuario);
 	}
 	
 }

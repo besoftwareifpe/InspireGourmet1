@@ -50,6 +50,8 @@ public class Restaurante {
 	
 	private Integer prioridade;
 	
+	private int Saltera;
+	
 	
 	public Integer getIdRestaurante() {
 		return idRestaurante;
@@ -169,6 +171,14 @@ public class Restaurante {
 	
 	public void setPrioridade(Integer prioridade) {
 		this.prioridade = prioridade;
+	}
+	
+	public int getSaltera() {
+		return Saltera;
+	}
+
+	public void setSaltera(int saltera) {
+		Saltera = saltera;
 	}
 
 	public boolean isPresent() {

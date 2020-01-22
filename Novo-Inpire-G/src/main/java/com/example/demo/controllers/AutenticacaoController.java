@@ -26,7 +26,7 @@ public class AutenticacaoController {
 		loginService.autenciaUsuario(usuario);
 		
 		ra.addFlashAttribute("mensagemErro", "5");
-		return "redirect:/login";
+		return "email/success";
 	}
 	
 	@GetMapping("/Restaurante/{hash}")
@@ -36,7 +36,7 @@ public class AutenticacaoController {
 		loginService.autenciaRestaurnte(restaurante);
 		
 		ra.addFlashAttribute("mensagemErro", "5");
-		return "redirect:/restaurante";
+		return "email/success";
 	}
 	
 }

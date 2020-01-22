@@ -150,7 +150,7 @@
                 <li class="nav-item">
                     <a class="nav-link link text-white display-4" href=""><span class="icon mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn"></span>
                         Restaurante &nbsp;</a>
-                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="/login">Login/Registro &nbsp; &nbsp;&nbsp;</a></li></ul>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="/login">Login<span style="padding: 8px;border: 1px solid white;border-radius: 3px;margin-left: 2px;font-size: 16px;color: white;">Registro</span>&nbsp; &nbsp;&nbsp;</a></li></ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/assinatura">Assinar agora</a></div>
         </div>
     </nav>
@@ -189,7 +189,7 @@
                             <input type="email" placeholder="Email" th:field="*{email}"/>
                             <label class="float-left">Senha</label>
                             <input type="password" th:field="*{senha}"/>
-                            <a href="/page7">Esqueci minha senha?</a>
+                            <a href="/recuperarSenha">Esqueci minha senha?</a>
                             <button>Entrar</button>
                             
                             <span id="mensagemErro" th:text="${mensagemErro}" hidden></span>
@@ -216,73 +216,76 @@
     </div>
     
 </section>
+<section class="cid-rHO9wjEA5p" id="footer5-13">
 
-<section class="cid-rIezp2H1p7" id="footer5-1d">
+    
 
-    <div class="container">
-        <div class="media-container-row">
-            <div class="col-md-3">
-                <div class="media-wrap">
-                    <a href="https://mobirise.co/">
-                       <img src="/images/logo21.png" alt="Mobirise">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <p class="mbr-text align-right links mbr-fonts-style display-7"><a href="index.html" class="text-black">HOME</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a href="#" class="text-black">TERMS</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="page3.html" class="text-black">RESTAURANTES</a>&nbsp; &nbsp; &nbsp;<a href="/page2" class="text-black">LOGIN</a></p>
-            </div>
-        </div>
-        <div class="footer-lower">
+    
+
+        <div class="container">
             <div class="media-container-row">
-                <div class="col-md-12">
-                    <hr>
-                </div>
-            </div>
-            <div class="media-container-row mbr-white">
-                <div class="col-md-6 copyright">
-                    <p class="mbr-text mbr-fonts-style display-7">
-                        © Copyright 2019 BeSoftware - All Rights Reserved
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="social-list align-right">
-                        <div class="soc-item">
-                            <a href="https://besoftware9.wixsite.com/be-software" target="_blank">
-                                <span class="mbr-iconfont mbr-iconfont-social mbrib-sites"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
-                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.youtube.com/c/mobirise" target="_blank">
-                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://instagram.com/mobirise" target="_blank">
-                                <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.behance.net/Mobirise" target="_blank">
-                                <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
+                <div class="col-md-3">
+                    <div class="media-wrap">
+                        <a href="/index">
+                           <img src="/images/logo2.png" alt="Mobirise">
+                        </a>
                     </div>
                 </div>
+                <div class="col-md-9">
+                    <p class="mbr-text align-right links mbr-fonts-style display-7"><a href="/index" class="text-black">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="/restaurantes" class="text-black">RESTAURANTES</a>&nbsp; &nbsp; &nbsp;<a href="/login" class="text-black">LOGIN</a></p>
+                </div>
+            </div>
+            <div class="footer-lower">
+                <div class="media-container-row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+                <div class="media-container-row mbr-white">
+                    <div class="col-md-6 copyright">
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            © Copyright 2019 BeSoftware - All Rights Reserved
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-list align-right">
+                            <div class="soc-item">
+                                <a href="https://besoftware9.wixsite.com/be-software" target="_blank">
+                                    <span class="mbr-iconfont mbr-iconfont-social mbrib-sites"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="" target="_blank">
+                                    <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="" target="_blank">
+                                    <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="" target="_blank">
+                                    <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="" target="_blank">
+                                    <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="" target="_blank">
+                                    <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
   <script src="/js/jquery.mask.min.js"></script>
 

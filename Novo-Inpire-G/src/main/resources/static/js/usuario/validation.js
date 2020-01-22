@@ -364,4 +364,34 @@ $(document).ready(function(){
 	});
 	
 	
+	//FORM Redefinir Senha
+	$("#redefinir").validate({
+		rules:{
+			password: {
+				required: true,
+				minlength: 6
+			},
+			confSenha: {
+				required: true,
+				equalTo: "#password"
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+	
+		},
+		messages:{
+			password: {
+				required: "Este campo é obrigatório.",
+				minlength: "A senha tem que ter no minimo 6 caracteres!"
+			},
+			confSenha: {
+				required: "Este campo é obrigatório.",
+				equalTo: "O campo confirmar senha tem quer identico ao senha!"
+			}
+		}
+	
+		
+	});
+	
 })

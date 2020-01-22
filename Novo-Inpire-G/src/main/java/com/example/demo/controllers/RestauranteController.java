@@ -2,6 +2,8 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +40,13 @@ public class RestauranteController {
 	private MailerRestaurante mail;
 	
 
-	
+	//cad Restaurante
+	@GetMapping("/restaurante")
+	public String showRestaurante(Restaurante restaurante,Model model,HttpSession session) {
+		model.addAttribute("loginRestaurante", restaurante);
+		
+		return "/admin/restaurante";
+	}
 	
 	@PostMapping("/restauranteCad")
 	public String showLRestaurante(Restaurante restaurante ,Model model,@RequestParam(name = "cnpj")String cnpj,@RequestParam(name = "noCNPJ") String noCNPJ) {
@@ -65,6 +73,7 @@ public class RestauranteController {
 		
 		restaurante.setAtivo(0);
 		restaurante.setPrioridade(2);
+		restaurante.setSaltera(0);
 		
 		serviceRestaurante.save(restaurante);
 		mail.enviar(restaurante);

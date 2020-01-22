@@ -98,68 +98,21 @@ public class LoginController {
 					ra.addFlashAttribute("mensagemErro", "6");
 					return "redirect:/login";
 				}else {
-					session.setAttribute("usuarioLogado", usuarioConsultado);
-					return "redirect:/home";
+					if (usuarioConsultado.getSaltera() != 1) {
+						session.setAttribute("usuarioLogado", usuarioConsultado);
+						return "redirect:/home";
+					}else {
+						session.setAttribute("usuarioLogado", usuarioConsultado);
+						
+						return "redirect:/redefinir/"+usuarioConsultado.getHashId()	;
+					}
+					
 				}
 			}			
 		}
 		
 	}
-	
-	
-	//Login Restaurante
-	@GetMapping("/restaurante")
-	public String showRestaurante(Restaurante restaurante,Model model,HttpSession session) {
-		model.addAttribute("loginRestaurante", restaurante);
 		
-		return "/admin/restaurante";
-	}
-	
-	@PostMapping("/restaurante")
-	public String loginRestaurante(Restaurante restaurante, RedirectAttributes ra, HttpSession session, Model model) throws NoSuchAlgorithmException{
-		
-		String senhaAnterior = restaurante.getSenha();
-		//criptografando a senha
-		restaurante.setSenha(Functions.getSHA256(restaurante.getSenha()));
-		
-		Restaurante restauranteConsultado = serviceRest.buscarConta(restaurante.getEmail(), restaurante.getSenha());
-		
-		if(restauranteConsultado == null){
-			Admin adminChecado = serviceAdmin.verificaAdmin(restaurante.getEmail(), senhaAnterior);
-			
-			if(adminChecado == null) {
-				ra.addFlashAttribute("mensagemErro", "3");
-				return "redirect:/restaurante";
-			}else {
-				if(adminChecado.getPrioridade() != 3) {
-					ra.addFlashAttribute("mensagemErro", "6");
-					return "redirect:/restaurante";
-				}else{
-					session.setAttribute("adminLogado", adminChecado);
-					return "redirect:/homeAdm";
-				}
-			}
-		}else {
-			
-			if(restauranteConsultado.getAtivo() != 1) {
-				ra.addFlashAttribute("mensagemErro", "2");
-				return "redirect:/restaurante";
-			}else {
-				if(restauranteConsultado.getPrioridade() != 2) {
-					ra.addFlashAttribute("mensagemErro", "6");
-					return "redirect:/restaurante";
-				}else {
-					session.setAttribute("restauranteLogado", restauranteConsultado);
-					
-					Oferta oferta = serviceOferta.get(restauranteConsultado.getIdRestaurante());
-					model.addAttribute("oferta", oferta);
-					return "/restaurante/homeRest";
-				}
-			}
-		}
-		
-	}
-	
 	
 	@GetMapping("/logout")
 	public String logUot(HttpSession session) {

@@ -95,7 +95,7 @@ public class UsuarioController {
 			
 			if(usuarioChecado.getAtivo() != 1) {
 				ra.addFlashAttribute("mensagemErro", "2");
-				return "redirect:/page7";
+				return "redirect:/recuperarSenha";
 			}else {
 				//variaveis para geração de senha
 				String ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -112,6 +112,7 @@ public class UsuarioController {
 				System.out.println(newSenha);
 				newSenha = Functions.getSHA256(newSenha);
 				usuarioChecado.setSenha(newSenha);
+				usuarioChecado.setSaltera(1);
 				
 				serviceUser.save(usuarioChecado);
 				ra.addFlashAttribute("mensagemErro", "4");
@@ -120,7 +121,7 @@ public class UsuarioController {
 			
 		}else {
 			ra.addFlashAttribute("mensagemErro", "1");
-			return "redirect:/page7";
+			return "redirect:/recuperarSenha";
 		}
 	
 	}
@@ -131,6 +132,23 @@ public class UsuarioController {
 		serviceUser.delete(idRest);
 		
 		return "redirect:/homeAdm";
+	}
+	
+	@GetMapping("/redefinir/{hash}")
+	public String showRedefinir(@PathVariable("hash")String hash,Model model) {
+		
+		Usuario user = serviceUser.buscarPeloHash(hash);
+		model.addAttribute("redefinir", user);
+		
+		return "/usuario/redefinir";
+	}
+	
+	@PostMapping("/redefinirSenha")
+	public String redefinir(@RequestParam(name = "hashId")String hash,@RequestParam(name = "confSenha")String senha,RedirectAttributes ra) {
+
+		serviceUser.redefinirSenha(hash,senha);
+     	ra.addFlashAttribute("mensagemErro", "5");
+		return "redirect:/home";
 	}
 	
 	

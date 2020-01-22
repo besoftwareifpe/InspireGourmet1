@@ -45,6 +45,7 @@ public class CadastroUsuarioController {
 		usuario.setDataDeCriacao(dataCriacao);
 		
 		usuario.setPrioridade(1);
+		usuario.setSaltera(0);
 		
 		serviceUser.save(usuario);
 		mail.enviar(usuario);
