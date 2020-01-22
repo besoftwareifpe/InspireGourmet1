@@ -30,7 +30,15 @@ public class Restaurante {
 	@Column(length = 255)
 	private String senha;
 	
-	private Endereco endereco;
+	private String cep;	
+	
+	private String bairro;
+	
+	private String numero;
+	
+	private String cidade;
+	
+	private String uf;
 	
 	@OneToOne
 	@JoinColumn(name = "idCategoria")
@@ -42,21 +50,6 @@ public class Restaurante {
 	
 	private Integer prioridade;
 	
-	public String getNomeRestaurante() {
-		return nomeRestaurante;
-	}
-	
-	public void setNomeRestaurante(String nomeRestaurante) {
-		this.nomeRestaurante = nomeRestaurante;
-	}
-	
-	public String getTelefone() {
-		return telefone;
-	}
-	
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
 	
 	public Integer getIdRestaurante() {
 		return idRestaurante;
@@ -64,6 +57,22 @@ public class Restaurante {
 
 	public void setIdRestaurante(Integer idRestaurante) {
 		this.idRestaurante = idRestaurante;
+	}
+
+	public String getNomeRestaurante() {
+		return nomeRestaurante;
+	}
+
+	public void setNomeRestaurante(String nomeRestaurante) {
+		this.nomeRestaurante = nomeRestaurante;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getCnpj() {
@@ -77,31 +86,63 @@ public class Restaurante {
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getSenha() {
 		return senha;
 	}
-	
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public Endereco getEndereco() {
-		return endereco;
+
+	public String getCep() {
+		return cep;
 	}
-	
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
-	
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
-	
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
@@ -121,11 +162,11 @@ public class Restaurante {
 	public void setHashId(String hashId) {
 		this.hashId = hashId;
 	}
-	
+
 	public Integer getPrioridade() {
 		return prioridade;
 	}
-
+	
 	public void setPrioridade(Integer prioridade) {
 		this.prioridade = prioridade;
 	}
@@ -134,6 +175,7 @@ public class Restaurante {
 		// TODO Auto-generated method stub
 		return false;
 	}	
+	
 	
 	
 }

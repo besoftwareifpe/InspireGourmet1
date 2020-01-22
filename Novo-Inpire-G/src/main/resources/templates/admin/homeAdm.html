@@ -77,9 +77,78 @@
         });
         
     </script>
+    
+    <style type="text/css">
+    	    404 page
+		=======================*/
+		
+		
+		.page_404{ margin: 0 auto !important;  background:#fff; font-family: 'Arvo', serif;
+		}
+
+		.page_404  img{ width:100vw;}
+		
+		.four_zero_four_bg{
+		 
+		 	background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+		    height: 60vh;
+		    background-position: center;
+		 }
+ 
+ 
+		 .four_zero_four_bg h1{
+		 	font-size:80px;
+		 }
+ 
+	  .four_zero_four_bg h3{
+	        font-size:80px;
+	   }
+	             
+	  .link_404{          
+	    color: #fff!important;
+	    padding: 10px 20px;
+	    background: #39ac31;
+	    margin: 20px;
+	    display: inline-block;
+	   }
+      .contant_box_404{ margin-top:-50px;
+      
+      
+      
+/*  */
+
+    </style>
 </head>
 <body>
-  <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
+  
+  <div th:unless="${session.adminLogado}">
+  	<section class="page_404">
+	    <div class="container">
+	        <div class="row">   
+		        <div class="col-12 ">
+			        <div class="col-10 col-sm-offset-1  text-center">
+				        <div class="four_zero_four_bg">
+				            <h1 class="text-center ">404</h1>
+				        </div>
+				        
+				        <div class="contant_box_404">
+					        <h3 class="h2">
+					        Look like you're lost
+					        </h3>
+					        
+					        <p>the page you are looking for not avaible!</p>
+					        
+					        <a href="" class="link_404">Go to Home</a>
+					    </div>
+			        </div>
+		        </div>
+	        </div>
+	    </div>
+	</section>
+  </div>
+  <div th:if="${session.adminLogado}">
+  	
+  	<section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
 
     
 
@@ -105,14 +174,17 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="/homeAdm"><span class="mbrib-home mbr-iconfont mbr-iconfont-btn"></span>
+                    <a class="nav-link link text-white display-4" href="/homeAdm"><span class="icon mbrib-home mbr-iconfont mbr-iconfont-btn"></span>
                         Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
-                </li>  				
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="/restaurante"><span class="icon mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn"></span>
+                        Cadastrar Restaurante &nbsp;</a>
+                </li>		
   				<li class="nav-item dropdown">
         			 <a class="nav-link link text-white dropdown-toggle display-4" data-toggle="dropdown-submenu" aria-expanded="false"><img id="img" src="/images/table-1469719_960_720.jpg"/>&nbsp; 
-                      <span>Nome Do Admin</span>&nbsp; &nbsp;</a>
+                      <span class="icon" th:text="${session.adminLogado.nomeAdmin}"></span>&nbsp; &nbsp;</a>
                      <div class="dropdown-menu">
-                     	<a class="text-white dropdown-item display-4" href="/configuracoes">Configuraçoes</a>
                      	<a class="text-white dropdown-item display-4" href="/logout">Sair</a>
                      </div>
                 </li>
@@ -143,16 +215,125 @@
 
 <section class="services1 cid-rIekDMgeHc" id="services1-17">
 
-	<div class="container">	
+	<div class="container" >	
+		
+		<div id="espaco"></div>
+		<div class="col-md-12">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Lista de usuários</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Lista de Restaurantes</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Lista de Categorias</a>
+			  </li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+			  
+			  	<div id="espaco"></div>
+		
+				  <div class="table-responsive">
+				    <table class="table table-striped table-bordered table-hover">
+				      <thead>
+				        <tr>
+				          <th>#</th>
+				          <th>Nome</th>
+				          <th>Cpf</th>
+				          <th>Email</th>
+				          <th>Data De Criacao</th>
+				          <th>Ultimo Update</th>
+				          <th>Ativo</th>
+				          <th>Ações</th>
+				          
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr th:each="list : ${usuarios}">
+				          <th scope="row"  style="padding: 20;" th:text="${list.idUsuario}">1</th>
+				          <td style="padding: 20;" th:text="${list.nomeUsuario}">nome</td>
+				          <td style="padding: 20;" th:text="${list.cpf}">cpf</td>
+				          <td style="padding: 20;" th:text="${list.email}">email@emal.com</td>
+				          <td style="padding: 20;" th:text="${list.dataDeCriacao}">data de criaçao</td>
+				          <td style="padding: 20;" th:text="${list.ultimoUpdate}">qweqwe</td>
+				          <td style="padding: 20;" th:text="${list.ativo}">qweqwe</td>
+				          <td>	
+				          	<a th:href="|/deleteUser/${list.idUsuario}|" class="btn btn-outline-danger btn-sm" style="margin: 0;padding: 10;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+				          </td>
+				        </tr>
+				      </tbody>
+				    </table>
+				  </div>
+			  
+			  </div>
+			  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+			  
+			  		<div id="espaco"></div>
+	
+				  <div class="table-responsive">
+				    <table class="table table-striped table-bordered table-hover">
+				      <thead>
+				        <tr>
+				          <th>#</th>
+				          <th>Nome Restaurante</th>
+				          <th>Telefone</th>
+				          <th>CNPJ</th>
+				          <th>Email</th>
+				          <th>Ativo</th>
+				          <th>Ações</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr th:each="list : ${restaurantes}">
+				          <th scope="row"  style="padding: 20;" th:text="${list.idRestaurante}">1</th>
+				          <td style="padding: 20;" th:text="${list.nomeRestaurante}">nome restaurante</td>
+				          <td style="padding: 20;" th:text="${list.telefone}">telefone</td>
+				          <td style="padding: 20;" th:text="${list.cnpj}">cnpj</td>
+				          <td style="padding: 20;" th:text="${list.email}">email</td>
+				          <td style="padding: 20;" th:text="${list.ativo}">Ativo</td>
+				          <td>
+				          	<a th:href="|/deleteRest/${list.idRestaurante}|" class="btn btn-outline-danger btn-sm" style="margin: 0;padding: 10;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+				          </td>
+				        </tr>
+				      </tbody>
+				    </table>
+				  </div>
+			  	
+			  </div>
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+			  		<div id="espaco"></div>
+				  <div class="table-responsive">
+					    <table class="table table-striped table-bordered table-hover">
+					      <thead>
+					        <tr>
+					          <th>#</th>
+					          <th>Nome</th>
+					          <th>Ações</th>
+					        </tr>
+					      </thead>
+					      <tbody>
+					        <tr th:each="categoria : ${categorias}">
+					          <th scope="row" th:text="${categoria.idCategoria}"  style="padding: 20;"></th>
+					          <td th:text="${categoria.nomeCategoria}" style="padding: 20;"></td>
+					          <td>
+					          	<a  th:href="|/editeCat/${categoria.idCategoria}|"class="btn btn-outline-primary btn-sm" style="margin: 0; padding: 10;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+					          	<a  th:href="|/deleteCat/${categoria.idCategoria}|" class="btn btn-outline-danger btn-sm" style="margin: 0;padding: 10;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					          </td>
+					        </tr>
+					      </tbody>
+					    </table>
+					    
+					    </div>
+					</div>
+				  
+				  </div>
+			</div>
+		  
+		</div>
 		
 		<div class="row"> 
-		
-		  <div class="col-md-12">
-		  	<div class="row">
-		  		<a href="/listUsuarios" style="margin: 10px"><button  type="button">Lista de usuários</button></a>
-		  		<a href="/listRestaurantes" style="margin: 10px"><button  type="button">Lista de Restaurantes</button></a>
-		  	</div>
-		  </div>
 		  
 		  
 		  <div class="col-md-12">
@@ -175,29 +356,7 @@
 			  </form>
 		  </div>
 	  </div>	
-	  <div class="table-responsive">
-	    <table class="table table-striped table-bordered table-hover">
-	      <thead>
-	        <tr>
-	          <th>#</th>
-	          <th>Nome</th>
-	          <th>Ações</th>
-	        </tr>
-	      </thead>
-	      <tbody>
-	        <tr th:each="categoria : ${categorias}">
-	          <th scope="row" th:text="${categoria.idCategoria}"  style="padding: 20;"></th>
-	          <td th:text="${categoria.nomeCategoria}" style="padding: 20;"></td>
-	          <td>
-	          	<a  th:href="|/editeCat/${categoria.idCategoria}|"class="btn btn-outline-primary btn-sm" style="margin: 0; padding: 10;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-	          	<a  th:href="|/deleteCat/${categoria.idCategoria}|" class="btn btn-outline-danger btn-sm" style="margin: 0;padding: 10;"><i class="fa fa-trash" aria-hidden="true"></i></a>
-	          </td>
-	        </tr>
-	      </tbody>
-	    </table>
-	    
-	    </div>
-	</div>
+	  
 	
 </section>
 
@@ -267,6 +426,8 @@
         </div>
     </div>
 </section>
+  	
+  </div>
 
 
   <script src="/web/assets/jquery/jquery.min.js"></script>

@@ -77,17 +77,17 @@
 		    </nav>
 		</section>
 		
-		<section class="engine"><a href="https://mobirise.info/a">online website builder</a></section><section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w">
+		<section  class="engine"><a href="https://mobirise.info/a">online website builder</a></section><section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w">
 		
 		    
 		
-		    <div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div>
+		    <div class="mbr-overlay" style="height: 40vh;opacity: 0.9;"><div id="rgb"></div>
 		    </div>
 		
-		    <div class="container">
+		    <div class="container" style="height: 12vh">
 		        <div class="media-container-row">
 		            <div class="title col-12 col-md-8">
-		                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Menu de alterações do restaurante</em></h2>
+		                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Perfil</em></h2>
 		                <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5"></h3>
 		                
 		                
@@ -124,9 +124,40 @@
 				  <div class="col-7">
 				    <label>Email</label>
 				    <input type="text" th:field="*{email}" disabled>
+				  </div>
+				  
+				  <div class="col-12">
+				  		<div class="row">
+							  <div class="col-3">
+							    <label>Cep</label>
+							    <input type="text" th:field="*{cep}">
+							  </div>
+							  
+							   <div class="col-7">
+							    <label>Bairro</label>
+							    <input type="text" th:field="*{bairro}">
+							  </div>	
+							  
+							   <div class="col-2">
+							    <label>Numero</label>
+							    <input type="text" th:field="*{numero}">
+							  </div>	
+							  
+							   <div class="col-7">
+							    <label>Cidade</label>
+							    <input type="text" th:field="*{cidade}" >
+							  </div>	
+							  
+							   <div class="col-1">
+							    <label>UF</label>
+							    <input type="text" th:field="*{uf}">
+							  </div>
+					 	</div>
 				  </div>				  
 				  
-				  <button type="submit">Submit</button>
+				  <div id="espaco"></div>
+				  
+				  <button type="submit">Salvar</button>
 				</form>
 			
 			

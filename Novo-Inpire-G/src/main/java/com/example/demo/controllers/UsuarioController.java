@@ -16,7 +16,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.daos.UsuarioDAO;
 import com.example.demo.email.MailerPassword;
+import com.example.demo.models.Categoria;
+import com.example.demo.models.Restaurante;
 import com.example.demo.models.Usuario;
+import com.example.demo.services.CategoriaService;
+import com.example.demo.services.RestauranteService;
 import com.example.demo.services.UsuarioService;
 import com.example.demo.util.Functions;
 import com.example.demo.util.PasswordGenerate;
@@ -28,17 +32,29 @@ public class UsuarioController {
 	private UsuarioService serviceUser;
 	
 	@Autowired
+	private RestauranteService serviceRestaurante;
+	
+	@Autowired
+	private CategoriaService serviceCategoria;
+	
+	@Autowired
 	private MailerPassword mail;
 	
 	@Autowired
 	private UsuarioDAO userDao;
 	
-	@GetMapping("/listUsuarios")
-	public String showlistAllUsers(Model model) {
+	@GetMapping("/home")
+	public String showHome(Model model) {
+		Restaurante restaurante = new Restaurante();
+		model.addAttribute("restaurante", restaurante);
 		
-		List<Usuario> usuario = serviceUser.listAll();
-		model.addAttribute("usuarios", usuario);
-		return "/admin/listUsuarios";
+		List<Restaurante> lista = serviceRestaurante.listAll();
+		model.addAttribute("restaurantes", lista);
+		
+		List<Categoria> listaCat = serviceCategoria.listAll();
+		model.addAttribute("comidas", listaCat);
+		
+		return "usuario/home";
 	}
 	
 	@GetMapping("/edite/{idUser}")

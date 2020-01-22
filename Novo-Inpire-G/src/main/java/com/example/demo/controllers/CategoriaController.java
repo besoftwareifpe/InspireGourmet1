@@ -25,18 +25,6 @@ public class CategoriaController {
 	
 	@Autowired
 	private CategoriaDAO categoriaDao;
-
-
-	@GetMapping("/homeAdm")
-	public String exibirPageOptCat(Categoria categoria ,Model model) {
-		model.addAttribute("categoria", categoria);
-		
-		
-		List<Categoria> categorias = serviceCategoria.listAll();
-		model.addAttribute("categorias", categorias);
-		
-		return "/admin/homeAdm";
-	}
 	
 	
 	@PostMapping("/salvarCategoria")

@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.email.MailerRestaurante;
 import com.example.demo.models.Categoria;
-import com.example.demo.models.Endereco;
 import com.example.demo.models.Oferta;
 import com.example.demo.models.Restaurante;
 import com.example.demo.services.CategoriaService;
@@ -38,27 +37,7 @@ public class RestauranteController {
 	@Autowired
 	private MailerRestaurante mail;
 	
-	@GetMapping("/home")
-	public String showHome(Model model) {
-		Restaurante restaurante = new Restaurante();
-		model.addAttribute("restaurante", restaurante);
-		
-		List<Restaurante> lista = serviceRestaurante.listAll();
-		model.addAttribute("restaurantes", lista);
-		
-		List<Categoria> listaCat = serviceCategoria.listAll();
-		model.addAttribute("comidas", listaCat);
-		
-		return "usuario/home";
-	}
-	
-	@GetMapping("/listRestaurantes")
-	public String showlistAllRest(Model model) {
-		
-		List<Restaurante> lista = serviceRestaurante.listAll();
-		model.addAttribute("restaurantes", lista);
-		return "/admin/listRestaurantes";
-	}
+
 	
 	
 	@PostMapping("/restauranteCad")
@@ -74,7 +53,7 @@ public class RestauranteController {
 		List<Categoria> categorias = serviceCategoria.listAll();
 		model.addAttribute("categorias", categorias);
 		
-		return "restauranteCad";
+		return "/admin/restauranteCad";
 	}
 	
 	@PostMapping("/savarRestaurante")
@@ -84,14 +63,6 @@ public class RestauranteController {
 		//criptografando a senha
 		restaurante.setSenha(Functions.getSHA256(restaurante.getSenha()));
 		
-		Endereco endereco = new Endereco();
-		endereco.setCep(cep);
-		endereco.setBairro(bairro);
-		endereco.setCidade(cidade);
-		endereco.setNumero(numero);
-		endereco.setUf(uf);
-		
-		restaurante.setEndereco(endereco);
 		restaurante.setAtivo(0);
 		restaurante.setPrioridade(2);
 		
@@ -154,11 +125,7 @@ public class RestauranteController {
 		
 		Restaurante restaurante1 = serviceRestaurante.findByHashId(restaurante.getHashId());
 		
-		if(restaurante.getSenha() == null) {
-			restaurante.setSenha(restaurante1.getSenha());
-		}
-		
-		serviceRestaurante.save(restaurante);
+		serviceRestaurante.save(restaurante1);
 		
 		return "/restaurante/configuracoes";
 	}
@@ -176,26 +143,15 @@ public class RestauranteController {
 	public ModelAndView pesquisar(@RequestParam(name = "pesquisa")String pesquisa ,@RequestParam(name = "categoria")Integer categoria,Model model) {
 		ModelAndView modelAndView= new ModelAndView("usuario/home");
 		
-		if(pesquisa == null) {
-			if(categoria == 0) {
-				modelAndView.addObject("restaurantes",serviceRestaurante.listAll());
-				modelAndView.addObject("comidas",serviceCategoria.listAll());
-				Restaurante restaurante = new Restaurante();
-				model.addAttribute("restaurante", restaurante);
-				return modelAndView;
-			}else {
-				modelAndView.addObject("restaurantes",serviceRestaurante.listRestauranteCate(categoria));
-				modelAndView.addObject("comidas",serviceCategoria.listAll());
-				Restaurante restaurante = new Restaurante();
-				model.addAttribute("restaurante", restaurante);
-				return modelAndView;
-			}
+		System.out.println(pesquisa);
+		if(pesquisa == "JAPONESA" || pesquisa == "Japonesa") {
 			
-		}else {
-			modelAndView.addObject("restaurantes",serviceRestaurante.listRestaurante(pesquisa));
-			modelAndView.addObject("comidas",serviceCategoria.listAll());
-			Restaurante restaurante = new Restaurante();
-			model.addAttribute("restaurante", restaurante);
+			List<Restaurante> listRestaurante = serviceRestaurante.listRestauranteCate(pesquisa);
+			System.out.println(listRestaurante);
+			modelAndView.addObject("restaurantes", listRestaurante);
+			return modelAndView;
+			
+		}else{
 			return modelAndView;
 		}
 	}

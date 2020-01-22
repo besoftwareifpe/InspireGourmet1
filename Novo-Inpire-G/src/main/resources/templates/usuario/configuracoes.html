@@ -47,6 +47,11 @@
   
 </head>
 <body>
+
+  <div th:unless="${session.usuarioLogado}">
+  	Erro 404
+  </div>
+  <div th:if="${session.usuarioLogado}">
   <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
 
     
@@ -217,7 +222,7 @@
         </div>
     </div>
 </section>
-
+</div>
 
   <script src="/web/assets/jquery/jquery.min.js"></script>
   <script src="/popper/popper.min.js"></script>

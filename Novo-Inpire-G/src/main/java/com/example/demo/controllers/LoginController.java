@@ -41,19 +41,53 @@ public class LoginController {
 	public String showLogin(Usuario usuario,Model model,HttpSession session) {
 		model.addAttribute("login", usuario);
 		
-		return "page2";
+		return "login";
 	}
 	
 	@PostMapping("realizarLogin")
 	public String login(Usuario usuario, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException {
+		String senhaAnterior = usuario.getSenha();
 		//criptografando a senha
 		usuario.setSenha(Functions.getSHA256(usuario.getSenha()));
 		
 		Usuario usuarioConsultado = serviceUser.buscarConta(usuario.getEmail(), usuario.getSenha());
 		
 		if(usuarioConsultado == null) {
-			ra.addFlashAttribute("mensagemErro", "3");
-			return "redirect:/login";
+			Restaurante restauranteConsultado = serviceRest.buscarConta(usuario.getEmail(), usuario.getSenha());
+			
+			if(restauranteConsultado == null){
+				Admin adminChecado = serviceAdmin.verificaAdmin(usuario.getEmail(), senhaAnterior);
+				
+				if(adminChecado == null) {
+					ra.addFlashAttribute("mensagemErro", "3");
+					return "redirect:/login";
+				}else {
+					if(adminChecado.getPrioridade() != 3) {
+						ra.addFlashAttribute("mensagemErro", "6");
+						return "redirect:/login";
+					}else{
+						session.setAttribute("adminLogado", adminChecado);
+						return "redirect:/homeAdm";
+					}
+				}
+			}else {
+				
+				if(restauranteConsultado.getAtivo() != 1) {
+					ra.addFlashAttribute("mensagemErro", "2");
+					return "redirect:/login";
+				}else {
+					if(restauranteConsultado.getPrioridade() != 2) {
+						ra.addFlashAttribute("mensagemErro", "6");
+						return "redirect:/login";
+					}else {
+						session.setAttribute("restauranteLogado", restauranteConsultado);
+						
+						Oferta oferta = serviceOferta.get(restauranteConsultado.getIdRestaurante());
+						ra.addAttribute("oferta", oferta);
+						return "/restaurante/homeRest";
+					}
+				}
+			}
 		}else {
 			
 			if(usuarioConsultado.getAtivo() != 1) {
@@ -78,7 +112,7 @@ public class LoginController {
 	public String showRestaurante(Restaurante restaurante,Model model,HttpSession session) {
 		model.addAttribute("loginRestaurante", restaurante);
 		
-		return "restaurante";
+		return "/admin/restaurante";
 	}
 	
 	@PostMapping("/restaurante")

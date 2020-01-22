@@ -11,21 +11,21 @@ public class BtnController {
 		return "index";
 	}
 	
-	@GetMapping("/page1")
+	@GetMapping("/assinatura")
 	public String show1() {
-		return "page1";
+		return "assinatura";
 	}
 	
 	
 
-	@GetMapping("/page3")
+	@GetMapping("/restaurantes")
 	public String show3() {
-		return "page3";
+		return "restaurantes";
 	}
 	
-	@GetMapping("/page4")
+	@GetMapping("/detalhe")
 	public String show4() {
-		return "page4";
+		return "detalhes";
 	}
 	
 	
@@ -37,7 +37,7 @@ public class BtnController {
 	
 	@GetMapping("/page5")
 	public String show5() {
-		return "page5";
+		return "cadUser";
 	}
 	
 	@GetMapping("/page6")

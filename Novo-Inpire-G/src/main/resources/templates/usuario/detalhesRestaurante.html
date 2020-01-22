@@ -28,6 +28,10 @@
   <link rel="stylesheet" href="/css/detales/detalhes.css">
 </head>
 <body>
+  <div th:unless="${session.usuarioLogado}">
+  	Erro 404
+  </div>
+  <div th:if="${session.usuarioLogado}">
   <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
 
     
@@ -76,8 +80,6 @@
     
 
     <div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div> </div>
-    </div>
-
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
@@ -370,7 +372,7 @@
         </div>
     </div>
 </section>
-
+</div>
 
   <script src="/web/assets/jquery/jquery.min.js"></script>
   <script src="/popper/popper.min.js"></script>

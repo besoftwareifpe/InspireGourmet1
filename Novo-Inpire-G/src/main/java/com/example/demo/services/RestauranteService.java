@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.daos.CategoriaDAO;
 import com.example.demo.daos.RestauranteDAO;
 import com.example.demo.models.Restaurante;
 
@@ -17,6 +18,9 @@ public class RestauranteService {
 
 	@Autowired
 	private RestauranteDAO repository;
+	
+	@Autowired
+	private CategoriaDAO cateRepository;
 	
 	public List<Restaurante> listAll(){
 		return repository.findAll();
@@ -60,8 +64,12 @@ public class RestauranteService {
 		return repository.buscarRestaurantes(pesquisa);
 	}
 
-	public List<Restaurante> listRestauranteCate(Integer idCat) {
-		return repository.buscarRestauranteCate(idCat);
+	public List<Restaurante> listRestauranteCate(String cate) {
+		
+		Boolean categoria = cateRepository.findByNomeCategoria(cate) == null;
+		System.out.println(categoria);
+		
+		return repository.buscarRestauranteCate(1);
 	}
 }
 

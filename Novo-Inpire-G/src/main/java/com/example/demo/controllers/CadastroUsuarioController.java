@@ -30,7 +30,7 @@ public class CadastroUsuarioController {
 		model.addAttribute("usuario", usuario);		
 		model.addAttribute("cpf", cpf);
 		
-		return "page5";
+		return "cadastro";
 	}
 	
 	@PostMapping("/salvarUsuario" )
