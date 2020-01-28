@@ -1,81 +1,45 @@
-svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -250px;
-  margin-left: -400px;
-}
-.message-box {
-  height: 200px;
-  width: 380px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -100px;
-  margin-left: 50px;
-  color: #FFF;
-  font-family: Roboto;
-  font-weight: 300;
-}
-.message-box h1 {
-  font-size: 60px;
-  line-height: 46px;
-  margin-bottom: 40px;
-}
-.buttons-con .action-link-wrap {
-  margin-top: 40px;
-}
-.buttons-con .action-link-wrap a {
-  background: #68c950;
-  padding: 8px 25px;
-  border-radius: 4px;
-  color: #FFF;
-  font-weight: bold;
-  font-size: 14px;
-  transition: all 0.3s linear;
-  cursor: pointer;
-  text-decoration: none;
-  margin-right: 10px
-}
-.buttons-con .action-link-wrap a:hover {
-  background: #5A5C6C;
-  color: #fff;
+.container2{
+    margin: 0 auto;
+    width: 60%; 
 }
 
-#Polygon-1 , #Polygon-2 , #Polygon-3 , #Polygon-4 , #Polygon-4, #Polygon-5 {
-  animation: float 1s infinite ease-in-out alternate;
-}
-#Polygon-2 {
-  animation-delay: .2s; 
-}
-#Polygon-3 {
-  animation-delay: .4s; 
-}
-#Polygon-4 {
-  animation-delay: .6s; 
-}
-#Polygon-5 {
-  animation-delay: .8s; 
+.page_404{ 
+    padding:40px 0; 
+    background:#fff; 
+    font-family: 'Arvo', serif;
 }
 
-@keyframes float {
-	100% {
-    transform: translateY(20px);
-  }
+.page_404  img{ 
+    width:100%;
 }
-@media (max-width: 450px) {
-  svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -190px;
-  }
-  .message-box {
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -190px;
-    text-align: center;
-  }
+
+.four_zero_four_bg{
+ 
+    background-image: url(dribbble_1.gif);
+    height: 60vh;
+    background-position: center;
+    width: 60vw;
+
+}
+
+
+.four_zero_four_bg h1{
+    font-size:80px;
+}
+
+.four_zero_four_bg h3{
+    font-size:80px;
+}
+          
+.link_404{          
+    color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;
+}
+ .contant_box_404{ 
+     margin-top:-50px;
+     width: 60vw;
+
 }

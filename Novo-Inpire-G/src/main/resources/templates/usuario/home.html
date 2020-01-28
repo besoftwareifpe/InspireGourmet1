@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/images/logo2.png" type="image/x-icon">
   <meta name="description" content="Website Builder Description">
   
-  <title>Restaurantes</title>
+  <title>Home</title>
   <link rel="stylesheet" href="/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -164,7 +164,30 @@
     
     
     	<div th:if="${session.usuarioLogado} == null">
-    	erro 404
+    		
+		    <section class="page_404">
+		    <div class="container2">
+		        <div class="row">   
+		            <div class="col-sm-12">
+		                <div class="col-sm-10 col-sm-offset-1  text-center">
+		                    <div class="four_zero_four_bg">
+		                        <h1 class="text-center ">404</h1>
+		                    </div>
+		                    
+		                    <div class="contant_box_404">
+		                        <h3 class="h2">
+		                        Pagina não encontrada
+		                        </h3>
+		                        
+		                        <p>Clique no botão abaixo e volte para a home!</p>
+		                        
+		                        <a href="/index" class="link_404">Ir para a Home</a>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+	    	</div>
+			</section>
     	</div>
     	<div th:if="${session.usuarioLogado} != null">
 			<div class="row">

@@ -27,11 +27,12 @@
   <!-- font awesome -->
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
 
-  <link rel="stylesheet" href="/css/restaurants.css">
-  <link rel="stylesheet" href="/css/404.css">
   <script src="/js/page3.js"></script>
   
-  <link rel="stylesheet" href="/css/restaurante/style.css">	
+  	<link rel="stylesheet" href="/css/restaurante/style.css">
+  	<link rel="stylesheet" href="/css/404.css">
+	<link href="/qr/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/qr/css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -78,17 +79,17 @@
 		    </nav>
 		</section>
 		
-		<section  class="engine"><a href="https://mobirise.info/a">online website builder</a></section><section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w">
+		<section class="engine"><a href="https://mobirise.info/a">online website builder</a></section><section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w">
 		
 		    
 		
-		    <div class="mbr-overlay" style="height: 40vh;opacity: 0.9;"><div id="rgb"></div>
+		    <div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div>
 		    </div>
 		
-		    <div class="container" style="height: 12vh">
+		    <div class="container">
 		        <div class="media-container-row">
 		            <div class="title col-12 col-md-8">
-		                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Perfil</em></h2>
+		                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Menu de alterações do restaurante</em></h2>
 		                <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5"></h3>
 		                
 		                
@@ -98,72 +99,67 @@
 		</section>
 		
 		<section class="services1 cid-rIekDMgeHc" id="services1-17">
-		    <div id="espaco1"></div>
-		    <!--Container-->
-		    <div class="container">
-		      
-		      	<form id="confRest" th:action="@{/editeRestaurante}" th:object="${restaurante}" method="post">
-				  <div>
-				    <input type="text" th:field="*{idRestaurante}" hidden>
-				  </div>
-				  <div class="col-12">
-				    <label >Nome do Restaurante</label>
-				    <input type="text" th:field="*{nomeRestaurante}">
-				  </div>
-				  <div class="col-12">
-				  	<div class="row">
-					  <div class="col-6">
-					    <label >Telefone</label>
-					    <input type="text" th:field="*{telefone}">
-					  </div>
-					  <div class="col-6">
-					    <label>CNPJ</label>
-					    <input type="text" th:field="*{cnpj}" disabled>
-					  </div>
-					 </div>
-				  </div>
-				  <div class="col-7">
-				    <label>Email</label>
-				    <input type="text" th:field="*{email}" disabled>
-				  </div>
-				  
-				  <div class="col-12">
-				  		<div class="row">
-							  <div class="col-3">
-							    <label>Cep</label>
-							    <input type="text" th:field="*{cep}">
-							  </div>
-							  
-							   <div class="col-7">
-							    <label>Bairro</label>
-							    <input type="text" th:field="*{bairro}">
-							  </div>	
-							  
-							   <div class="col-2">
-							    <label>Numero</label>
-							    <input type="text" th:field="*{numero}">
-							  </div>	
-							  
-							   <div class="col-7">
-							    <label>Cidade</label>
-							    <input type="text" th:field="*{cidade}" >
-							  </div>	
-							  
-							   <div class="col-1">
-							    <label>UF</label>
-							    <input type="text" th:field="*{uf}">
-							  </div>
-					 	</div>
-				  </div>				  
-				  
-				  <div id="espaco"></div>
-				  
-				  <button type="submit">Salvar</button>
-				</form>
-			
-			
-		    </div>
-		</section>
+
+        <div class="page-header text-center">
+	        <div class="container" id="QR-Code">
+	            <div class="panel panel-info">
+	                
+	                <div class="panel-body text-center">
+	                    <div class="col-md-12">
+	                        <div class="col-md-6">
+	                            <div class="well" >
+	                                <label for="">Camera</label><br> 
+	                                <div style=" position: relative;display: inline-block;">
+	                                    <canvas width="420px" height="340px" id="webcodecam-canvas"></canvas>
+	                                    <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
+	                                    <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
+	                                    <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
+	                                    <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
+	                                </div><br>
+	                                <div>
+	                                    <div class="panel-heading">
+	                                        <div class="navbar-form navbar-center">
+	                                            <label for="">Trocar camera</label><br>
+	                                            <select class="form-control" id="camera-select"></select><br><br>
+	                    
+	                                            <div class="form-group">
+	                                                <button title="Decode Image" class="btn btn-default btn-sm" id="decode-img" type="button" data-toggle="tooltip">Escanear uma imagem <span class="glyphicon glyphicon-upload"></span></button>
+	                                                <button title="Image shoot" class="btn btn-info btn-sm disabled" id="grab-img" type="button" data-toggle="tooltip" style="visibility: hidden"><span class="glyphicon glyphicon-picture"></span></button>
+	                                                <button title="Play" class="btn btn-success btn-sm" id="play" type="button" data-toggle="tooltip">Iniciar <span class="glyphicon glyphicon-play"></span></button>
+	                                                <button title="Pause" class="btn btn-warning btn-sm" id="pause" type="button" data-toggle="tooltip" style="visibility: hidden"><span class="glyphicon glyphicon-pause"></span></button>
+	                                                <button title="Stop streams" class="btn btn-danger btn-sm" id="stop" type="button" data-toggle="tooltip">Parar <span class="glyphicon glyphicon-stop"></span></button>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="well">
+	                                    <label id="zoom-value" width="100">Zoom da camera: 2</label>
+	                                    <input id="zoom" onchange="Page.changeZoom();" type="range" min="10" max="30" value="20">
+	                                </div>
+	                            </div>
+	                            
+	                        </div>  
+	                        <div class="col-md-6">
+	                            <div class="thumbnail" id="result">
+	                                <div class="well" style="overflow: hidden;">
+	                                    <label for="">Imagem Escaneada</label><br>   
+	                                    <img width="420px" height="340px" id="scanned-img" src=""><br><br>  
+	                                    <div class="caption">
+	                                        <h3>Resultado do scanner</h3>
+	                                        <p id="scanned-QR"></p>
+	                                    </div>
+	                                </div>
+	                                
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	            </div>
+	        </div>
+        </div>
+        
+        </section>
 		
 		<section class="cid-rIetTk9Awm" id="footer5-1a">
 		
@@ -177,7 +173,7 @@
 		                </div>
 		            </div>
 		            <div class="col-md-9">
-		                <p class="mbr-text align-right links mbr-fonts-style display-7"><a th:href="|/homeRest/${session.restauranteLogado.idRestaurante}|" class="text-black">HOME</a>;
+		                <p class="mbr-text align-right links mbr-fonts-style display-7"><a th:href="|/homeRest/${session.restauranteLogado.idRestaurante}|" class="text-black">HOME</a>
 		            </div>
 		        </div>
 		        <div class="footer-lower">
@@ -194,10 +190,10 @@
 		                </div>
 		                <div class="col-md-6">
 		                    <div class="social-list align-right">
-							<div class="soc-item">
-	                            <a href="https://besoftware9.wixsite.com/be-software" target="_blank">
-	                                <span class="mbr-iconfont mbr-iconfont-social mbrib-sites"></span>
-	                            </a>
+		                        <div class="soc-item">
+                            <a href="https://besoftware9.wixsite.com/be-software" target="_blank">
+                                <span class="mbr-iconfont mbr-iconfont-social mbrib-sites"></span>
+                            </a>
 	                        </div>
 	                        <div class="soc-item">
 	                            <a href="#">
@@ -249,7 +245,7 @@
 	                        
 	                        <p>Clique no botão abaixo e volte para a home!</p>
 	                        
-	                        <a href="/index" class="link_404">Ir para a Home</a>
+	                        <a href="" class="link_404">Ir para a Home</a>
 	                    </div>
 	                </div>
 	            </div>
@@ -257,25 +253,22 @@
 	    </div>
 		</section>
 	</div>
-  
-
-
-  <script src="/web/assets/jquery/jquery.min.js"></script>
-  <script src="/popper/popper.min.js"></script>
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/smoothscroll/smooth-scroll.js"></script>
-  <script src="/tether/tether.min.js"></script>
-  <script src="/dropdown/js/nav-dropdown.js"></script>
-  <script src="/dropdown/js/navbar-dropdown.js"></script>
-  <script src="/touchswipe/jquery.touch-swipe.min.js"></script>
-  <script src="/parallax/jarallax.min.js"></script>
-  <script src="/theme/js/script.js"></script>
-  
-  
-</body>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-		
+		<script src="/web/assets/jquery/jquery.min.js"></script>
+		<script src="/popper/popper.min.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/smoothscroll/smooth-scroll.js"></script>
+		<script src="/tether/tether.min.js"></script>
+		<script src="/dropdown/js/nav-dropdown.js"></script>
+		<script src="/dropdown/js/navbar-dropdown.js"></script>
+		<script src="/touchswipe/jquery.touch-swipe.min.js"></script>
+		<script src="/parallax/jarallax.min.js"></script>
+		<script src="/theme/js/script.js"></script>
 	
-    <script src="/js/usuario/validation.js"></script>
+		<!-- QR -->
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="/qr/js/filereader.js"></script>
+		<script type="text/javascript" src="/qr/js/qrcodelib.js"></script>
+		<script type="text/javascript" src="/qr/js/webcodecamjs.js"></script>
+		<script type="text/javascript" src="/qr/js/main.js"></script>
+    </body>
 </html>
