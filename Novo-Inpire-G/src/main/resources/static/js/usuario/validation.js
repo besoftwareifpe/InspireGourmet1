@@ -394,4 +394,48 @@ $(document).ready(function(){
 		
 	});
 	
+	//FORM RECUPERAR SENHA
+	$("#recupera").validate({
+		rules:{
+			email: {
+				required: true,
+				email: true
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+	
+		},
+		messages:{
+			email: {
+				required: "Informe um email.",
+				email: "Por favor informe um email valido!"
+			}
+		}
+	
+		
+	});
+	
+	//CAD CATEGORIA
+	$("#categoria").validate({
+		rules:{
+			nomeCategoria: {
+				required: true,
+				maxlength: 30
+			},
+			submitHandler: function(form){
+				form.submit()
+			}
+	
+		},
+		messages:{
+			nomeCategoria: {
+				required: "Informe o nome da Categoria a ser salva.",
+				minlength: "O nome da Categoria so pode ter no maximo 30 caractes!"
+			}
+		}
+	
+		
+	});
+	
 })

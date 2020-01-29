@@ -42,7 +42,7 @@ public class BtnController {
 	
 	@GetMapping("/page6")
 	public String show6() {
-		return "page6";
+		return "continuar";
 	}
 	
 	@GetMapping("/recuperarSenha")

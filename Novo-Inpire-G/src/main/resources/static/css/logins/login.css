@@ -105,6 +105,7 @@ span {
 	transition: transform 80ms ease-in;
 }
 button {
+	cursor: pointer;
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
 	background-color: #FF4B2B;
@@ -293,3 +294,12 @@ input {
 	text-decoration: none;
 	margin: 15px 0;
 }
+
+#Rgister{
+	color: white;
+}
+
+#Log:hover #Rgister{
+	background: white;
+	color: #ff416c;
+}	

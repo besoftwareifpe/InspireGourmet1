@@ -24,10 +24,10 @@
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/homeUser/restaurants.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/homeUser/restaurants.css"/>
   <link rel="stylesheet" href="/css/homeUser/cards.css">
-  <link rel="stylesheet" href="/css/logins/login.css">
+  <link rel="stylesheet" href="/css/homeAdm/cate.css">
   <link rel="stylesheet" href="/css/404.css">
   <!-- CDN das Mensagens -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -189,6 +189,9 @@
 			  <li class="nav-item">
 			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Lista de Categorias</a>
 			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="cate-tab" data-toggle="tab" href="#cate" role="tab" aria-controls="contact" aria-selected="false">Cadastrar Categoria</a>
+			  </li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
 			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -278,7 +281,7 @@
 					          <th scope="row" th:text="${categoria.idCategoria}"  style="padding: 20;"></th>
 					          <td th:text="${categoria.nomeCategoria}" style="padding: 20;"></td>
 					          <td>
-					          	<a  th:href="|/editeCat/${categoria.idCategoria}|"class="btn btn-outline-primary btn-sm" style="margin: 0; padding: 10;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+					          	<a id="edite" th:href="|/editeCat/${categoria.idCategoria}|"class="btn btn-outline-primary btn-sm" style="margin: 0; padding: 10;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 					          	<a  th:href="|/deleteCat/${categoria.idCategoria}|" class="btn btn-outline-danger btn-sm" style="margin: 0;padding: 10;"><i class="fa fa-trash" aria-hidden="true"></i></a>
 					          </td>
 					        </tr>
@@ -287,35 +290,30 @@
 					    
 					    </div>
 					</div>
+					<div class="tab-pane fade" id="cate" role="tabpanel" aria-labelledby="cate-tab">
+						
+						<div class="col-md-12">
+						  <form id="categoria" th:action="@{/salvarCategoria}" th:object="${categoria}" method="post">
+						  		
+							  	<div class="col-md-5">
+								  		<div id="mensagem" th:text="${mensagem}" hidden></div>
+								  		<input type="text" th:field="*{idCategoria}" hidden	/>
+								  	
+							        	<label for="ip1" style="color: black; float: left;">Nome Da Categoria</label>	
+										<input type="text" th:field="*{nomeCategoria}" />
+										
+										<div class="aligen-center" style="margin-top: 10px;">		
+											<a href="#" style="margin: 5;"><button id="addCat" type="submit">Salvar</button></a>
+										</div>
+									</div>
+								</div>
+						  </form>
+					  </div>
+					
+					</div>
 				  
 				  </div>
 			</div>
-		  
-		</div>
-		
-		<div class="row"> 
-		  
-		  
-		  <div class="col-md-12">
-			  <form th:action="@{/salvarCategoria}" th:object="${categoria}" method="post">
-			  			
-				  	<div class="col-md-5">
-				  		<div id="mensagem" th:text="${mensagem}" hidden></div>
-				  		<input type="text" th:field="*{idCategoria}" hidden	>
-				  	
-			        	<label for="ip1" style="color: black; float: left;">Nome Da Categoria</label>	
-						<input type="text" th:field="*{nomeCategoria}">
-					</div>
-					
-					<div class="col-md-5">
-						<div class="row aligen-center">
-							<a th:href="@{/homeAdm}" style="margin: 5;"><button type="button">Nova cat...</button></a>
-							<a href="#" style="margin: 5;"><button id="addCat" type="submit">Enviar</button></a>
-						</div>
-					</div>
-			  </form>
-		  </div>
-	  </div>	
 	  
 	
 </section>
@@ -400,7 +398,12 @@
   <script src="/touchswipe/jquery.touch-swipe.min.js"></script>
   <script src="/parallax/jarallax.min.js"></script>
   <script src="/theme/js/script.js"></script>
-  
+
   
 </body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/js/usuario/validation.js"></script>
 </html>

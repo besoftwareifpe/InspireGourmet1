@@ -45,7 +45,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("realizarLogin")
-	public String login(Usuario usuario, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException {
+	public String login(Usuario usuario, RedirectAttributes ra, HttpSession session	) throws NoSuchAlgorithmException {
 		String senhaAnterior = usuario.getSenha();
 		//criptografando a senha
 		usuario.setSenha(Functions.getSHA256(usuario.getSenha()));
@@ -83,8 +83,8 @@ public class LoginController {
 						session.setAttribute("restauranteLogado", restauranteConsultado);
 						
 						Oferta oferta = serviceOferta.get(restauranteConsultado.getIdRestaurante());
-						ra.addAttribute("oferta", oferta);
-						return "/restaurante/homeRest";
+						ra.addFlashAttribute("oferta", oferta);
+						return "redirect:/restaurante/homeRest";
 					}
 				}
 			}

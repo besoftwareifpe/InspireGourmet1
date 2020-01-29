@@ -39,6 +39,12 @@ public class RestauranteController {
 	@Autowired
 	private MailerRestaurante mail;
 	
+	@GetMapping("/restaurante/homeRest")
+	public String showHomeRes(Model model) {
+		
+		
+		return "/restaurante/homeRest";
+	}
 
 	//cad Restaurante
 	@GetMapping("/restaurante")
@@ -141,12 +147,12 @@ public class RestauranteController {
 	
 	@GetMapping("/deleteRest/{idRest}")
 	public String delete(@PathVariable("idRest")Integer idRest,Model model) {
-		
+
+		serviceOferta.buscarPorIdRest(idRest);
 		serviceRestaurante.delete(idRest);
 		
 		return "redirect:/homeAdm";
-	}
-	
+	}	
 	
 	@PostMapping("/pesquisar")
 	public ModelAndView pesquisar(@RequestParam(name = "pesquisa")String pesquisa ,@RequestParam(name = "categoria")Integer categoria,Model model) {

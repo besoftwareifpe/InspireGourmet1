@@ -29,7 +29,7 @@
 
   <link rel="stylesheet" href="/css/restaurants.css">
   <link rel="stylesheet" href="/css/homeUser/cards.css">
-  
+  <link rel="stylesheet" th:href="@{/css/log-regis.css}" type="text/css">
   <script src="/js/page3.js"></script>
 </head>
 <body>
@@ -62,12 +62,11 @@
                     <a class="nav-link link text-white display-4" href="/index"><span class="mbrib-home mbr-iconfont mbr-iconfont-btn"></span>
                         
                         Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
-                </li><li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4" data-toggle="dropdown-submenu" aria-expanded="false"><span class="mbrib-map-pin mbr-iconfont mbr-iconfont-btn"></span>
-                        Cidades &nbsp; &nbsp;</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" >Recife</a></div></li>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link link text-white display-4" href=""><span class="mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn"></span>
+                    <a class="nav-link link text-white display-4" href="/restaurantes"><span class="mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn"></span>
                         Restaurantes &nbsp;</a>
-                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="/login">Login<span style="padding: 8px;border: 1px solid white;border-radius: 3px;margin-left: 2px;">Registro</span> &nbsp; &nbsp;&nbsp;</a></li></ul>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="/login" id="Log">Login <span id="Rgister" style="padding: 8px;border: 1px solid white;border-radius: 3px;margin-left: 2px;">Registro</span> &nbsp; &nbsp;&nbsp;</a></li></ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/assinatura">Assinar agora</a></div>
         </div>
     </nav>

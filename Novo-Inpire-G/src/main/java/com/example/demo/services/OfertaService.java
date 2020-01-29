@@ -29,4 +29,8 @@ public class OfertaService {
 		repository.deleteById(idRestaurante);
 	}
 
+	public void buscarPorIdRest(Integer idRest) {
+		repository.deletePorIdRest(idRest);
+	}
+
 }

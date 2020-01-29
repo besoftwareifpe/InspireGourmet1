@@ -41,6 +41,7 @@ public class CategoriaController {
 			serviceCategoria.save(categoria);
 			
 			ra.addFlashAttribute("mensagem","1");
+			ra.addFlashAttribute("ed", "nao");
 			
 			return "redirect:/homeAdm";
 		}
@@ -56,6 +57,7 @@ public class CategoriaController {
 		List<Categoria> categorias = serviceCategoria.listAll();
 		model.addAttribute("categorias", categorias);
 		
+		model.addAttribute("ed", "ed");
 		
 		return "/admin/homeAdm";
 	}

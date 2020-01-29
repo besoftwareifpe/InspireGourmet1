@@ -25,7 +25,7 @@ $(document).ready(function(){
 		
 		if(valor.length > 0){
 			$("#noCNPJ").prop("disabled", true);
-		}else{
+		}else {
 			$("#noCNPJ").prop("disabled", false);
 		}
 	});

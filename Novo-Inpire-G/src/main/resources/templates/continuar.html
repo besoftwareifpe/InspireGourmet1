@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/images/logo2.png" type="image/x-icon">
   <meta name="description" content="">
   
-  <title>Cadastro</title>
+  <title>Home</title>
   <link rel="stylesheet" href="/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="/web/assets/mobirise-icons/mobirise-icons.css">
@@ -22,78 +22,27 @@
   <link rel="stylesheet" href="/socicon/css/styles.css">
   <link rel="stylesheet" href="/theme/css/style.css">
   <link rel="preload" as="style" href="/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/mobirise/css/mbr-additional.css" type="text/css">
-  
-  <link rel="stylesheet" th:href="@{/css/log-regis.css}" type="text/css">
-
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>		
-
-	
-	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
     <script>
         $(document).ready(function(){
             //tooltip of button gmail
-            //	$('[data-toggle="tooltip"]').tooltip()     
-            
-            $("#formConfig").validate({
-				rules:{
-					nome: {
-						required: true,
-						maxlength: 50,
-						minlength: 10,
-						minWords: 2,
-					},
-					email:{
-						required: true,
-						email:true,
-						remote:{
-							url: '/verificationEmail',
-							type: "post",
-							data:{
-								//return $('#formConfig : input[name="email"]').val();
-							}
+            $('[data-toggle="tooltip"]').tooltip()
 
-					},
-					cpf:{
-						required: true,
-						cpf: true
-					},
-					senha:{
-						required: true,
-						minlength: 6
+            $('#signUp').click(function(){
+                $('#container1').addClass("right-panel-active");
+            });
 
-				},
-			},
-			messages:{
-				nome:{
-					required: "Este campo é ovbrigatório.",
-					maxlength: "No máximo 100 caracteres.",
-					minlength: "Numero  minimo de 10 letras.",
-					minWords: "Numero minimo de duas palavras."
-				},
-				email:{
-					required: "O campo e-mail é obrigatório.",
-					email: "E-mail inválido."
-				},
-				cpf:{
-					required:"O campo cpf é obrigatório.",
-					cpf: "Cpf inválido."
-				},
-				senha:{
-					required:"O campo senha é obrigatório.",
-					minlength: "No mínimo 6 caracteres."
-
-				},
-			}
-
-		}
-      });
+            $('#signIn').click(function(){
+                $('#container1').removeClass("right-panel-active");
+            });
         });
     </script>
     <link rel="stylesheet" href="/css/logins/login.css">
-    <link rel="stylesheet" href="/css/page5.css">
+    <link rel="stylesheet" href="/css/page6.css">
            
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+  
+  
 </head>
 <body>
     <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
@@ -127,12 +76,12 @@
                 <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="/restaurantes"><span class="icon mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn"></span>
                         Restaurantes &nbsp;</a>
-                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="/login" id="Log">Login <span id="Rgister" style="padding: 8px;border: 1px solid white;border-radius: 3px;margin-left: 2px;font-size: 16px;color: white;">Registro</span> &nbsp; &nbsp;&nbsp;</a></li></ul>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="login" id="Log">Login <span id="Rgister" style="padding: 8px;border: 1px solid white;border-radius: 3px;margin-left: 2px;font-size: 16px;">Registro</span> &nbsp; &nbsp;&nbsp;</a></li></ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="/assinatura">Assinar agora</a></div>
         </div>
     </nav>
 </section>
-<section class="cid-rIeuv6Pg2k mbr-fullscreen" id="header2-1c">
+<section class="engine"><a href="https://mobirise.info/w">free html5 templates</a></section><section class="cid-rIeuv6Pg2k mbr-fullscreen" id="header2-1c">
 
         <div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div> </div>
     
@@ -143,42 +92,27 @@
                         <div id="espaco"></div>
 
                         <div class="container1 col-md-12" id="container1">
-                                <div id="espaco1"></div>    
-                                <h1>Informe seus dados!</h1>
-                                <div class="social-container">
-                                    <div class="g-signin2 container col-md-6" data-onsuccess="onSignIn" data-width="340" data-height="40" data-longtitle="true"></div>
-                                </div>
+                                <div id="espaco4"></div>    
+                                <h5>Informe seu CPF</h5>
                                 <div class="barra container"></div>
                                 <div id="espaco1"></div>
+                                <form id="formPreUsuario" th:action="@{/continuar}" method="post">
                                 <div class="container">
-                                	<form name="formUsuario" id="formUsuario" th:action="@{/salvarUsuario}" th:object="${usuario}" method="post" enctype="multipart/form-data">
-	                                    <div class="row align-center">
-	                                        <div class="mbr-white col-md-12">
-	                                        	<label style="color: black; float: left;">Nome Completo</label>
-	                                            <input type="text" 	id="nome"  placeholder="Nome" th:field="*{nomeUsuario}"/>
-	                                        </div>
-	                                        <div class="mbr-white col-md-12">
-	                                        	<label style="color: black; float: left;">Email</label>
-	                                           <input type="text" id="email"  placeholder="Email" th:field="*{email}"/>
-	                                        </div>
-	                                        <div class="mbr-white col-md-6">
-	                                        	<label style="color: black; float: left;">Senha</label>	
-	                                            <input type="password" id="senha" placeholder="Senha" th:field="*{senha}"/>
-	                                        </div>
-	                                        <div class="mbr-white col-md-6">
-	                                        	<label style="color: black; float: left;">CPF</label>
-	                                            <input type="text" placeholder="CPF" th:value="${cpf}" name="cpf" data-mask="000.000.000-00"/>
+                                    <div class="row align-center">
+                                    	
+	                                        <div class="container mbr-white col-md-6">
+	                                            <input type="text" placeholder="Ex:000.000.000-00" data-mask="999.999.999-99" name="cpf"/>
 	                                        </div>
 	                                        <div id="espaco1" class="col-md-12"></div> 
 	                                        <div class="barra container"></div>
 	                                        <div class="mbr-white col-md-12" >
 	                                            <div id="espaco3"></div>
-	                                            <button class="align-center" name="enviar" id="enviar" type="submit">Finalizar assinatura</button>
+	                                            <button class="align-center">Continuar <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 	                                        </div>
-	                                        <div id="espaco1" class="col-md-12"></div> 
-	                                    </div>
-	                                </form>
+                                        
+                                    </div>
                                 </div>
+                                </form>
                                 
                             </div>
                         </div>
@@ -205,7 +139,7 @@
                 </div>
                 <div class="col-md-9">
                     <p class="mbr-text align-right links mbr-fonts-style display-7"><a href="/index" class="text-black">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="/restaurantes" class="text-black">RESTAURANTES</a>&nbsp; &nbsp; &nbsp;<a href="/login" class="text-black">LOGIN</a></p>
+    <a href="/login" class="text-black">LOGIN</a></p>
                 </div>
             </div>
             <div class="footer-lower">
@@ -258,10 +192,15 @@
             </div>
         </div>
     </section>
+    
     <script src="/js/jquery.mask.min.js"></script>
-
+    
+      <script src="/web/assets/jquery/jquery.min.js"></script>
+      <script src="/popper/popper.min.js"></script>
+      <script src="/bootstrap/js/bootstrap.min.js"></script>
       <script src="/dropdown/js/nav-dropdown.js"></script>
       <script src="/dropdown/js/navbar-dropdown.js"></script>
+      <script src="/touchswipe/jquery.touch-swipe.min.js"></script>
       <script src="/parallax/jarallax.min.js"></script>
       <script src="/tether/tether.min.js"></script>
       <script src="/smoothscroll/smooth-scroll.js"></script>
@@ -270,10 +209,9 @@
       
       
     </body>
-    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 		
 	
-    <script src="/js/usuario/validation.js"></script>
+    	<script src="/js/usuario/validation.js"></script>
     </html>

@@ -9,3 +9,7 @@
 	height: 100%;
 	background: rgba(0,0,0,0.7);
 }
+#Log:hover #Rgister{
+	background: white;
+	color: #ff416c;
+}

@@ -1,0 +1,8 @@
+#Rgister{
+	color: white;
+}
+
+#Log:hover #Rgister{
+	background: white;
+	color: #ff416c;
+}
