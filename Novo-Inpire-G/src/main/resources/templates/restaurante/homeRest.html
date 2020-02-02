@@ -31,12 +31,60 @@
   
   <link rel="stylesheet" href="/css/restaurante/style.css">
   <link rel="stylesheet" href="/css/404.css">
+  
+  <!-- CDN das Mensagens -->
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+   
+    <script>
+        $(document).ready(function(){
+            $('#signUp').click(function(){
+                $('#container1').addClass("right-panel-active");
+            });
+
+            $('#signIn').click(function(){
+                $('#container1').removeClass("right-panel-active");
+            });
+            
+                  
+            
+            toastr.options = {
+            	"closeButton": true,
+           		"debug": false,
+           		"newestOnTop": false,
+           		"progressBar": true,
+           		"positionClass": "toast-bottom-left",
+           		"preventDuplicates": true,
+           		"onclick": null,
+           		"showDuration": "200",
+           		"hideDuration": "1000",
+           		"timeOut": "7000",
+           		"extendedTimeOut": "10000",
+           		"showEasing": "swing",
+           		"hideEasing": "linear",
+           		"showMethod": "fadeIn",
+           		"hideMethod": "fadeOut"
+        	}
+            
+            	
+            var t = $("#mensagemErro").text();
+            
+            switch(t){
+            case "5":
+				toastr.success("Senha Redefinida!");
+            	
+            	$("#mensagemErro").text("");
+            	break;
+            }
+        });
+        
+        </script>
 </head>
 <body>
 
 	<div th:if="${session.restauranteLogado}">
 	   <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
-	   
+	   <span id="mensagemErro" th:text="${mensagemErro}" hidden></span>
 		    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
 		        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		            <div class="hamburger">
@@ -67,7 +115,8 @@
 		                     <span th:text="${session.restauranteLogado.nomeRestaurante}" class="icon"></span>&nbsp; &nbsp;</a>
 		                     <div class="dropdown-menu">
 		                     	<a class="text-white dropdown-item display-4" th:href="|/configuracoes/${session.restauranteLogado.idRestaurante}|">Configuraçoes</a>
-		                     	<a class="text-white dropdown-item display-4" th:href="|/senha/${session.restauranteLogado.hashId}|">Redefinir senha</a>
+		                     	<a class="text-white dropdown-item display-4" th:href="@{/scanner/qr}">Ler QR Code</a>
+		                     	<a class="text-white dropdown-item display-4" th:href="|/senhaR/${session.restauranteLogado.hashId}|">Redefinir senha</a>
 		                     	<a class="text-white dropdown-item display-4" href="/logout">Sair</a>
 		                     </div>
 		                </li>

@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/images/logo2.png" type="image/x-icon">
   <meta name="description" content="Website Builder Description">
   
-  <title>Perfil</title>
+  <title>Redefinir</title>
   <link rel="stylesheet" href="/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -32,25 +32,10 @@
   <link rel="stylesheet" href="/css/homeUser/cards.css">
   <link rel="stylesheet" href="/css/404.css">
   <script src="/js/page3.js"></script>
-  
-  <script>
-  	
-  $(document).ready(function(){
-	 $("#btnAtualiza").click(function(){
-		 
-		 $("#cpf").removeAttr('disabled');
-		 $("#email").removeAttr('disabled');
-	 })
-  });
-  
-  </script>
-  
 </head>
 <body>
-
-  <div th:unless="${session.usuarioLogado}">
-  	
-	<section class="page_404">
+	<div th:unless="${session.restauranteLogado}">
+  	<section class="page_404">
 	    <div class="container2">
 	        <div class="row">   
 	            <div class="col-sm-12">
@@ -74,10 +59,8 @@
 	    </div>
 		</section>
   </div>
-  <div th:if="${session.usuarioLogado}">
-  <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
-
-    
+  <div th:if="${session.restauranteLogado}">
+	<section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
 
     <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,11 +74,11 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="https://mobirise.co">
+                    <a href="/home">
                          <img src="/images/logo2.png" alt="Mobirise" style="height: 3.8rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="https://mobirise.co">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/home">
                         Inspire</a></span>
             </div>
         </div>
@@ -107,93 +90,76 @@
   				
   				<li class="nav-item dropdown">
         			 <a class="nav-link link text-white dropdown-toggle display-4" data-toggle="dropdown-submenu" aria-expanded="false"><img id="img" src="/images/table-1469719_960_720.jpg"/>&nbsp; 
-                      <span th:text="${session.usuarioLogado.nomeUsuario}" class="icon" style="font-size: 16px"></span>&nbsp; &nbsp;</a>
+                      <span th:text="${session.restauranteLogado.nomeRestaurante}" class="icon " style="font-size: 16px;"></span>&nbsp; &nbsp;</a>
                      <div class="dropdown-menu">
-                     	<a class="text-white dropdown-item display-4" th:href="|/edite/${session.usuarioLogado.idUsuario}|">Perfil</a>
-                     	<a class="text-white dropdown-item display-4">Meus Vouchers</a>
-                     	<a class="text-white dropdown-item display-4" th:href="|/senha/${session.usuarioLogado.hashId}|">Redefinir senha</a>
-                     	<a class="text-white dropdown-item display-4" href="/logout">Sair</a>
+                    		<a class="text-white dropdown-item display-4" th:href="|/configuracoes/${session.restauranteLogado.idRestaurante}|">Configuraçoes</a>
+	                     	<a class="text-white dropdown-item display-4" th:href="@{/scanner/qr}">Ler QR Code</a>
+	                     	<a class="text-white dropdown-item display-4" th:href="|/senhaR/${session.restauranteLogado.hashId}|">Redefinir senha</a>
+	                     	<a class="text-white dropdown-item display-4" href="/logout">Sair</a>
                      </div>
                 </li>
                 
            	</ul>
         </div>
-    </nav>
-</section>
-
-<section class="engine"><a href="https://mobirise.info/a">online website builder</a></section><section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w">
-
-    
-
-    <div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div>
-    </div>
-
-    <div class="container">
-        <div class="media-container-row">
-            <div class="title col-12 col-md-12">
-                <h5 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Perfil</em></h5>
-                <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5"></h3>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="services1 cid-rIekDMgeHc" id="services1-17">
-
-
-	<form name="formuserConf" id="formuserConf" th:action="@{/updateUsuario}" th:object="${usuario}" method="post">   
+	    </nav>
+	</section>
+	
+	<section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w" >
+    	<div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div></div>
+	</section>
+	
+	<section class="services1 cid-rIekDMgeHc" id="services1-17">
+	
+	<form name="redefinir" id="redefinir" th:action="@{/redefinirSenhaRest}" th:object="${redefinir}" method="post">   
 		<div class="container">
 			<div class="barra container"></div>
-	
-			<div class="row">
-				<input type="text" th:field="*{idUsuario}" style="visibility: hidden">
 				
-				<div class="mbr-white col-md-6">
-		        	<label for="ip1" style="color: black; float: left;">Nome Completo</label>	
-					<input type="text" th:field="*{nomeUsuario}">
+
+				<div class="col-md-12" style="margin-top: 15%;"></div> 
+				<h4 style="left: 25%;" class="col-md-12">Redefina sua senha</h4>
+				<div id="espaco1" class="col-md-12"></div>
+				<div class="mbr-white col-md-6" style="left: 25%;">
+		        	<label style="color: black; float: left;">Nova Senha</label>
+					<input type="password" id="password" name="password">
 				</div>
 				
-				<div class="mbr-white col-md-3">
-		        	<label style="color: black; float: left;">CPF</label>
-					<input id="cpf" type="text" th:field="*{cpf}" disabled>
+				<div class="mbr-white col-md-6" style="left: 25%;">
+		        	<label style="color: black; float: left;">Confimar Senha</label>
+					<input type="password" name="confSenha">
 				</div>
 				
-				<div class="mbr-white col-md-6">
-		        	<label style="color: black; float: left;">Email</label>
-					<input id="email" type="text" th:field="*{email}" disabled>
-				</div>
+				<input type="text" th:field="*{hashId}" style="visibility: hidden;">
 				
-				<input type="text" th:field="*{hashId}" hidden>
-				
-				<div id="espaco1" class="col-md-12"></div> 
+				<div id="espaco" class="col-md-12"></div> 
 		        <div class="barra container"></div>
 				
 				<div class="mbr-white col-md-12" >
 		            <div id="espaco3"></div>
-					<button id="btnAtualiza" name="enviar" type="submit"s>Atualizar</button>
+					<button id="btnAtualiza" name="enviar" type="submit">Redefinir</button>
 				</div>
-			</div>
 			
 			<div id="espaco1" class="col-md-12"></div> 
 		</div>
 	</form>
 	
-</section>
+	</section>
+	<section class="cid-rIh3HwhxOm" id="footer5-1k">
 
-<section class="cid-rIetTk9Awm" id="footer5-1a">
+    
+
+    
 
     <div class="container">
         <div class="media-container-row">
             <div class="col-md-3">
                 <div class="media-wrap">
-                    <a href="https://mobirise.co/">
-                       <img src="/images/logo22.png" alt="Mobirise">
+                    <a href="/home">
+                       <img src="/images/logo2.png" alt="Mobirise">
                     </a>
                 </div>
             </div>
             <div class="col-md-9">
-                <p class="mbr-text align-right links mbr-fonts-style display-7"><a href="/home" class="text-black">HOME</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a href="#" class="text-black">TERMS</a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a class="text-black">RESTAURANTES</a>&nbsp; &nbsp; &nbsp;<a href="/page2" class="text-black">LOGIN</a></p>
+                <p class="mbr-text align-right links mbr-fonts-style display-7"><a href="/home" class="text-black">HOME</a></p>
             </div>
         </div>
         <div class="footer-lower">
@@ -246,9 +212,9 @@
         </div>
     </div>
 </section>
-</div>
-
-  <script src="/web/assets/jquery/jquery.min.js"></script>
+  </div>
+</body>
+<script src="/web/assets/jquery/jquery.min.js"></script>
   <script src="/popper/popper.min.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/smoothscroll/smooth-scroll.js"></script>
@@ -260,8 +226,7 @@
   <script src="/theme/js/script.js"></script>
   
   
-</body>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 		
 	

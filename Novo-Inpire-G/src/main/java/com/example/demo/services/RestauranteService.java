@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.daos.CategoriaDAO;
 import com.example.demo.daos.RestauranteDAO;
 import com.example.demo.models.Restaurante;
+import com.example.demo.util.Functions;
 
 @Service
 @Transactional
@@ -70,6 +71,17 @@ public class RestauranteService {
 		System.out.println(categoria);
 		
 		return repository.buscarRestauranteCate(1);
+	}
+	
+	public void redefinirSenha(String hash, String senha) {
+		
+		Restaurante restaurante = repository.findByHashId(hash);
+		
+		String novaSenha = Functions.getSHA256(senha);
+		restaurante.setSenha(novaSenha);
+		restaurante.setSaltera(0);
+		
+		repository.save(restaurante);
 	}
 }
 

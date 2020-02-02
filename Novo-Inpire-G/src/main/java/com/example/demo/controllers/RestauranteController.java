@@ -39,9 +39,13 @@ public class RestauranteController {
 	@Autowired
 	private MailerRestaurante mail;
 	
-	@GetMapping("/restaurante/homeRest")
-	public String showHomeRes(Model model) {
+	@GetMapping("/restaurante/homeRest/{hash}")
+	public String showHomeRes(@PathVariable("hash")String hash,Model model) {
 		
+		Restaurante restaurante = serviceRestaurante.findByHashId(hash);
+     	
+     	Oferta oferta = serviceOferta.get(restaurante.getIdRestaurante());
+		model.addAttribute("oferta", oferta);
 		
 		return "/restaurante/homeRest";
 	}
@@ -170,4 +174,51 @@ public class RestauranteController {
 			return modelAndView;
 		}
 	}
+	
+	@GetMapping("/scanner/qr")
+	public String showSacan() {
+		
+		
+		return "restaurante/leitorQR";
+	}
+	
+	@GetMapping("/restaurante/qr")
+	public String showqr(Model model) {
+		
+		
+		return "/restaurante/qr";
+	}
+	
+	@GetMapping("/redefini/{hash}")
+	public String showRedefinir(@PathVariable("hash")String hash,Model model) {
+		
+		Restaurante restaurante = serviceRestaurante.findByHashId(hash);
+		model.addAttribute("redefinir", restaurante);
+		
+		return "/restaurante/redefinir";
+	}
+	
+	@PostMapping("/redefinirSenhaRest")
+	public String redefinirR(@RequestParam(name = "hashId")String hash,@RequestParam(name = "confSenha")String senha,RedirectAttributes ra) {
+
+		serviceRestaurante.redefinirSenha(hash,senha);
+		ra.addFlashAttribute("mensagemErro", "5");
+		
+		Restaurante restaurante = serviceRestaurante.findByHashId(hash);
+     	
+     	Oferta oferta = serviceOferta.get(restaurante.getIdRestaurante());
+		ra.addFlashAttribute("oferta", oferta);
+		
+		return "redirect:/restaurante/homeRest/"+restaurante.getHashId();
+	}
+	
+	@GetMapping("/senhaR/{hash}")
+	public String showRedeR(@PathVariable("hash")String hash,Model model) {
+		
+		Restaurante restaurante = serviceRestaurante.findByHashId(hash);
+		model.addAttribute("redefinir", restaurante);
+		
+		return "/restaurante/senha";
+	}
+
 }

@@ -1,381 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Simple Success Confirmation Popup</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+    body {
+		font-family: 'Varela Round', sans-serif;
+	}
+	.modal-confirm {		
+		color: #636363;
+		width: 325px;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		border: none;
+	}
+	.modal-confirm .modal-header {
+		border-bottom: none;   
+        position: relative;
+	}
+	.modal-confirm h4 {
+		text-align: center;
+		font-size: 26px;
+		margin: 30px 0 -15px;
+	}
+	.modal-confirm .form-control, .modal-confirm .btn {
+		min-height: 40px;
+		border-radius: 3px; 
+	}
+	.modal-confirm .close {
+        position: absolute;
+		top: -5px;
+		right: -5px;
+	}	
+	.modal-confirm .modal-footer {
+		border: none;
+		text-align: center;
+		border-radius: 5px;
+		font-size: 13px;
+	}	
+	.modal-confirm .icon-box {
+		color: #fff;		
+		position: absolute;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		top: -70px;
+		width: 95px;
+		height: 95px;
+		border-radius: 50%;
+		z-index: 9;
+		background: #82ce34;
+		padding: 15px;
+		text-align: center;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.modal-confirm .icon-box i {
+		font-size: 58px;
+		position: relative;
+		top: 3px;
+	}
+	.modal-confirm.modal-dialog {
+		margin-top: 80px;
+	}
+    .modal-confirm .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #82ce34;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+        border: none;
+    }
+	.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+		background: #6fb32b;
+		outline: none;
+	}
+	.trigger-btn {
+		display: inline-block;
+		margin: 100px auto;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		$("#mod").click();
+	})
 
-	<style type="text/css">
-html,
-body {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-body {
-  overflow: hidden;
-}
-.background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-size: cover;
-  background-position: center;
-}
-.modalbox.success,
-.modalbox.error {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background: #fff;
-  padding: 25px 25px 15px;
-  text-align: center;
-}
-.modalbox.success.animate .icon,
-.modalbox.error.animate .icon {
-  -webkit-animation: fall-in 0.75s;
-  -moz-animation: fall-in 0.75s;
-  -o-animation: fall-in 0.75s;
-  animation: fall-in 0.75s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.modalbox.success h1,
-.modalbox.error h1 {
-  font-family: 'Montserrat', sans-serif;
-}
-.modalbox.success p,
-.modalbox.error p {
-  font-family: 'Open Sans', sans-serif;
-}
-.modalbox.success button,
-.modalbox.error button,
-.modalbox.success button:active,
-.modalbox.error button:active,
-.modalbox.success button:focus,
-.modalbox.error button:focus {
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  border-radius: 30px;
-  margin-top: 15px;
-  width: 40%;
-  background: transparent;
-  color: #4caf50;
-  border-color: #4caf50;
-  outline: none;
-}
-.modalbox.success button:hover,
-.modalbox.error button:hover,
-.modalbox.success button:active:hover,
-.modalbox.error button:active:hover,
-.modalbox.success button:focus:hover,
-.modalbox.error button:focus:hover {
-  color: #fff;
-  background: #4caf50;
-  border-color: transparent;
-}
-.modalbox.success .icon,
-.modalbox.error .icon {
-  position: relative;
-  margin: 0 auto;
-  margin-top: -75px;
-  background: #4caf50;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}
-.modalbox.success .icon span,
-.modalbox.error .icon span {
-  position: absolute;
-  font-size: 4em;
-  color: #fff;
-  text-align: center;
-  padding-top: 20px;
-}
-.modalbox.error button,
-.modalbox.error button:active,
-.modalbox.error button:focus {
-  color: #f44336;
-  border-color: #f44336;
-}
-.modalbox.error button:hover,
-.modalbox.error button:active:hover,
-.modalbox.error button:focus:hover {
-  color: #fff;
-  background: #f44336;
-}
-.modalbox.error .icon {
-  background: #f44336;
-}
-.modalbox.error .icon span {
-  padding-top: 25px;
-}
-.center {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-/* stupid browser compat. smh */
-}
-.center .change {
-  clear: both;
-  display: block;
-  font-size: 10px;
-  color: #ccc;
-  margin-top: 10px;
-}
-@-webkit-keyframes fall-in {
-  0% {
-    -ms-transform: scale(3, 3);
-    -webkit-transform: scale(3, 3);
-    transform: scale(3, 3);
-    opacity: 0;
-  }
-  50% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-  60% {
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-}
-@-moz-keyframes fall-in {
-  0% {
-    -ms-transform: scale(3, 3);
-    -webkit-transform: scale(3, 3);
-    transform: scale(3, 3);
-    opacity: 0;
-  }
-  50% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-  60% {
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-}
-@-o-keyframes fall-in {
-  0% {
-    -ms-transform: scale(3, 3);
-    -webkit-transform: scale(3, 3);
-    transform: scale(3, 3);
-    opacity: 0;
-  }
-  50% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-  60% {
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-}
-@-webkit-keyframes plunge {
-  0% {
-    margin-top: -100%;
-  }
-  100% {
-    margin-top: 25%;
-  }
-}
-@-moz-keyframes plunge {
-  0% {
-    margin-top: -100%;
-  }
-  100% {
-    margin-top: 25%;
-  }
-}
-@-o-keyframes plunge {
-  0% {
-    margin-top: -100%;
-  }
-  100% {
-    margin-top: 25%;
-  }
-}
-@-moz-keyframes fall-in {
-  0% {
-    -ms-transform: scale(3, 3);
-    -webkit-transform: scale(3, 3);
-    transform: scale(3, 3);
-    opacity: 0;
-  }
-  50% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-  60% {
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-}
-@-webkit-keyframes fall-in {
-  0% {
-    -ms-transform: scale(3, 3);
-    -webkit-transform: scale(3, 3);
-    transform: scale(3, 3);
-    opacity: 0;
-  }
-  50% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-  60% {
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-}
-@-o-keyframes fall-in {
-  0% {
-    -ms-transform: scale(3, 3);
-    -webkit-transform: scale(3, 3);
-    transform: scale(3, 3);
-    opacity: 0;
-  }
-  50% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-  60% {
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-}
-@keyframes fall-in {
-  0% {
-    -ms-transform: scale(3, 3);
-    -webkit-transform: scale(3, 3);
-    transform: scale(3, 3);
-    opacity: 0;
-  }
-  50% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-    opacity: 1;
-  }
-  60% {
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-  }
-  100% {
-    -ms-transform: scale(1, 1);
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-}
-@-moz-keyframes plunge {
-  0% {
-    margin-top: -100%;
-  }
-  100% {
-    margin-top: 15%;
-  }
-}
-@-webkit-keyframes plunge {
-  0% {
-    margin-top: -100%;
-  }
-  100% {
-    margin-top: 15%;
-  }
-}
-@-o-keyframes plunge {
-  0% {
-    margin-top: -100%;
-  }
-  100% {
-    margin-top: 15%;
-  }
-}
-@keyframes plunge {
-  0% {
-    margin-top: -100%;
-  }
-  100% {
-    margin-top: 15%;
-  }
-}
-
-	</style>
-
+</script>
 </head>
 <body>
-	<div class="background"></div>
-<div class="container">
-	<div class="row">
-		<div class="modalbox success col-sm-8 col-md-6 col-lg-5 center animate">
-			<div class="icon">
-				<span class="glyphicon glyphicon-ok"></span>
-			</div>
-			<!--/.icon-->
-			<h1>Sucesso!</h1>
-			<p>Sue email foi confirmado</p>
-			<a href="/login"><button type="button" class="redo btn">Login</button></a>
-			<span class="change">-- Clique e aproveite nossos serviços --</span>
-		</div>
-		<!--/.success-->
-	</div>
-	
-	</div>
-	<!--/.row-->
+<div class="text-center">
+	<!-- Button HTML (to Trigger Modal) -->
+	<a style="visibility: hidden;" id="mod" href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
 </div>
-<!--/.container-->
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE876;</i>
+				</div>				
+				<h4 class="modal-title">Sucesso!</h4>	
+			</div>
+			<div class="modal-body">
+				<p class="text-center">Sua Conta foi confirmada.<br> <br> Click no botão a baixo e desfrute de nossos Serviços</p>
+			</div>
+			<div class="modal-footer">
+				<a href="/login" class="btn btn-success btn-block" >Fazer Login</a>
+			</div>
+		</div>
+	</div>
+</div>     
 </body>
-</html>
+</html>                                                        

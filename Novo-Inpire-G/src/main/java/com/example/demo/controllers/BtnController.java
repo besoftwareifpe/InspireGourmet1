@@ -1,10 +1,26 @@
 package com.example.demo.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.example.demo.models.Oferta;
+import com.example.demo.models.Restaurante;
+import com.example.demo.services.OfertaService;
+import com.example.demo.services.RestauranteService;
 
 @Controller
 public class BtnController {
+	
+	@Autowired
+	private RestauranteService serviceRestaurante;
+	
+	@Autowired
+	private OfertaService serviceOferta;
 
 	@GetMapping("/index")
 	public String index() {
@@ -19,8 +35,12 @@ public class BtnController {
 	
 
 	@GetMapping("/restaurantes")
-	public String show3() {
-		return "restaurantes";
+	public String show3(Model model) {
+		
+		List<Restaurante> restaurantes = serviceRestaurante.listAll();
+		model.addAttribute("restaurantes",restaurantes);
+		
+ 		return "restaurantes";
 	}
 	
 	@GetMapping("/detalhe")
@@ -30,8 +50,15 @@ public class BtnController {
 	
 	
 	
-	@GetMapping("/detalhes")
-	public String showDetalhes() {
+	@GetMapping("/detalhes/{id}")
+	public String showDetalhes(@PathVariable("id")Integer idRest,Model model) {
+		
+		Restaurante  restaurante = serviceRestaurante.get(idRest);
+		model.addAttribute("restaurante", restaurante);
+		
+		Oferta oferta = serviceOferta.get(idRest);
+		model.addAttribute("oferta", oferta);
+		
 		return "usuario/detalhesRestaurante";
 	}
 	

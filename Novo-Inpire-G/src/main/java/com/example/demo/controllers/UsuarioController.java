@@ -151,5 +151,13 @@ public class UsuarioController {
 		return "redirect:/home";
 	}
 	
+	@GetMapping("/senha/{hash}")
+	public String showRede(@PathVariable("hash")String hash,Model model) {
+		
+		Usuario user = serviceUser.buscarPeloHash(hash);
+		model.addAttribute("redefinir", user);
+		
+		return "/usuario/senha";
+	}
 	
 }

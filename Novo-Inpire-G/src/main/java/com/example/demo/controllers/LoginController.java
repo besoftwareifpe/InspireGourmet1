@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.models.Admin;
-import com.example.demo.models.Oferta;
 import com.example.demo.models.Restaurante;
 import com.example.demo.models.Usuario;
 import com.example.demo.services.AdminService;
-import com.example.demo.services.OfertaService;
 import com.example.demo.services.RestauranteService;
 import com.example.demo.services.UsuarioService;
 import com.example.demo.util.Functions;
@@ -29,9 +27,6 @@ public class LoginController {
 	
 	@Autowired
 	private RestauranteService serviceRest;
-	
-	@Autowired
-	private OfertaService serviceOferta;
 	
 	@Autowired
 	private AdminService serviceAdmin;
@@ -80,11 +75,16 @@ public class LoginController {
 						ra.addFlashAttribute("mensagemErro", "6");
 						return "redirect:/login";
 					}else {
-						session.setAttribute("restauranteLogado", restauranteConsultado);
+						if (restauranteConsultado.getSaltera() != 1) {
+							session.setAttribute("restauranteLogado", restauranteConsultado);
+
+							return "redirect:/restaurante/homeRest/"+restauranteConsultado.getHashId();
+						}else {
+							session.setAttribute("restauranteLogado", restauranteConsultado);
+							
+							return "redirect:/redefini/"+restauranteConsultado.getHashId()	;
+						}
 						
-						Oferta oferta = serviceOferta.get(restauranteConsultado.getIdRestaurante());
-						ra.addFlashAttribute("oferta", oferta);
-						return "redirect:/restaurante/homeRest";
 					}
 				}
 			}

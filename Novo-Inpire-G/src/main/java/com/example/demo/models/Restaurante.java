@@ -34,6 +34,8 @@ public class Restaurante {
 	
 	private String bairro;
 	
+	private String rua;
+	
 	private String numero;
 	
 	private String cidade;
@@ -51,8 +53,7 @@ public class Restaurante {
 	private Integer prioridade;
 	
 	private int Saltera;
-	
-	
+
 	public Integer getIdRestaurante() {
 		return idRestaurante;
 	}
@@ -92,7 +93,7 @@ public class Restaurante {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getSenha() {
 		return senha;
 	}
@@ -115,6 +116,14 @@ public class Restaurante {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+	
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
 
 	public String getNumero() {
@@ -168,11 +177,11 @@ public class Restaurante {
 	public Integer getPrioridade() {
 		return prioridade;
 	}
-	
+
 	public void setPrioridade(Integer prioridade) {
 		this.prioridade = prioridade;
 	}
-	
+
 	public int getSaltera() {
 		return Saltera;
 	}

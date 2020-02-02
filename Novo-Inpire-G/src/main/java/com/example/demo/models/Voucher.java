@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Voucher {
@@ -13,11 +13,11 @@ public class Voucher {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToMany
+	@ManyToOne
 	private Usuario idUsuario;
 	
-	@OneToMany
-	private Restaurante idRestaurante;
+	@ManyToOne
+	private Oferta idOferta;
 	
 	private String hashCode;
 
@@ -36,13 +36,13 @@ public class Voucher {
 	public void setIdUsuario(Usuario idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-
-	public Restaurante getIdRestaurante() {
-		return idRestaurante;
+	
+	public Oferta getIdOferta() {
+		return idOferta;
 	}
 
-	public void setIdRestaurante(Restaurante idRestaurante) {
-		this.idRestaurante = idRestaurante;
+	public void setIdOferta(Oferta idOferta) {
+		this.idOferta = idOferta;
 	}
 
 	public String getHashCode() {

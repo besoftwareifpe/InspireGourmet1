@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/images/logo2.png" type="image/x-icon">
   <meta name="description" content="Website Builder Description">
   
-  <title>Home</title>
+  <title>Redefinir</title>
   <link rel="stylesheet" href="/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -28,100 +28,39 @@
   <script src="https://use.fontawesome.com/a35f1a6e09.js"></script>
 
   <link rel="stylesheet" href="/css/homeUser/restaurants.css">
+  <link rel="stylesheet" href="/css/logins/login.css">
   <link rel="stylesheet" href="/css/homeUser/cards.css">
-  <link rel="stylesheet" href="/css/homeUser/style.css">
   <link rel="stylesheet" href="/css/404.css">
   <script src="/js/page3.js"></script>
-  
-  <!-- CDN das Mensagens -->
-  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-   
-    <script>
-        $(document).ready(function(){
-            $('#signUp').click(function(){
-                $('#container1').addClass("right-panel-active");
-            });
-
-            $('#signIn').click(function(){
-                $('#container1').removeClass("right-panel-active");
-            });
-            
-                  
-            
-            toastr.options = {
-            	"closeButton": true,
-           		"debug": false,
-           		"newestOnTop": false,
-           		"progressBar": true,
-           		"positionClass": "toast-bottom-left",
-           		"preventDuplicates": true,
-           		"onclick": null,
-           		"showDuration": "200",
-           		"hideDuration": "1000",
-           		"timeOut": "7000",
-           		"extendedTimeOut": "10000",
-           		"showEasing": "swing",
-           		"hideEasing": "linear",
-           		"showMethod": "fadeIn",
-           		"hideMethod": "fadeOut"
-        	}
-            
-            	
-            var t = $("#mensagemErro").text();
-            
-            switch(t){
-            case "1":
-            	toastr.success("Voucher gerado com sucesso , clique em meus vouchers e veja mais informações!");
-            	
-            	$("#mensagemErro").text("");
-            	break;
-            case "5":
-				toastr.success("Senha Redefinida!");
-            	
-            	$("#mensagemErro").text("");
-            	break;
-            }
-        });
-        
-        </script>
-        
-        <!-- CAROUSEL -->
-        <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
-  		<link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"> 
 </head>
 <body>
-
 	<div th:unless="${session.usuarioLogado}">
-		 <section class="page_404">
-		    <div class="container2">
-		        <div class="row">   
-		            <div class="col-sm-12">
-		                <div class="col-sm-10 col-sm-offset-1  text-center">
-		                    <div class="four_zero_four_bg">
-		                        <h1 class="text-center ">404</h1>
-		                    </div>
-		                    
-		                    <div class="contant_box_404">
-		                        <h3 class="h2">
-		                        Pagina não encontrada
-		                        </h3>
-		                        
-		                        <p>Clique no botão abaixo e volte para a home!</p>
-		                        
-		                        <a href="/index" class="link_404">Ir para a Home</a>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-	    	</div>
-			</section>
-	</div>
-	<div th:if="${session.usuarioLogado}">
-	
-
-
-  <section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
+  	<section class="page_404">
+	    <div class="container2">
+	        <div class="row">   
+	            <div class="col-sm-12">
+	                <div class="col-sm-10 col-sm-offset-1  text-center">
+	                    <div class="four_zero_four_bg">
+	                        <h1 class="text-center ">404</h1>
+	                    </div>
+	                    
+	                    <div class="contant_box_404">
+	                        <h3 class="h2">
+	                        Pagina não encontrada
+	                        </h3>
+	                        
+	                        <p>Clique no botão abaixo e volte para a home!</p>
+	                        
+	                        <a href="/index" class="link_404">Ir para a Home</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		</section>
+  </div>
+  <div th:if="${session.usuarioLogado}">
+	<section class="menu cid-rIdJm2Bp7s" once="menu" id="menu1-14">
   	<span id="mensagemErro" th:text="${mensagemErro}" hidden></span>
     
 
@@ -164,83 +103,49 @@
                 
            	</ul>
         </div>
-    </nav>
-</section>
-
-<section class="engine"><a href="https://mobirise.info/a">online website builder</a></section><section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w">
-
-    
-
-    <div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div>
-    </div>
-
-    <div class="container">
-        <div class="media-container-row">
-            <div class="title col-12 col-md-8">
-                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"><em>Restaurantes</em></h2>
-                <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5"></h3>
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="services1 cid-rIekDMgeHc" id="services1-17">
-    <!--Overlay-->
-    <div id="espaco1"></div>
-    <!--Container-->
-    <div class="container">
-    	<form th:action="@{/pesquisar}" th:object="${restaurante}" method="post">
-    		<div class="col-12">
-    			<div class="row">
-	    			<div class="col-12">
-	   					<div style="width: 80%; float: left;">
-							<input style="width: 100%" name="pesquisa" type="text" placeholder="Digite o nome do restaurante...">
-						</div>
-						<div style="width: 20%; float: right;">
-							<button style="width: 100%" type="submit">Pesquisar</button>
-						</div>
-					</div>
-					
-					
-				</div>
-				<div id="espaco"></div>
-			</div>
-				
-			
-		</form>
-		
-		   
-			<div class="owl-carousel">
-	            <!--Card-1-->
-            	<div  th:each="list : ${restaurantes}">
-                	<div class="news shadow">
-                 	 	<div class="img-figure">
-                     	<div class="cat" >Cozinha</div>
-                    	<img th:src="@{/images/table-1469719_960_720.jpg}" class="img-fluid">
-                  	</div>	
-        		
-	                  <div class="title">
-	                    <span th:text="${list.nomeRestaurante}"> DAL 20/10/2017 AL 24/10/2017</span>
-	                    <h1 th:text="${list.nomeRestaurante}">LF A HOST</h1>
-	                  </div>
-	                  <p class="description">
-	                    LF espone alla nuova edizione di HOST si svolgerà a Milano dal 20 al 24 ottobre 2017.
-	                  </p>
-	        
-	                  <p class="more" style="margin-left: 36%; margin-bottom: 20px;">
-	                    <a style="border-radius: 30px;font-size: 16px;" th:href="@{/detalhes/}+ ${list.idRestaurante}">Detalhes</a><i class="fa fa-angle-right" aria-hidden="true"></i>
-	                  </p>
-	                </div>
-	              </div>
-			
-	        </div>
-	        
-        </div>
+	    </nav>
 	</section>
+	
+	<section class="mbr-section content5 cid-rHIn4jiyjP mbr-parallax-background" id="content5-w" >
+    	<div class="mbr-overlay" style="opacity: 0.9;"><div id="rgb"></div></div>
+	</section>
+	
+	<section class="services1 cid-rIekDMgeHc" id="services1-17">
+	
+	<form name="redefinir" id="redefinir" th:action="@{/redefinirSenha}" th:object="${redefinir}" method="post">   
+		<div class="container">
+			<div class="barra container"></div>
+				
 
-<section class="cid-rIh3HwhxOm" id="footer5-1k">
+				<div class="col-md-12" style="margin-top: 15%;"></div> 
+				<h4 style="left: 25%;" class="col-md-12">Redefina sua senha</h4>
+				<div id="espaco1" class="col-md-12"></div>
+				<div class="mbr-white col-md-6" style="left: 25%;">
+		        	<label style="color: black; float: left;">Nova Senha</label>
+					<input type="password" id="password" name="password">
+				</div>
+				
+				<div class="mbr-white col-md-6" style="left: 25%;">
+		        	<label style="color: black; float: left;">Confimar Senha</label>
+					<input type="password" name="confSenha">
+				</div>
+				
+				<input type="text" th:field="*{hashId}" style="visibility: hidden;">
+				
+				<div id="espaco" class="col-md-12"></div> 
+		        <div class="barra container"></div>
+				
+				<div class="mbr-white col-md-12" >
+		            <div id="espaco3"></div>
+					<button id="btnAtualiza" name="enviar" type="submit"s>Redefinir</button>
+				</div>
+			
+			<div id="espaco1" class="col-md-12"></div> 
+		</div>
+	</form>
+	
+	</section>
+	<section class="cid-rIh3HwhxOm" id="footer5-1k">
 
     
 
@@ -309,9 +214,9 @@
         </div>
     </div>
 </section>
-	</div>
-
-  <script src="/web/assets/jquery/jquery.min.js"></script>
+  </div>
+</body>
+<script src="/web/assets/jquery/jquery.min.js"></script>
   <script src="/popper/popper.min.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/smoothscroll/smooth-scroll.js"></script>
@@ -322,38 +227,10 @@
   <script src="/parallax/jarallax.min.js"></script>
   <script src="/theme/js/script.js"></script>
   
-  <script src="OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
   
-  <script>
-  
-  	$(document).ready(function(){
-  		var owl = $('.owl-carousel');
-  		
-  		owl.owlCarousel({
-  		    items:2,
-  		    loop:true,
-  		    margin:10,
-  		 	autoplay:true,
-	  	    autoplayTimeout:5000,
-	  	    autoplayHoverPause:true,
-		  	responsiveClass:true,
-		    responsive:{
-		        0:{
-		            items:1,
-		            nav:true
-		        },
-		        600:{
-		            items:2,
-		            nav:false
-		        },
-		        1000:{
-		            items:3,
-		            nav:false
-		        }
-		    }
-  		});
-	});
-  
-  </script>
-</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+		
+	
+    <script src="/js/usuario/validation.js"></script>
 </html>

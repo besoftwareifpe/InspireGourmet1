@@ -21,9 +21,9 @@ public class OfertaService {
 		return repository.buscaOferta(idRestaurante);
 	}
 	
-//	public Oferta getId(Integer idOferta) {
-//		return repository.findById(idOferta).get();
-//	}
+	public Oferta buscarPeloId(Integer idOferta) {
+		return repository.findById(idOferta).get();
+	}
 	
 	public void delete(Integer idRestaurante) {
 		repository.deleteById(idRestaurante);
